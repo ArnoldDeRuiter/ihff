@@ -6,7 +6,7 @@ Website voor de organisatie van de Internationale Haarlemse Film Festival gebouw
 Info:
 
 In de eerste periode is als groep gewerkt aan de use case diagrammen en het ontwerpen van het design, voornamelijk als prototype in Axure.
-Nu zijn wij nu beland bij de tweede periode waar, nadat er nog een ERD en Database is ontworpen, de realisatie fase van start heeft kunnen gaan.
+Nu zijn wij beland bij de tweede periode waar, nadat er nog een ERD en Database is ontworpen, de realisatie fase van start is gegaan.
 
 Afbeeldingen Axure prototype:
 
