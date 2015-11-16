@@ -1,4 +1,4 @@
-# ihff
+# IHFF
 MVC school project
 
 Website voor de organisatie van de Internationale Haarlemse Film Festival gebouwd met MVC.
