@@ -182,6 +182,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Home.css" />
+    <Content Include="Content\img\elements\add-wish.png" />
+    <Content Include="Content\img\films\film-maker.png" />
+    <Content Include="Content\img\films\Intestellar1.png" />
+    <Content Include="Content\img\Haarlem.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

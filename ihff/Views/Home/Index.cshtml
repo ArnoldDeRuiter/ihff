@@ -2,28 +2,42 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Welkom</h2>
-        <p>
-            Even een Github change pushen, zodat we Slack integration kunnen testen... :)
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div id="div-center">
+    
+    <div>
+        <h1>Welcome to</h1>
+        <h3>the website of IHFF</h3>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div id="left-div-container">
+        <div>
+            <p class="p-title">Introduction</p>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div id="right-div-container">
+        <div>
+            <p class="title">This is your wishlist, it is empty at the moment. You can add <a>movies</a>, <a>lectures</a> and <a>restaurants</a> to your wishlist by clicking the add to wishlist button.</p>
+        </div>
     </div>
+
+    <div id="footer-div-container">
+        <h3>Populair Items:</h3>
+        
+        <div class="film-object">
+            <img src="~/Content/img/films/Intestellar1.png" class="film-picto"/>
+            <div class="film-block"><img src="~/Content/img/films/film-maker.png" class="film-maker"/>
+                <div class="film-span-container">
+                    <p><span id="film-block-title">Intestellar</span><span id="film-block-year">2015</span></p>
+                    <p><span id="film-block-time-txt">Time:</span><span id="film-block-time">17.00 - 19.30</span></p>
+                </div>
+            </div>
+            <div class="film-wishlist"><img src="~/Content/img/elements/add-wish.png" class="film-wishlist-img"/> Add to Wishlist</div>
+        </div>
+
+    </div>
+
 </div>
