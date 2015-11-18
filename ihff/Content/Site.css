@@ -151,7 +151,7 @@ a:active {
 
 .film-span-container {
     float:right;
-    margin-right:21%;
+    margin-right:22.5%;
     font-size: 1.02em;
 }
 
@@ -290,17 +290,17 @@ p.p-title {
     }
 
     .film-span-container {
-        margin-right:8%;
-        font-size: 0.75em;
+        margin-right:13%;
+        font-size: 0.83em;
     }
 
     .film-span-container p:first-child {
         position: relative;
-        top: -2px;
+        top: -0px;
     }
     .film-span-container p:nth-child(2) {
         position: relative;
-        top:-10px;
+        top:-7px;
     }
 
 
