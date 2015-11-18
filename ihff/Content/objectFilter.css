@@ -1,0 +1,27 @@
+﻿.filmFilter a.selected { 
+    font-weight:bold;
+    color:white;
+}
+
+.filmFilter a { 
+    color:#A5A5A5;
+    text-decoration: none;
+    display: inline;
+    font-size:1.15em;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+.filmFilter ul {
+    margin: 0.5px 0 0 0;
+    list-style-type:none;
+    padding:0;
+    text-align:center;
+}
+
+.filmFilter li {
+    display: inline;
+}

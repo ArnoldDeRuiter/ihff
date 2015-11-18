@@ -756,7 +756,7 @@ pre code {
 }
 
 .container { /*Important - Arnold dingetje, naast een aantal andere dingen hier*/
-    width:50%;
+    width:60%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -3821,10 +3821,18 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: left;
     margin: 0;
   }
-  .navbar-nav > li {
-    float: left;
-    border-style: none none solid none;
-  }
+
+  /*Lijntje onder nav li's*/
+    .navbar-nav > li {
+      float: left;
+      border-style: none none solid none;
+    }
+    .navbar-nav > li:nth-child(odd) {
+      border-bottom: solid #B4B7BA;
+    }
+    .navbar-nav > li:nth-child(even) {
+      border-bottom: solid #95999E;
+    }
 
     .navbar-nav > li:hover {
         border-bottom: solid #ff0000;
@@ -3833,7 +3841,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
     /*navbar-highlight.js arnoldus*/
     .current {
         border-bottom: solid #ff0000 !important;
-
         /*color: #ff0000 !important;  - dit staat in de navbar-highlight.js*/
     }
   .navbar-nav > li > a {
