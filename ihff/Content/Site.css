@@ -2,7 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-image:url('img/Haarlem.png');
-
+    font-family: 'Ubuntu', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -72,10 +72,35 @@ textarea {
     padding-top: .5%;
 }
 
+a {
+    color: #E4494F;
+}
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #E4494F;
+    cursor:pointer;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
 
 
-film-object {
-
+/*Film object Start*/
+.film-object {
+    letter-spacing: 0px;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
 }
 
 
@@ -88,86 +113,186 @@ film-object {
     background-color:#424951;
     width:100%;
     width:350px; /*...*/
-    padding: 1%;
+    padding: 1.5% 1%;
 }
 
-.film-maker {
-    width:48px;
-    height:48px;
-    margin-right:5%;
-    padding-left:1%;
+.film-kijkwijzer {
+    width:45px;
+    height:45px;
+    margin-right:1%;
+    margin-left:1.5%;
 }
 
 .film-span-container {
     float:right;
-    margin-right:42%;
+    margin-right:21%;
+    font-size: 1.02em;
 }
 
-#film-block-title {
+.film-span-container p:first-child {
+    position: relative;
+    top: 5px;
+}
+.film-span-container p:nth-child(2) {
+    position: relative;
+    top:-3px;
+}
+
+
+.film-block-title {
     font-weight: bold;
-    color:  #E2E3E8;
-    padding-right: 1%;
-    margin-right: 1%;
+    color:  #E2E3E8;    
+
     
+        padding-left: 1%;
+        margin-right: 1%;
 }
 
-#film-block-year {
+.film-block-year {
     color:#BEC3C7;
     padding-left: 1%;
     margin-left: 1%;
 }
 
 
-#film-block-time-txt {    
+.film-block-time-txt {    
     color:#BEC3C7;
     padding-left: 1%;
+    margin-right: 1%;
 }
 
-#film-block-time {    
+.film-block-time {    
     font-weight: bold;
     color:  #E2E3E8;
     padding-right: 1%;
+    margin-left: 1%;
 }
-
 
 .film-wishlist {
     background-color:#6F767E;
-    width:100%;
     width:350px; /*...*/
-    padding: 1%;
+    padding: 0px 1%;  
+    color:#BEC3C7;
 }
 
-.film-wishlist-img {
-    width:16px;
-    height:11px;
-    padding-right: 1%;
-    margin-bottom:0.5%;
+.film-wishlist:hover {
+    background-color: #E4494F;
+    color: #FEFCFA;
 }
+
+.film-wishlist-plus {
+    font-weight: bold;
+    font-size: 2em;
+    padding-right: 1.5%;
+    margin-left:5.5%;
+    color: #FEFCFA;
+
+    position: relative;
+    top:-2px;
+}
+
+.film-wishlist-txt {
+    /*vertical-align: 6px;*/
+    position: relative;
+        top:-5.5px;
+
+    padding-left: 2%;
+}
+/*Film object End*/
 
 p.p-title {
     font-weight: bold;
 }
 
-/*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Movies", "Movies", "Home")</li>
-                    <li>@Html.ActionLink("Food", "Food", "Home")</li>
-                    <li>@Html.ActionLink("Activities", "Activities", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>*/
+
+
+
+/*max-width is mobiel:*/
+@media (max-width: 768px) {
+    #right-div-container {
+        display:none;
+    }
+
+    #left-div-container {
+        width:95%;
+        margin: 0 auto;
+        float:unset;
+        
+        text-align: left;   
+        padding-left:2.5%;
+        padding-right:1.5%;
+    }
+
+        p.p-title {
+            text-align: center;        
+        }
+        #welcome-intro {
+            text-align: center;  
+        }
+
+    #div-center {
+        width:85%;
+        margin: 0 auto;      
+    }
+
+
+    /*Film object Start*/
+    .film-object {
+        margin: 0 auto;
+        width:95%;
+    }    
+
+    
+    .film-picto {
+        width:100%;
+        height:100%;
+    }
+
+    .film-block {
+        width:100%;
+        height:100%;
+        padding: 2.5% 1%;
+    }
+
+    .film-kijkwijzer {
+        width:15%;
+        height:15%;
+        margin-right:1%;
+        margin-left:1.5%;
+    }
+
+    .film-span-container {
+        margin-right:1%;
+        font-size: 1em;
+    }
+
+    .film-span-container p:first-child {
+        position: relative;
+        top: -2px;
+    }
+    .film-span-container p:nth-child(2) {
+        position: relative;
+        top:-10px;
+    }
+
+
+    .film-wishlist {
+        width:100%;   
+    }
+
+    .film-wishlist:hover {
+        background-color: #E4494F;
+        color: #FEFCFA;
+    }
+
+    .film-wishlist-plus {
+        font-size: 1.5em;
+        top:-11px;
+    }
+
+    .film-wishlist-txt {
+        top:-13.5px;
+    }
+    /*Film object End*/
+    
+}
