@@ -97,10 +97,36 @@ a:active {
 
 
 /*Film object Start*/
+/*Film object container Start*/
+#footer-div-container {
+	display: inline-block;
+	width:100%;
+    height: 100%;
+}
+.ul-film {
+    width: 100%;
+    height: 100%;
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+.ul-film li {
+	display:inline-block;
+}
+/*Film object container End*/
+
 .film-object {
     letter-spacing: 0px;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
+    width: 100%;
+    height: 100%;
+    
+    margin: 0 50px 0 0;
 }
 
 
@@ -131,11 +157,11 @@ a:active {
 
 .film-span-container p:first-child {
     position: relative;
-    top: 5px;
+    top: 0px;
 }
 .film-span-container p:nth-child(2) {
     position: relative;
-    top:-3px;
+    top: -11px;
 }
 
 
@@ -182,29 +208,29 @@ a:active {
 
 .film-wishlist-plus {
     font-weight: bold;
-    font-size: 2em;
+    font-size: 150%;
     padding-right: 1.5%;
     margin-left:5.5%;
     color: #FEFCFA;
 
-    position: relative;
-    top:-2px;
+    vertical-align: 3px;
+
+    position:relative;
+    top:-5px;
 }
 
 .film-wishlist-txt {
-    /*vertical-align: 6px;*/
-    position: relative;
-        top:-5.5px;
-
+    vertical-align: 4px;
     padding-left: 2%;
+
+    position:relative;
+    top:-5px;
 }
 /*Film object End*/
 
 p.p-title {
     font-weight: bold;
 }
-
-
 
 
 /*max-width is mobiel:*/
@@ -240,6 +266,8 @@ p.p-title {
     .film-object {
         margin: 0 auto;
         width:95%;
+        
+        margin: 3.3%
     }    
 
     
@@ -262,8 +290,8 @@ p.p-title {
     }
 
     .film-span-container {
-        margin-right:1%;
-        font-size: 1em;
+        margin-right:8%;
+        font-size: 0.75em;
     }
 
     .film-span-container p:first-child {
@@ -287,11 +315,11 @@ p.p-title {
 
     .film-wishlist-plus {
         font-size: 1.5em;
-        top:-11px;
+        top:-5px;
     }
 
     .film-wishlist-txt {
-        top:-13.5px;
+        top:-5.5px;
     }
     /*Film object End*/
     

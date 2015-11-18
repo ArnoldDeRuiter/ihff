@@ -25,18 +25,28 @@
     </div>
 
     <div id="footer-div-container">
-        <h3>Populair Items:</h3>
-        
-        <div class="film-object">
-            <img src="~/Content/img/films/Intestellar1.png" class="film-picto"/>
-            <div class="film-block"><img src="~/Content/img/kijkwijzer/kijkwijzer_12.png" class="film-kijkwijzer"/>
-                <div class="film-span-container">
-                    <p><span class="film-block-title nowrap">Intestellar</span><span class="film-block-year nowrap">2014</span></p>
-                    <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">Saturday 17.00 - 19.30</span></p>
-                </div>
-            </div>
-            <div class="film-wishlist"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
-        </div>
+        <h3>Populair Items:</h3>        
+
+        <ul class="ul-film">
+            @for (var i = 0; i < 2; i++)
+            {
+
+                <li>
+                    <div class="film-object">
+                        <img src="~/Content/img/films/Intestellar1.png" class="film-picto" />
+                        <div class="film-block">
+                            <img src="~/Content/img/kijkwijzer/kijkwijzer_12.png" class="film-kijkwijzer" />
+                            <div class="film-span-container">
+                                <p><span class="film-block-title nowrap">Intestellar</span><span class="film-block-year nowrap">2014</span></p>
+                                <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">Saturday 17.00 - 19.30</span></p>
+                            </div>
+                        </div>
+                        <div class="film-wishlist"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+                    </div>
+                </li>
+
+            }
+        </ul>
 
     </div>
 
