@@ -3835,12 +3835,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
     }
 
     .navbar-nav > li:hover {
-        border-bottom: solid #ff0000;
+        border-bottom: solid #e4494f;
     }
 
     /*navbar-highlight.js arnoldus*/
     .current {
-        border-bottom: solid #ff0000 !important;
+        border-bottom: solid #e4494f !important;
+        color: #e4494f;
         /*color: #ff0000 !important;  - dit staat in de navbar-highlight.js*/
     }
   .navbar-nav > li > a {
