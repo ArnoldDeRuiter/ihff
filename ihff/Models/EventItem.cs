@@ -7,11 +7,12 @@ namespace ihff.Models
 {
     public class EventItem
     {
-        public int amount;
-        public string title;
-        public string description;
+        //[key]
+        public int amount /*{get; set;}*/; 
+        public string title /*{get; set;}*/; 
+        public string description /*{get; set;}*/; 
 
-        public DateTime datetime;
-        public Location location;
+        public DateTime datetime /*{get; set;}*/; 
+        public Location location /*{get; set;}*/; 
     }
 }

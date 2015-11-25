@@ -5,9 +5,9 @@ using System.Web;
 
 namespace ihff.Models
 {
-    public class Wishlist
+    public class Reservation
     {
         //[key]
-        public List<EventItem> item;
+        public int reservationID /*{get; set;}*/;
     }
 }
