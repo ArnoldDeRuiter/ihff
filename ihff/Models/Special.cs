@@ -7,7 +7,5 @@ namespace ihff.Models
 {
     public class Special
     {
-        //[key]
-        public Boolean taxi /*{get; set;}*/;
     }
 }

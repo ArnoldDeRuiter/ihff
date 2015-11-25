@@ -7,7 +7,6 @@ namespace ihff.Models
 {
     public class Wishlist
     {
-        //[key]
         public List<EventItem> item;
     }
 }
