@@ -7,7 +7,8 @@ namespace ihff.Models
 {
     public class Location
     {
-        public string name;
-        public string description;
+        //[key]
+        public string name /*{get; set;}*/;
+        public string description /*{get; set;}*/; 
     }
 }
