@@ -19,7 +19,7 @@ namespace ihff.Models
         public DbSet<Location> Location { get; set; }
         public DbSet<EventItem> EventItem { get; set; }
          public iHFFdatabasecontext() 
-            : base("iHFFDatabase")
+            : base("MVCConnection")
         {
         }
     }
