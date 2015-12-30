@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace ihff.Models
 {
-    public class iHFFdatabasecontext: DbContext
+    public class IHFFdatabasecontext: DbContext
     {
         // public DbSet<'ClassName'> classname {get; set;}
 
@@ -14,7 +14,7 @@ namespace ihff.Models
         public DbSet<Order> Order { get; set; }
         public DbSet<Wishlist> Wishlist { get; set; }
         public DbSet<Location> Location { get; set; }
-        public DbSet<Item> Item { get; set; }
+        public List<Item> Item { get; set; }
 
         // Alles in EventItem - Db is geweizigd
         //
@@ -22,7 +22,7 @@ namespace ihff.Models
         //public DbSet<Restaurant> Restaurant { get; set; }
         //public DbSet<Movie> Movie { get; set; }
 
-        public iHFFdatabasecontext() 
+        public IHFFdatabasecontext() 
             : base("MVCConnection")
         {
         }

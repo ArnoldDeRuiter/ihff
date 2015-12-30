@@ -9,8 +9,8 @@ namespace ihff.Models
     {
         public int ItemId { get; set; }
         public string Name { get; set; }
-        public string DescriptionNL { get; set; }
-        public string DescriptionENG { get; set; }
+        public string DescriptionNl { get; set; }
+        public string DescriptionEng { get; set; }
         public string Location { get; set; }
         public float Price { get; set; }
         public DateTime DateBegin { get; set; }
