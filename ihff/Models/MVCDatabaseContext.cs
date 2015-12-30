@@ -13,12 +13,16 @@ namespace ihff.Models
         public DbSet<Reservation> Reservation { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Wishlist> Wishlist { get; set; }
-        public DbSet<Special> Special { get; set; }
-        public DbSet<Restaurant> Restaurant { get; set; }
-        public DbSet<Movie> Movie { get; set; }
         public DbSet<Location> Location { get; set; }
-        public DbSet<EventItem> EventItem { get; set; }
-         public iHFFdatabasecontext() 
+        public DbSet<Item> Item { get; set; }
+
+        // Alles in EventItem - Db is geweizigd
+        //
+        //public DbSet<Special> Special { get; set; }
+        //public DbSet<Restaurant> Restaurant { get; set; }
+        //public DbSet<Movie> Movie { get; set; }
+
+        public iHFFdatabasecontext() 
             : base("MVCConnection")
         {
         }

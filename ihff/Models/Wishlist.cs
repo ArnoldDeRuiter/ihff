@@ -8,6 +8,6 @@ namespace ihff.Models
     public class Wishlist
     {
         //[key]
-        public List<EventItem> item;
+        public List<Item> item;
     }
 }
