@@ -19,7 +19,7 @@ namespace ihff.Models
         public string Director { get; set; }
         public string Cast { get; set; }
         public string Lenght { get; set; }
-        public int year { get; set; }
+        public int Year { get; set; }
         public int MaxAvailabillity { get; set; }
         public string Img { get; set; }
         public int EventType { get; set; }
