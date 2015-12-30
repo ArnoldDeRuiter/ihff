@@ -17,13 +17,17 @@ namespace ihff.Controllers
             return allItems;
         }
 
+        public Item GetItem(int itemId)
+        {
+            return ctx.Item.SingleOrDefault(c => c.ItemId == itemId);
+        } 
+
         public IEnumerable<Item> GetAllMovies()
         {
             List<Item> allMovies = ctx.Item;
-            foreach (Item item in allMovies)
+            foreach (Item item in allMovies.Where(item => item.EventType != 1))
             {
-                if (item.EventType != 1)
-                    allMovies.Remove(item);
+                allMovies.Remove(item);
             }
 
             return allMovies;
@@ -32,10 +36,9 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllSpecials()
         {
             List<Item> allSpecials = ctx.Item;
-            foreach (Item item in allSpecials)
+            foreach (Item item in allSpecials.Where(item => item.EventType != 2))
             {
-                if (item.EventType != 2)
-                    allSpecials.Remove(item);
+                allSpecials.Remove(item);
             }
 
             return allSpecials;
@@ -44,10 +47,9 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllDiners()
         {
             List<Item> allDiners = ctx.Item;
-            foreach (Item item in allDiners)
+            foreach (Item item in allDiners.Where(item => item.EventType != 3))
             {
-                if (item.EventType != 3)
-                    allDiners.Remove(item);
+                allDiners.Remove(item);
             }
 
             return allDiners;
