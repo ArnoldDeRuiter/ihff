@@ -26,5 +26,7 @@ namespace ihff.Models
             : base("MVCConnection")
         {
         }
+
+        public System.Data.Entity.DbSet<ihff.Models.Item> Items { get; set; }
     }
 }

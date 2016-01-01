@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ihff.Controllers.Reposotories;
 using ihff.Models;
 
 namespace ihff.Controllers
 {
-    public class DbItemRepository
+    public class DbItemRepository : IItemRepository
     {
         private IHFFdatabasecontext ctx = new IHFFdatabasecontext();
 
