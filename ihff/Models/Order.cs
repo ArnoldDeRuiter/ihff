@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,10 +8,11 @@ namespace ihff.Models
 {
     public class Order
     {
-        //[key]
-        public int orderid /*{get; set;}*/;
-        public DateTime date /*{get; set;}*/;  
-        public double totalprice /*{get; set;}*/;  
+        [Key]
+        public int OrderId {get; set;}
+
+        public DateTime Date { get; set; }
+        public double TotalPrice {get; set;} 
 
     }
 }
