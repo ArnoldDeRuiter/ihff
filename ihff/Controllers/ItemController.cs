@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using ihff.Controllers.Reposotories;
+using ihff.Models;
+
+namespace ihff.Controllers
+{
+    public class ItemController : Controller
+    {
+        private IItemRepository itemRepository = new DbItemRepository();
+        // GET: Item
+        public ActionResult Index()
+        {
+            IEnumerable<Item> allItems = itemRepository.GetAllItems();
+            return View(allItems.OrderBy(i => i.Name));
+        }
+    }
+}
