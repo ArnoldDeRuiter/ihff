@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace ihff.Models
 {
     
+    [Table("Item")]
     public class Item
     {
-
+        [Key]
         public int ItemId { get; set; }
         public string Name { get; set; }
         public string DescriptionNl { get; set; }
@@ -23,10 +27,10 @@ namespace ihff.Models
         public string Lenght { get; set; }
         public int Year { get; set; }
         public int MaxAvailabillity { get; set; }
-        public string Img { get; set; }
+        public string Image { get; set; }
         public int EventType { get; set; }
 
-        //// old
+        // old
         //public int amount /*{get; set;}*/; 
         //public string title /*{get; set;}*/; 
         //public string description /*{get; set;}*/; 
