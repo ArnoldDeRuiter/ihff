@@ -167,15 +167,21 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Reposotories\IItemRepository.cs" />
+    <Compile Include="Controllers\Reposotories\DbItemRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InMemoryWishlistRepository.cs" />
+    <Compile Include="Controllers\IWishlistRepository.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\EventItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -196,6 +202,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\filmObject.css" />
+    <Content Include="Content\Activities.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\img\elements\add-wish.png" />
     <Content Include="Content\img\films\2001 A Space Odyssey.jpg" />
@@ -225,6 +232,7 @@
     <Content Include="Content\img\Haarlem.png" />
     <Content Include="Content\img\kijkwijzer\kijkwijzer_12.png" />
     <Content Include="Content\isotope.css" />
+    <Content Include="Content\Food.css" />
     <Content Include="Content\Movies.css" />
     <Content Include="Content\objectFilter.css" />
     <Content Include="favicon.ico" />
@@ -286,9 +294,11 @@
     <Content Include="Views\Home\Movies.cshtml" />
     <Content Include="Views\Home\Food.cshtml" />
     <Content Include="Views\Home\Activities.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Movies\" />
+    <Folder Include="Views\Wishlist\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

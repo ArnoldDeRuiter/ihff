@@ -14,7 +14,7 @@ namespace ihff.Models
         public DbSet<Order> Order { get; set; }
         public DbSet<Wishlist> Wishlist { get; set; }
         public DbSet<Location> Location { get; set; }
-        public List<Item> Item { get; set; }
+        public DbSet<Item> Item { get; set; }
 
         // Alles in EventItem - Db is geweizigd
         //

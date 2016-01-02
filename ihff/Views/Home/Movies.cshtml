@@ -46,7 +46,14 @@
                                     <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">Saturday 17.00 - 19.30</span></p>
                                 </div>
                             </div>
-                            <div class="film-wishlist"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+                            @model ihff.Models.Item
+                            @using (Html.BeginForm("Create","Wishlist",new { Id = 12345 },FormMethod.Post, new { Id = "form" + 1.ToString() }))
+                            {
+                                <div class="film-wishlist" onClick="document.getElementById('form'+1).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist (ECHT KLIKBAAR)</span></div>
+                                @Html.HiddenFor(m => m.ItemId, new { id = "itemId", Value = "12345" })
+                            }
+                            
+
                         </div>
                     </li>
 
@@ -79,12 +86,6 @@
     </div>
 
     <div id="footer-div-container">
-        <h3>Overview:</h3>
-
-
-        
-
-        
 
     </div>
 
