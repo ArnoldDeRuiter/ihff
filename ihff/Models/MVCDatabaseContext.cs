@@ -10,6 +10,12 @@ namespace ihff.Models
     {
         // public DbSet<'ClassName'> classname {get; set;}
 
+        public IHFFdatabasecontext()
+            : base("MVCConnection")
+        {
+            Database.SetInitializer<IHFFdatabasecontext>(null);
+        }
+
         public DbSet<Reservation> Reservation { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Wishlist> Wishlist { get; set; }
@@ -22,9 +28,6 @@ namespace ihff.Models
         //public DbSet<Restaurant> Restaurant { get; set; }
         //public DbSet<Movie> Movie { get; set; }
 
-        public IHFFdatabasecontext() 
-            : base("MVCConnection")
-        {
-        }
+
     }
 }
