@@ -13,5 +13,8 @@ namespace ihff.Models
     {
         [Key]
         public int ReservationId  {get; set;}
+        public string ReservationCode { get; set; }
+        public string WishlistCode { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllItems()
         {
             List<Item> allItems = new List<Item>();
-            foreach (Item item in ctx.Item)
+            foreach (Item item in ctx.Items)
             {
                 allItems.Add(item);
             }
@@ -24,14 +24,14 @@ namespace ihff.Controllers
 
         public Item GetItem(int itemId)
         {
-            return ctx.Item.SingleOrDefault(c => c.ItemId == itemId);
+            return ctx.Items.SingleOrDefault(c => c.ItemId == itemId);
         }
 
         public IEnumerable<Item> GetAllMovies()
         {
             List<Item> allMovies = new List<Item>();
 
-            foreach (Item item in ctx.Item.Where(item => item.EventType == 1))
+            foreach (Item item in ctx.Items.Where(item => item.EventType == 1))
             {
                 allMovies.Add(item);
             }
@@ -42,7 +42,7 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllSpecials()
         {
             List<Item> allSpecials = new List<Item>();
-            foreach (Item item in ctx.Item.Where(item => item.EventType == 2))
+            foreach (Item item in ctx.Items.Where(item => item.EventType == 2))
             {
                 allSpecials.Add(item);
             }
@@ -53,7 +53,7 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllDiners()
         {
             List<Item> allDiners = new List<Item>();
-            foreach (Item item in ctx.Item.Where(item => item.EventType == 3))
+            foreach (Item item in ctx.Items.Where(item => item.EventType == 3))
             {
                 allDiners.Add(item);
             }

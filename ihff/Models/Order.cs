@@ -8,14 +8,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ihff.Models
 {
-    [Table("Orders")]
+    [Table("Orderslines")]
     public class Order
     {
         [Key]
-        public int OrderId {get; set;}
-
-        public DateTime Date { get; set; }
-        public double TotalPrice {get; set;} 
+        public int OrderlineId {get; set;}
+        public float TotalPrice { get; set; }
+        public int Amount { get; set; }
+        public string WishlistCode { get; set; }
+        
 
     }
 }

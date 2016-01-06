@@ -9,14 +9,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ihff.Models
 {
     
-    [Table("Item")]
+    [Table("Items")]
     public class Item
     {
         [Key]
         public int ItemId { get; set; }
         public string Name { get; set; }
-        public string DescriptionNl { get; set; }
-        public string DescriptionEng { get; set; }
+        public string DescriptionNL { get; set; }
+        public string DescriptionENG { get; set; }
         public string Location { get; set; }
         public float Price { get; set; }
         public DateTime DateBegin { get; set; }
@@ -27,6 +27,7 @@ namespace ihff.Models
         public string Lenght { get; set; }
         public int Year { get; set; }
         public int MaxAvailabillity { get; set; }
+        public int AgeClassification { get; set; }
         public string Image { get; set; }
         public int EventType { get; set; }
 

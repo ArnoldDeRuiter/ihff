@@ -8,17 +8,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ihff.Models
 {
-    [Table("Location")]
+    [Table("Locations")]
     public class Location
     {
-        public int locationID { get; set;}
+        public int locationId { get; set;}
         [Key]
         public string Name {get; set;}
-        public string address { get; set; }
-        public string zipcode { get; set; }
-        public int phonenumber { get; set; }
-        public string omschrijvingNL { get; set; }
-        public string omschrijvingEND { get; set; }
-        public int capacity { get; set; }
+        public string Address { get; set; }
+        public string Zipcode { get; set; }
+        public int Phonenumber { get; set; }
+        public string OmschrijvingNL { get; set; }
+        public string OmschrijvingEND { get; set; }
+        public int Capacity { get; set; }
     }
 }

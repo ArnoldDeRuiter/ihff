@@ -16,11 +16,11 @@ namespace ihff.Models
             Database.SetInitializer<IHFFdatabasecontext>(null);
         }
 
-        public DbSet<Reservation> Reservation { get; set; }
-        public DbSet<Order> Order { get; set; }
-        public DbSet<Wishlist> Wishlist { get; set; }
-        public DbSet<Location> Location { get; set; }
-        public DbSet<Item> Item { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Order> Orderlines { get; set; }
+        public DbSet<Wishlist> Wishlists { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         // Alles in EventItem - Db is geweizigd
         //

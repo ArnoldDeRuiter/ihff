@@ -7,7 +7,7 @@ namespace ihff.Models
 {
     public class Special
     {
-        //[key]
+        // todo Taxi toevoegen aan Database, bij food & film ticket. Als restaurant buiten de stad ligt taxi aanbieden.
         public Boolean taxi /*{get; set;}*/;
     }
 }

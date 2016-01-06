@@ -184,11 +184,9 @@
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MVCDatabaseContext.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Reservation.cs" />
-    <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\Special.cs" />
     <Compile Include="Models\Wishlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
