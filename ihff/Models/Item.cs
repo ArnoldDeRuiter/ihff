@@ -18,10 +18,10 @@ namespace ihff.Models
         public string DescriptionNL { get; set; }
         public string DescriptionENG { get; set; }
         public string Location { get; set; }
-        public float Price { get; set; }
+        public double? Price { get; set; }
         public DateTime DateBegin { get; set; }
         public DateTime DateEnd { get; set; }
-        public float ImdbRating { get; set; }
+        public double? ImdbRating { get; set; }
         public string Director { get; set; }
         public string Cast { get; set; }
         public string Length { get; set; }

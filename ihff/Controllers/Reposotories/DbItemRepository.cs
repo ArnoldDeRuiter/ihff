@@ -30,7 +30,7 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllMovies()
         {
             List<Item> allMovies = new List<Item>();
-
+            
             foreach (Item item in ctx.Items.Where(item => item.EventType == 1))
             {
                 allMovies.Add(item);
