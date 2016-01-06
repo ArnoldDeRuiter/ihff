@@ -15,8 +15,16 @@ namespace ihff.Models
         public int OrderlineId {get; set;}
         public float TotalPrice { get; set; }
         public int Amount { get; set; }
+        public int ItemId { get; set; }
         public string WishlistCode { get; set; }
-        
+
+        public Order(float totalPrice, int amount, string wishlistCode, int itemId)
+        {
+            this.TotalPrice = totalPrice;
+            this.Amount = amount;
+            this.WishlistCode = wishlistCode;
+            this.ItemId = ItemId;
+        }
 
     }
 }
