@@ -17,19 +17,21 @@ namespace ihff.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Models.Item model)
+        public ActionResult Create(int id) //Models.Item model
         {
             if (ModelState.IsValid)
             {
-                wishlistRepository.Add(model);
+                //   wishlistRepository.Add(model);
                 DbItemRepository x = new DbItemRepository();
 
                 List<Models.Item> lstY = new List<Models.Item>();
-                lstY = x.GetAllMovies().ToList();
+                //lstY = x.GetAllMovies().ToList();
 
-                return RedirectToAction("addWisual", new { id = model.ItemId });//ja nee moet iets van repository krijgen :/
+                Models.Item selMovie = x.GetItem(id);
+
+                return RedirectToAction("addWisual", new { movie = selMovie });//ja nee moet iets van repository krijgen :/
             }
-            return View(model);
+            return View();//model
         }
 
         public ActionResult addWisual()
