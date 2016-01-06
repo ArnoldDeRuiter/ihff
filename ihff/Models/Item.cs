@@ -24,7 +24,7 @@ namespace ihff.Models
         public float ImdbRating { get; set; }
         public string Director { get; set; }
         public string Cast { get; set; }
-        public string Lenght { get; set; }
+        public string Length { get; set; }
         public int Year { get; set; }
         public int MaxAvailabillity { get; set; }
         public int AgeClassification { get; set; }
