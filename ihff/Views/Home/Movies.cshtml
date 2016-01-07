@@ -20,16 +20,16 @@
     <div id="left-div-container">
 
 
-            <nav class="filmFilter ">
-                <ul id="filters" class="option-set" data-option-key="filter">
-                    <li><a href="#" data-option-value=".wednesday" class="">Wednesday</a></li> - 
-                    <li><a href="#" data-option-value=".thursday" class="">Thursday</a></li> - 
-                    <li><a href="#" data-option-value=".firday">Firday</a></li> - 
-                    <li><a href="#" data-option-value=".saturday" class="">Saturday</a></li> - 
-                    <li><a href="#" data-option-value=".sunday" class="">Sunday</a></li> - 
-                    <li><a href="#" data-option-value="*" class="selected">Overview</a></li>
-                </ul>
-            </nav>
+        <nav class="filmFilter ">
+            <ul id="filters" class="option-set" data-option-key="filter">
+                <li><a href="#" data-option-value=".Wednesday" class="">Wednesday</a></li> -
+                <li><a href="#" data-option-value=".Thursday" class="">Thursday</a></li> -
+                <li><a href="#" data-option-value=".Friday">Friday</a></li>
+                <li><a href="#" data-option-value=".Saturday" class="">Saturday</a></li> -
+                <li><a href="#" data-option-value=".Sunday" class="">Sunday</a></li> -
+                <li><a href="#" data-option-value="*" class="selected">Overview</a></li>
+            </ul>
+        </nav>
 
         <div id="isotope-container" style="position: relative; height: 530.4px;">
 
@@ -45,7 +45,7 @@
                     if (film.EventType == 1)
                     {
                         <li>
-                            <div class="film-object item saturday">
+                            <div class="film-object item @film.DateBegin.DayOfWeek">
                                 <!--~/Content/img/films/Intestellar1.png-->
                                 <img src='@string.Format("../Content/img/films/{0}",@film.Image)' class="film-picto" />
                                 <div class="film-block">
