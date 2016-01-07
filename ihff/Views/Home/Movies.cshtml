@@ -42,24 +42,27 @@
                 }
                 @foreach (var film in Model)
                 {
-                    <li>
-                        <div class="film-object item saturday">
-                            <!--~/Content/img/films/Intestellar1.png-->
-                            <img src='@string.Format("../Content/img/films/{0}",@film.Image)' class="film-picto" />
-                            <div class="film-block">
-                                <img src='@string.Format("../Content/img/films/kijkwijzer_{0}.png", @film.AgeClassification)' class="film-kijkwijzer" />
-                                <div class="film-span-container">
-                                    <p><span class="film-block-title nowrap">@film.Name</span><span class="film-block-year nowrap">@film.Year</span></p>
-                                    <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">@film.DateBegin.DayOfWeek; @film.DateBegin.ToString("HH:mm"); - @film.DateEnd.ToString("HH:mm");</span></p> <!--Saturday 17.00 - 19.30-->
+                    if (film.EventType == 1)
+                    {
+                        <li>
+                            <div class="film-object item saturday">
+                                <!--~/Content/img/films/Intestellar1.png-->
+                                <img src='@string.Format("../Content/img/films/{0}",@film.Image)' class="film-picto" />
+                                <div class="film-block">
+                                    <img src='@string.Format("../Content/img/films/kijkwijzer_{0}.png", @film.AgeClassification)' class="film-kijkwijzer" />
+                                    <div class="film-span-container">
+                                        <p><span class="film-block-title nowrap">@film.Name</span><span class="film-block-year nowrap">@film.Year</span></p>
+                                        <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">@film.DateBegin.DayOfWeek; @film.DateBegin.ToString("HH:mm"); - @film.DateEnd.ToString("HH:mm");</span></p> <!--Saturday 17.00 - 19.30-->
+                                    </div>
                                 </div>
+                                @using (Html.BeginForm("addWish", "Wishlist", new { Id = film.ItemId }, FormMethod.Post, new { Id = "form" + 1.ToString() }))
+                                {
+                                    <div class="film-wishlist" onClick="document.getElementById('form'+1).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+                                }
                             </div>
+                        </li>
+                    }
 
-                            @using (Html.BeginForm("addWish", "Wishlist", new { Id = film.ItemId }, FormMethod.Post, new { Id = "form" + 1.ToString() }))
-                            {
-                                <div class="film-wishlist" onClick="document.getElementById('form'+1).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
-                            }
-                        </div>
-                    </li>
                 }
 
 
