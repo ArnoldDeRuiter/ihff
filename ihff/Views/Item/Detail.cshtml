@@ -27,10 +27,12 @@
              else if (Model.EventType == 2)
              {
                 // Toon Special Detail Partial
+                @Html.Partial("SpecialDetailParital", Model)
              }
              else if (Model.EventType == 3)
              {
                 // Toon Diner Detail Partial
+                @Html.Partial("DinerDetailParital", Model)
              }
 
         </div>
