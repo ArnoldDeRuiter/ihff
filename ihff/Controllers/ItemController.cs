@@ -14,7 +14,7 @@ namespace ihff.Controllers
         // GET: Item
         public ActionResult Index()
         {
-            IEnumerable<Item> allItems = itemRepository.GetAllItems();
+            IEnumerable<Item> allItems = itemRepository.GetAllMovies();
             return View(allItems.OrderBy(i => i.Name));
         }
     }

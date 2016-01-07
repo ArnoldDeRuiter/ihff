@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ihff.Controllers;
+using ihff.Models;
+using ihff.Controllers.Reposotories;
 
 namespace ihff.Controllers
 {
@@ -10,14 +13,20 @@ namespace ihff.Controllers
     {
         private IWishlistRepository wishlistRepository = new InMemoryWishlistRepository();
 
+
+        private IItemRepository itemRepository = new DbItemRepository();
         // GET: Wishlist
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Item> allFilms = itemRepository.GetAllItems();
+            return View(allFilms.OrderBy(i => i.Name));
         }
 
+      
+
+        Models.Item selMovie;
         [HttpPost]
-        public ActionResult Create(int id) //Models.Item model
+        public ActionResult addWish(int id) //Models.Item model
         {
             if (ModelState.IsValid)
             {
@@ -27,11 +36,11 @@ namespace ihff.Controllers
                 List<Models.Item> lstY = new List<Models.Item>();
                 //lstY = x.GetAllMovies().ToList();
 
-                Models.Item selMovie = x.GetItem(id);
+                selMovie = x.GetItem(id);
 
                 return RedirectToAction("addWisual", new { movie = selMovie });//ja nee moet iets van repository krijgen :/
             }
-            return View();//model
+            return View(selMovie);//model
         }
 
         public ActionResult addWisual()

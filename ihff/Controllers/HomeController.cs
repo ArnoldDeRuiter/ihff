@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ihff.Models;
+using ihff.Controllers;
+using ihff.Controllers.Reposotories;
 
 namespace ihff.Controllers
 {
@@ -13,11 +16,15 @@ namespace ihff.Controllers
             return View();
         }
 
+        
+        private IItemRepository itemRepository = new DbItemRepository();
+
         public ActionResult Movies()
         {
-            ViewBag.Message = "Movies...";
+            ViewBag.Message = "Movies";
 
-            return View();
+            IEnumerable<Item> allFilms = itemRepository.GetAllItems();
+            return View(allFilms.OrderBy(i => i.Name));
         }
 
         public ActionResult Food()

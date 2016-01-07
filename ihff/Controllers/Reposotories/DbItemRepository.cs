@@ -11,7 +11,7 @@ namespace ihff.Controllers
     public class DbItemRepository : IItemRepository
     {
         private IHFFdatabasecontext ctx = new IHFFdatabasecontext();
-
+        
         public IEnumerable<Item> GetAllItems()
         {
             List<Item> allItems = new List<Item>();
