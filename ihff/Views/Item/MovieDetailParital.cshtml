@@ -1,3 +1,27 @@
 ﻿@model ihff.Models.Item
 
+<div class="container Arnold-bootstrap-hax0r-fix">
+    <div class="row">
+        <div class="col-xs-8">
+            <dl class="dl-horizontal">
+                <dt>Title:</dt>
+                <dd>@Model.Name</dd>
+                <dt>Year:</dt>
+                <dd>@Model.Year</dd>
+                <dt>Director:</dt>
+                <dd>@Model.Director</dd>
+                <dt>Cast:</dt>
+                <dd>@Model.Cast</dd>
+                <dt>IMDB Rating:</dt>
+                <dd>@Model.ImdbRating</dd>
+                <dt>Kijkwijzer®:</dt>
+                <dd>@Model.AgeClassification</dd>
+            </dl>
+        </div>
+        <div class="col-xs-4">
+            <p>Hier poster =D</p>
+        </div>
+    </div>
+</div>
+
 <p>@Model.DescriptionENG</p>
