@@ -1,7 +1,11 @@
 ﻿@{
     ViewBag.Title = "Movies";
 }
+@using ihff.Models;
+@model IEnumerable<Item>
+@{
 
+}
 
 <link href="@Url.Content("~/Content/Movies.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/filmObject.css")" rel="stylesheet" type="text/css" />
@@ -35,11 +39,7 @@
 
 
             <ul class="ul-film">
-                @using ihff.Models;
-                @model IEnumerable<Item>
-                @{
-
-                }
+                
                 @foreach (var film in Model)
                 {
                     if (film.EventType == 1)

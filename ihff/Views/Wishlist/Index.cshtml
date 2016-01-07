@@ -1,6 +1,25 @@
-﻿
+﻿@{
+    ViewBag.Title = "Wishlist";
+}
+@using ihff.Models;
+@model IEnumerable<Item>
+@{
+
+}
 <!--Wishlist Partial HTML pagina-->
 
 <div>
-    <p class="p-title">This is your wishlist, it is empty at the moment. You can add <a>movies</a>, <a>lectures</a> and <a>restaurants</a> to your wishlist by clicking the add to wishlist button.</p>
+    @if (Session["wishList"] != null)
+    {
+        List<Item> sessionList = Session["wishList"] as List<Item>;
+    
+    @:<p><b>Films</b></p>
+    foreach (var i in sessionList) {
+            //string.Format("{0}", i.Name);
+            @i.Name;
+            @:<br/>
+        }
+    } else {
+        <p class="p-title">This is your wishlist, it is empty at the moment. You can add <a>movies</a>, <a>lectures</a> and <a>restaurants</a> to your wishlist by clicking the add to wishlist button.</p>
+    }
 </div>

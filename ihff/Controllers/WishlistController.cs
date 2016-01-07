@@ -11,9 +11,6 @@ namespace ihff.Controllers
 {
     public class WishlistController : Controller
     {
-        private IWishlistRepository wishlistRepository = new InMemoryWishlistRepository();
-
-
         private IItemRepository itemRepository = new DbItemRepository();
         // GET: Wishlist
         public ActionResult Index()
@@ -22,33 +19,28 @@ namespace ihff.Controllers
             return View(allFilms.OrderBy(i => i.Name));
         }
 
-      
-
+        
         Models.Item selMovie;
         [HttpPost]
-        public ActionResult addWish(int id) //Models.Item model
+        public ActionResult addWish(int id)
         {
             if (ModelState.IsValid)
             {
-                //   wishlistRepository.Add(model);
                 DbItemRepository x = new DbItemRepository();
-
-                List<Models.Item> lstY = new List<Models.Item>();
-                //lstY = x.GetAllMovies().ToList();
-
                 selMovie = x.GetItem(id);
+                List<Item> addedItems = new List<Item>();
+                addedItems.Add(selMovie);
 
-                return RedirectToAction("addWisual", new { movie = selMovie });//ja nee moet iets van repository krijgen :/
+                List<Item> wishList = new List<Item>();
+                wishList = (Session["wishList"]!=null) ? Session["wishList"] as List<Item> : wishList;
+                wishList.Add(selMovie);
+                Session["wishList"] = wishList;
+
+                return RedirectToAction("Movies", "Home");
             }
-            return View(selMovie);//model
+            return View(selMovie);
         }
-
-        public ActionResult addWisual()
-        {
-            
-            return RedirectToAction("Movies", "Home");
-        }
-
+        
         /*
         //terwijl dit v zou voldoen: moet er ^ gebeuren :p
         public void savewish(Models.Item miForm)
