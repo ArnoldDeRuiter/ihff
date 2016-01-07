@@ -49,6 +49,12 @@
     width:100%;
 }
 
+.film-poster {
+    max-height: 174px;
+    float: right;
+    padding-right: 80px;
+}
+
 .film-block {
     background-color:#424951;
     width:100%;
