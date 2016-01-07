@@ -294,10 +294,10 @@
     <Content Include="Views\Home\Food.cshtml" />
     <Content Include="Views\Home\Activities.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
+    <Content Include="Views\Wishlist\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Movies\" />
-    <Folder Include="Views\Wishlist\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
