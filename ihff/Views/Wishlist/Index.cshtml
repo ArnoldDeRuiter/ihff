@@ -2,21 +2,25 @@
     ViewBag.Title = "Wishlist";
 }
 @using ihff.Models;
-@model IEnumerable<Item>
-@{
 
-}
 <!--Wishlist Partial HTML pagina-->
 
 <div>
     @if (Session["wishList"] != null)
     {
         List<Item> sessionList = Session["wishList"] as List<Item>;
-    
-    @:<p><b>Films</b></p>
-    foreach (var i in sessionList) {
+        var q = from x in sessionList
+                group x by x.Name into g
+                let count = g.Count()
+                orderby count descending
+                select new { Value = g.Key, Count = count };
+
+    @:<p><b>Wishlist</b></p>
+    foreach (var i in q) {
             //string.Format("{0}", i.Name);
-            @i.Name;
+            //@i.Name;
+            string lijn = (i.Value + " " + i.Count + "x");
+            @lijn;
             @:<br/>
         }
     } else {
