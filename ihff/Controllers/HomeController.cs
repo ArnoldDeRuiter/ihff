@@ -23,8 +23,9 @@ namespace ihff.Controllers
         {
             ViewBag.Message = "Movies";
 
-            IEnumerable<Item> allFilms = itemRepository.GetAllItems();
-            return View(allFilms.OrderBy(i => i.Name));
+            List<Item> allFilms = (List<Item>) itemRepository.GetAllItems();
+
+            return View(allFilms.OrderBy(i => i.DateBegin));
         }
 
         public ActionResult Food()
