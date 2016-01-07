@@ -11,5 +11,8 @@ namespace ihff.Controllers.Reposotories
     {
         IEnumerable<Item> GetAllItems();
         Item GetItem(int itemId);
+
+        bool checkTempCode(string code);
+        string getTempCode();
     }
 }

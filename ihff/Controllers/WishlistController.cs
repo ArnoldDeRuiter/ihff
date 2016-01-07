@@ -11,15 +11,17 @@ namespace ihff.Controllers
 {
     public class WishlistController : Controller
     {
-        private IItemRepository itemRepository = new DbItemRepository();
+        private IWishlistRepository wishlistRepository = new DbWishlistRepository();
         // GET: Wishlist
         public ActionResult Index()
         {
-            IEnumerable<Item> allFilms = itemRepository.GetAllItems();
-            return View(allFilms.OrderBy(i => i.Name));
+            if (Session["code"] == null)
+            {
+                Session["code"] = wishlistRepository.getTempCode();
+            }
+            return View();
         }
-
-        
+                
         Models.Item selMovie;
         [HttpPost]
         public ActionResult addWish(int id)
@@ -41,6 +43,12 @@ namespace ihff.Controllers
             return View(selMovie);
         }
         
+        public ActionResult deleteWishlistItem(int id)
+        {
+            int verkregenID = id; //yay
+            return RedirectToAction("Movies", "Home");
+        }
+
         /*
         //terwijl dit v zou voldoen: moet er ^ gebeuren :p
         public void savewish(Models.Item miForm)

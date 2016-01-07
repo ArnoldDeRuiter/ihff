@@ -2,6 +2,7 @@
     ViewBag.Title = "Wishlist";
 }
 @using ihff.Models;
+@model ;
 
 <!--Wishlist Partial HTML pagina-->
 
@@ -10,20 +11,37 @@
     {
         List<Item> sessionList = Session["wishList"] as List<Item>;
         var q = from x in sessionList
-                group x by x.Name into g
+                group x by x.ItemId into g
                 let count = g.Count()
                 orderby count descending
-                select new { Value = g.Key, Count = count };
+                select new { Id = g.Key, Count = count };
 
-    @:<p><b>Wishlist</b></p>
+    @:<p><b><h4>Wishlist</h4></b></p>
     foreach (var i in q) {
-            //string.Format("{0}", i.Name);
-            //@i.Name;
-            string lijn = (i.Value + " " + i.Count + "x");
+            var wishName = sessionList.Where(n => n.ItemId == i.Id).Select(name => name.Name).ToList();
+            string lijn = (wishName.First() + " " + i.Count + "x");
+
+            @:<p id="wishp">
             @lijn;
-            @:<br/>
+            <style>#wishh2 {display: inline !important;} #wishp{display: inline-block !important; vertical-align:super !important;}</style> //Heel eventjes voor het testen zodoende
+                @:<h3 id="wishh2">
+                @Html.ActionLink(
+                " ×",                                                     // linkText
+                "deleteWishlistItem",                                    // actionName
+                "Wishlist",                                             // routeValues
+                new { i.Id },
+                null
+                )
+                @:</h3>
+            @:</p>
         }
-    } else {
+        /*@using (Html.BeginForm("makeOrder", "Order", new { Id = i.Id }, FormMethod.Post, new { Id = string.Format("form{0}", @film.ItemId) }))
+        {
+            <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @film.ItemId)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Place Order</span></div>
+        }*/
+    }
+    else
+    {
         <p class="p-title">This is your wishlist, it is empty at the moment. You can add <a>movies</a>, <a>lectures</a> and <a>restaurants</a> to your wishlist by clicking the add to wishlist button.</p>
     }
 </div>

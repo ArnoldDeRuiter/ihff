@@ -26,5 +26,42 @@ namespace ihff.Controllers
         {
             return ctx.Items.SingleOrDefault(c => c.ItemId == itemId);
         }
+
+
+        public bool checkTempCode(string code)
+        {
+            bool unique = true;
+            foreach (Wishlist item in ctx.Wishlists)
+            {
+                if (item.WishlistCode == code)
+                {
+                    unique = false;
+                    break;
+                }
+            }
+            return unique;
+        }
+
+        public string getTempCode()
+        {
+            Random random = new Random();
+            var CodeString = "";
+            while (!checkTempCode(CodeString))
+            {
+            string possibleChars = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+            char[] codeStringChars = new char[5];
+
+
+            for (int i = 0; i < codeStringChars.Length; i++)
+            {
+                codeStringChars[i] = possibleChars[random.Next(possibleChars.Length)];
+            }
+
+            CodeString = new String(codeStringChars);
+            }
+            return CodeString;
+        }
+        
+
     }
 }
