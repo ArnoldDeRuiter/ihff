@@ -17,5 +17,11 @@ namespace ihff.Controllers
             IEnumerable<Item> allItems = itemRepository.GetAllMovies();
             return View(allItems.OrderBy(i => i.Name));
         }
+
+        public ActionResult Detail(int itemId)
+        {
+            Item item = itemRepository.GetItem(itemId);
+            return View(item);
+        }
     }
 }
