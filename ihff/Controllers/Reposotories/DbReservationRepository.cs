@@ -1,0 +1,11 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace ihff.Controllers.Reposotories
+{
+    public class DbReservationRepository
+    {
+    }
+}

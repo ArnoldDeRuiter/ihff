@@ -178,6 +178,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Reposotories\IOrderRepository.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -300,6 +301,12 @@
     <Content Include="Views\Item\DinerDetailParital.cshtml" />
     <None Include="Views\Item\MovieDetailParital.cshtml" />
     <Content Include="Views\Item\SpecialDetailParital.cshtml" />
+    <Content Include="Views\Reservation\Create.cshtml" />
+    <Content Include="Views\Reservation\Delete.cshtml" />
+    <Content Include="Views\Reservation\Details.cshtml" />
+    <Content Include="Views\Reservation\Edit.cshtml" />
+    <Content Include="Views\Reservation\Index.cshtml" />
+    <Content Include="Views\Reservation\PaymentSucces.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Movies\" />
