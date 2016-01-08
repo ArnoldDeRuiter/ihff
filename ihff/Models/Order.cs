@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ihff.Models
 {
-    [Table("Orderslines")]
+    [Table("Orderlines")]
     public class Order
     {
         [Key]

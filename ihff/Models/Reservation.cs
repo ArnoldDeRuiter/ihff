@@ -17,6 +17,9 @@ namespace ihff.Models
         public string WishlistCode { get; set; }
         public string Name { get; set; }
 
+        public Reservation()
+        { }
+
         public Reservation(string reservationCode, string wishlistCode, string name)
         {
             this.ReservationCode = reservationCode;
