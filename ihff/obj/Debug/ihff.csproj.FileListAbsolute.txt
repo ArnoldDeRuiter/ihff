@@ -687,3 +687,4 @@ D:\Users\Arnold\Documents\GitHub\ihff\ihff\obj\Debug\ihff.pdb
 \\Mac\Home\GitHub\ihff__\ihff\obj\Debug\ihff.csprojResolveAssemblyReference.cache
 \\Mac\Home\GitHub\ihff__\ihff\obj\Debug\ihff.dll
 \\Mac\Home\GitHub\ihff__\ihff\obj\Debug\ihff.pdb
+D:\Users\Arnold\Documents\GitHub\ihff\ihff\obj\Debug\ihff.csprojResolveAssemblyReference.cache

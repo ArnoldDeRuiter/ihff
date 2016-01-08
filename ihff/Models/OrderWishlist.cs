@@ -9,12 +9,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ihff.Models
 {
-    [Table("Wishlists")]
-    public class Wishlist
+    public class OrderWishlist
     {
+        //Oh... wanneer plotseling Wouter bedenkt dat hij al eens eerder een List vanaf een View naar Controller heeft gejonast. Helemaal prachtig.
         [Key]
         public string WishlistCode { get; set; }
-        //public int WishlistId { get; set; }
+        public int WishlistId { get; set; }
 
     }
 }

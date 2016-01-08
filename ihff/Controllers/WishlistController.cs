@@ -86,14 +86,15 @@ namespace ihff.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
                                     //Code wishlist    //Name //ID  //COUNT //totPrijs
-        public ActionResult wishOrder(string Code, List<Tuple<string, int, int, double?>> lstTuple)
+        public ActionResult wishOrder(string Code) //, List<Tuple<string, int, int, double?>> lstTuple
         {
-            Wishlist w = new Wishlist();
-            w.WishlistCode = Code;
+            List<Tuple<string, int, int, double?>> lstTuple = Session["tupleLijst"] as List<Tuple<string, int, int, double?>>;
             if (ModelState.IsValid)
             {
+                Wishlist w = new Wishlist();
+                w.WishlistCode = Code;
                 db.Wishlists.Add(w);
-
+                db.SaveChanges();
                 foreach (var t in lstTuple)
                 {
                     int tID = t.Item2;
@@ -106,6 +107,7 @@ namespace ihff.Controllers
                 }
                 
                 db.SaveChanges();
+                Session["tupleLijst"] = null;
                 return RedirectToAction("Index", "Reservation");
             }
             return View();

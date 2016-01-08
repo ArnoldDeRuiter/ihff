@@ -60,7 +60,8 @@
 
         //plaats code in wishlist tabel
         //maak orderline aan en plaats code ook daar in
-        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code, tupleLijst = tLijst }, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
+        Session["tupleLijst"] = tLijst;                     //, tupleLijst = tLijst
+        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code }, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
         {
             @Html.AntiForgeryToken()
             <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", Code)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Place Order</span></div>
