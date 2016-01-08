@@ -67,10 +67,11 @@
     height:45px;
     margin-right:1%;
     margin-left:1.5%;
+    float: left;
 }
 
 .film-span-container {
-    float:right;
+    float: none;
     margin-right:2.5%;
     font-size: 1.02em;
     z-index:-100; /*Zodat hij onder de Wishlist valt*/
