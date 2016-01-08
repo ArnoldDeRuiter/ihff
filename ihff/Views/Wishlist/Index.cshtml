@@ -2,12 +2,16 @@
     ViewBag.Title = "Wishlist";
 }
 @using ihff.Models;
+<link href="@Url.Content("~/Content/wishlist.css")" rel="stylesheet" type="text/css" />
 
 <!--Wishlist Partial HTML pagina-->
 
 <div>
     @if (Session["wishList"] != null)
     {
+        string Code = Session["code"].ToString();
+        double? totPrijs = Session["totalPrijs"] as Double?;
+        double? itemPriceTot;
         List<Item> sessionList = Session["wishList"] as List<Item>;
         var q = from x in sessionList
                 group x by x.ItemId into g
@@ -15,8 +19,15 @@
                 orderby count descending
                 select new { Id = g.Key, Count = count };
 
-    @:<p><b><h4>Wishlist</h4></b></p>
-    foreach (var i in q) {
+    @:<p><h4>Wishlist</h4></p>
+
+        List<Tuple<string, int, int, double?>> tLijst = new List<Tuple<string, int, int, double?>>(); //met alles zoals wordt geshowed.. oja nog wel ff prijs
+
+        foreach (var i in q) {
+            var iPrice = sessionList.Where(n => n.ItemId == i.Id).Select(iprice => iprice.Price).ToList();
+            itemPriceTot = ((double?)iPrice.First() * (double?)i.Count);
+
+
             var wishName = sessionList.Where(n => n.ItemId == i.Id).Select(name => name.Name).ToList();
             string lijn = (wishName.First() + " " + i.Count + "x");
 
@@ -33,11 +44,27 @@
                 )
                 @:</h3>
             @:</p>
+
+            Tuple<string, int, int, double?> tTuple = new Tuple<string, int, int, double?>(wishName.First().ToString(), i.Id, i.Count, itemPriceTot);
+            tLijst.Add(tTuple);
         }
-        /*@using (Html.BeginForm("makeOrder", "Order", new { Id = i.Id }, FormMethod.Post, new { Id = string.Format("form{0}", @film.ItemId) }))
+
+
+        @:<p>Total:</p><p>
+        @totPrijs;
+        @:</p>
+        <hr />
+        @:<p>Code:</p><p>
+        @Code;
+        @:</p>
+
+        //plaats code in wishlist tabel
+        //maak orderline aan en plaats code ook daar in
+        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code, tupleLijst = tLijst }, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
         {
-            <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @film.ItemId)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Place Order</span></div>
-        }*/
+            @Html.AntiForgeryToken()
+            <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", Code)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Place Order</span></div>
+        }
     }
     else
     {

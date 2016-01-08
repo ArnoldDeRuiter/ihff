@@ -15,5 +15,6 @@ namespace ihff.Models
         [Key]
         public string WishlistCode { get; set; }
         public int WishlistId { get; set; }
+
     }
 }

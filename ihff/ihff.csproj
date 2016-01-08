@@ -236,6 +236,7 @@
     <Content Include="Content\Food.css" />
     <Content Include="Content\Movies.css" />
     <Content Include="Content\objectFilter.css" />
+    <Content Include="Content\wishlist.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

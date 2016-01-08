@@ -1,0 +1,35 @@
+﻿
+.order-wishlist {
+    background-color:#6F767E;
+    width:100%;
+    padding: 0px 1%;  
+    color:#BEC3C7;
+}
+
+.order-wishlist:hover {
+    background-color: #E4494F;
+    color: #FEFCFA;
+    cursor: pointer;
+}
+
+.order-wishlist-plus {
+    font-weight: bold;
+    font-size: 150%;
+    padding-right: 1.5%;
+    margin-left:5.5%;
+    color: #FEFCFA;
+
+    vertical-align: 3px;
+
+    position:relative;
+    top:-2px;
+}
+
+.order-wishlist-txt {
+    vertical-align: 4px;
+    padding-left: 2%;    
+    font-size: 1.0em;
+
+    position:relative;
+    top:-2.5px;
+}

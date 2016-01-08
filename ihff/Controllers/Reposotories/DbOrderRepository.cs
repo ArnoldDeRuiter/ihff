@@ -14,7 +14,14 @@ namespace ihff.Controllers.Reposotories
         //Een order toevoegen aan de database.
         public void AddOrder(float totalPrice, int amount, string wishlistCode, int itemId)
         {
-            Order order = new Order(totalPrice, amount, wishlistCode, itemId);
+
+            //Order order = new Order(totalPrice, amount, wishlistCode, itemId);
+            //Sorry man, maar heb het voor je gefixed:
+            Order order = new Order();
+            order.TotalPrice = totalPrice;
+            order.Amount = amount;
+            order.WishlistCode = wishlistCode;
+            order.ItemId = itemId;
 
             ctx.Orderlines.Add(order);
             ctx.SaveChanges();

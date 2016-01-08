@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ihff.Models;
+using System.Web.Mvc;
 
 namespace ihff.Controllers.Reposotories
 {
@@ -14,5 +15,6 @@ namespace ihff.Controllers.Reposotories
 
         bool checkTempCode(string code);
         string getTempCode();
+
     }
 }

@@ -31,9 +31,9 @@ namespace ihff.Controllers
         public bool checkTempCode(string code)
         {
             bool unique = true;
-            foreach (Wishlist item in ctx.Wishlists)
+            foreach (Wishlist table in ctx.Wishlists)
             {
-                if (item.WishlistCode == code)
+                if (table.WishlistCode == code)
                 {
                     unique = false;
                     break;
@@ -46,22 +46,21 @@ namespace ihff.Controllers
         {
             Random random = new Random();
             var CodeString = "";
-            while (!checkTempCode(CodeString))
+            do
             {
-            string possibleChars = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
-            char[] codeStringChars = new char[5];
+                string possibleChars = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+                char[] codeStringChars = new char[5];
 
 
-            for (int i = 0; i < codeStringChars.Length; i++)
-            {
-                codeStringChars[i] = possibleChars[random.Next(possibleChars.Length)];
-            }
+                for (int i = 0; i < codeStringChars.Length; i++)
+                {
+                    codeStringChars[i] = possibleChars[random.Next(possibleChars.Length)];
+                }
 
-            CodeString = new String(codeStringChars);
-            }
+                CodeString = new String(codeStringChars);
+            } while (!checkTempCode(CodeString));
             return CodeString;
         }
-        
 
     }
 }

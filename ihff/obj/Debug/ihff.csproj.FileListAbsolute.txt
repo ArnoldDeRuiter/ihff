@@ -547,7 +547,6 @@ D:\Users\Arnold\Documents\GitHub\ihff\ihff\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Users\Arnold\Documents\GitHub\ihff\ihff\bin\Microsoft.Owin.Security.Google.xml
 D:\Users\Arnold\Documents\GitHub\ihff\ihff\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Users\Arnold\Documents\GitHub\ihff\ihff\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Users\Arnold\Documents\GitHub\ihff\ihff\obj\Debug\ihff.csprojResolveAssemblyReference.cache
 D:\Users\Arnold\Documents\GitHub\ihff\ihff\obj\Debug\ihff.dll
 D:\Users\Arnold\Documents\GitHub\ihff\ihff\obj\Debug\ihff.pdb
 \\Mac\Home\GitHub\ihff_5\ihff\bin\roslyn\csc.exe
