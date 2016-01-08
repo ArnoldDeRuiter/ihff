@@ -30,10 +30,11 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllMovies()
         {
             List<Item> allMovies = new List<Item>();
-            
-            foreach (Item item in ctx.Items.Where(item => item.EventType == 1))
+
+            foreach (Item i in ctx.Items)
             {
-                allMovies.Add(item);
+                if (i.EventType == 1)
+                    allMovies.Add(i);
             }
 
             return allMovies;
@@ -42,9 +43,11 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllSpecials()
         {
             List<Item> allSpecials = new List<Item>();
-            foreach (Item item in ctx.Items.Where(item => item.EventType == 2))
+
+            foreach (Item i in ctx.Items)
             {
-                allSpecials.Add(item);
+                if (i.EventType == 2)
+                    allSpecials.Add(i);
             }
 
             return allSpecials;
@@ -53,9 +56,11 @@ namespace ihff.Controllers
         public IEnumerable<Item> GetAllDiners()
         {
             List<Item> allDiners = new List<Item>();
-            foreach (Item item in ctx.Items.Where(item => item.EventType == 3))
+
+            foreach (Item i in ctx.Items)
             {
-                allDiners.Add(item);
+                if (i.EventType == 3)
+                    allDiners.Add(i);
             }
 
             return allDiners;
