@@ -42,7 +42,8 @@
                 
                 @foreach (var film in Model)
                 {
-                    
+                    if (film.EventType == 1)
+                    {
                         <li>
                             <div class="film-object item @film.DateBegin.DayOfWeek">
                                 <!--~/Content/img/films/Intestellar1.png-->
@@ -64,7 +65,7 @@
                                 }
                             </div>
                         </li>
-                    
+                    }
                 }
 
 
