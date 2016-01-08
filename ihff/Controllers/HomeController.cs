@@ -23,27 +23,23 @@ namespace ihff.Controllers
         {
             ViewBag.Message = "Movies";
 
-            List<Item> allFilms = (List<Item>) itemRepository.GetAllMovies();
+            List<Item> allFilms = (List<Item>) itemRepository.GetAllItems();
 
             return View(allFilms.OrderBy(i => i.DateBegin));
         }
 
         public ActionResult Food()
         {
-            ViewBag.Message = "Food";
+            ViewBag.Message = "Food...";
 
-            List<Item> allFilms = (List<Item>)itemRepository.GetAllDiners();
-
-            return View(allFilms.OrderBy(i => i.DateBegin));
+            return View();
         }
 
         public ActionResult Activities()
         {
-            ViewBag.Message = "Activities";
+            ViewBag.Message = "Activities...";
 
-            List<Item> allFilms = (List<Item>)itemRepository.GetAllSpecials();
-
-            return View(allFilms.OrderBy(i => i.DateBegin));
+            return View();
         }
 
         public ActionResult About()
