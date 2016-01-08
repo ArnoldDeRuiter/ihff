@@ -170,6 +170,7 @@
     <Compile Include="Controllers\Api\ImdbParser.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\IViewExtensions\IViewExtensions.cs" />
     <Compile Include="Controllers\Reposotories\DbWishlistRepository.cs" />
     <Compile Include="Controllers\Reposotories\DbOrderRepository.cs" />
     <Compile Include="Controllers\Reposotories\IWishlistRepository.cs" />

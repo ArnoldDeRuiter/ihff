@@ -13,6 +13,7 @@ namespace ihff.Controllers
     public class WishlistController : Controller
     {
         private IWishlistRepository wishlistRepository = new DbWishlistRepository();
+        
         // GET: Wishlist
         public ActionResult Index()
         {
@@ -23,6 +24,7 @@ namespace ihff.Controllers
         [HttpPost]
         public ActionResult addWish(int id)
         {
+            
             if (ModelState.IsValid)
             {
                 //Code
@@ -50,8 +52,8 @@ namespace ihff.Controllers
                     totalPrijs += item.Price;
                 }
                 Session["totalPrijs"] = totalPrijs;
-
-                return RedirectToAction("Movies", "Home");
+                
+                return Redirect(Request.UrlReferrer.ToString());
             }
             return View(selMovie);
         }
