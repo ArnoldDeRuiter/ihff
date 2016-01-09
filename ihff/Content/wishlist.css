@@ -1,8 +1,7 @@
 ﻿
 .order-wishlist {
     background-color:#6F767E;
-    width:100%;
-    padding: 0px 1%;  
+    width:100%; 
     color:#BEC3C7;
 }
 
@@ -32,4 +31,78 @@
 
     position:relative;
     top:-2.5px;
+}
+
+.wishh2 {display: inline !important;}
+.wishp {
+    display: inline-block !important;
+    vertical-align: super !important;
+}
+
+#wishHR {
+    margin:2.5px 0px;
+}
+
+.pImportantLine {
+    margin:2.5px 0px;  
+}
+
+/*Items*/
+.item-block {
+    width:100%;
+    width:100%;
+    padding: 1.5% 1%;
+}
+
+.item-icon {
+    width:45px;
+    height:45px;
+    margin-right:1%;
+    margin-left:1.5%;
+    float: left;
+}
+
+.item-span-container {
+    float: none;
+    margin-right:2.5%;
+    font-size: 1.02em;
+    z-index:-100; /*Zodat hij onder de Wishlist valt*/
+}
+
+.item-span-container p:first-child {
+    position: relative;
+    top: 0px;
+}
+.item-span-container p:nth-child(2) {
+    position: relative;
+    top: -5px;
+}
+
+
+.item-block-title a {
+    font-weight: bold;
+    color:  #E2E3E8;    
+
+        padding-left: 1%;
+        margin-right: 1%;
+}
+
+.item-block-year {
+    color:#BEC3C7;
+    padding-left: 1%;
+    margin-left: 1%;
+}
+
+
+.item-block-time {    
+    color:#BEC3C7;
+    padding-right: 1%;
+    margin-left: 1%;
+}
+
+.item-block-date {    
+    font-weight: bold;
+    color:  #E2E3E8;
+    padding-right: 1%;
+    margin-left: 1%;
 }

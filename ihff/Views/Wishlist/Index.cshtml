@@ -10,31 +10,61 @@
     @if (Session["wishList"] != null)
     {
         string Code = Session["code"].ToString();
-        double? totPrijs = Session["totalPrijs"] as Double?;
-        double? itemPriceTot;
+        double? totPrijs=0.0;// = Session["totalPrijs"] as Double?;
         List<Item> sessionList = Session["wishList"] as List<Item>;
         var q = from x in sessionList
                 group x by x.ItemId into g
                 let count = g.Count()
                 orderby count descending
-                select new { Id = g.Key, Count = count };
+                select new { Id = g.Key, Count = count, All = from a in g select a };   //.Take(sessionList.Select(u => u))};
 
     @:<p><h4>Wishlist</h4></p>
 
         List<Tuple<string, int, int, double?>> tLijst = new List<Tuple<string, int, int, double?>>(); //met alles zoals wordt geshowed.. oja nog wel ff prijs
 
-        foreach (var i in q) {
-            var iPrice = sessionList.Where(n => n.ItemId == i.Id).Select(iprice => iprice.Price).ToList();
-            itemPriceTot = ((double?)iPrice.First() * (double?)i.Count);
+        foreach (var i in q)
+        {
+            var all = i.All.ToList();
+            int index = q.Select((v, z) => new { v = v, index = z }).First(o => o.v.Id == i.Id).index;
+            var a = all[0];
+
+            /*var iPrice = sessionList.Where(n => n.ItemId == i.Id).Select(iprice => iprice.Price).ToList();
+            var wishName = sessionList.Where(n => n.ItemId == i.Id).Select(name => name.Name).ToList();*/
+
+            totPrijs = ((double?)a.Price * (double?)i.Count);
+            string lijn = (a.Name + " " + i.Count + "x");
+            string typeFolder = "";
+
+            <div class="item-block">
+                
+                @switch ((int)a.EventType)
+                {
+                    case 1:
+                        typeFolder = "films";
+                        break;
+                    case 2:
+                        typeFolder = "specials";
+                        break;
+                    case 3:
+                        typeFolder = "diners";
+                        break;
+                    default:
+                        break;
+                }
+                <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", a.Image)' class="item-icon" />
+                <div class="item-span-container">
+
+                    <p><span class="item-block-title nowrap">@Html.ActionLink(a.Name, "Detail", "Item", new { ItemId = a.ItemId }, null)</span><span class="item-block-year nowrap">@i.Count x</span></p>
+                    <p><span class="item-block-day nowrap">@string.Format("{0}", a.DateBegin.DayOfWeek+" ")</span><span class="item-block-time nowrap">@string.Format("{0}", a.DateBegin.ToString("HH:mm") + " - " + a.DateEnd.ToString("HH:mm"))</span></p> <!--Saturday 17.00 - 19.30-->
+                </div>
+            </div>
 
 
-            var wishName = sessionList.Where(n => n.ItemId == i.Id).Select(name => name.Name).ToList();
-            string lijn = (wishName.First() + " " + i.Count + "x");
-
-            @:<p id="wishp">
+            /*
+            @:<p class="wishp">
             @lijn;
-            <style>#wishh2 {display: inline !important;} #wishp{display: inline-block !important; vertical-align:super !important;}</style> //Heel eventjes voor het testen zodoende
-                @:<h3 id="wishh2">
+            
+                @:<h3 class="wishh2">
                 @Html.ActionLink(
                 " ×",                                                     // linkText
                 "deleteWishlistItem",                                    // actionName
@@ -44,19 +74,16 @@
                 )
                 @:</h3>
             @:</p>
-
-            Tuple<string, int, int, double?> tTuple = new Tuple<string, int, int, double?>(wishName.First().ToString(), i.Id, i.Count, itemPriceTot);
+            */
+            Tuple<string, int, int, double?> tTuple = new Tuple<string, int, int, double?>(a.Name, i.Id, i.Count, totPrijs);
             tLijst.Add(tTuple);
+            
         }
 
-
-        @:<p>Total:</p><p>
-        @totPrijs;
-        @:</p>
-        <hr />
-        @:<p>Code:</p><p>
-        @Code;
-        @:</p>
+        <hr id="wishHR" />
+        @:<p class="pImportantLine"><b>Total Price: </b>@string.Format("{0}",((double?)totPrijs))</p>
+        
+        @:<p class="pImportantLine"><b>Code: </b>@string.Format("{0}", Code)</p>
 
         //plaats code in wishlist tabel
         //maak orderline aan en plaats code ook daar in

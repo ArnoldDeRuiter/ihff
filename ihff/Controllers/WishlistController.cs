@@ -64,27 +64,8 @@ namespace ihff.Controllers
             //Of amount daarvan in die ene list aanpassen, maar dan is het niet Delete maar changeAmountWishlistItem(int id)
             return RedirectToAction("Movies", "Home");
         }
-        
-
 
         private IHFFdatabasecontext db = new IHFFdatabasecontext();
-
-        /*public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Reservation reservation = db.Reservations.Find(id);
-            if (reservation == null)
-            {
-                return HttpNotFound();
-            }
-            return View(reservation);
-        }*/
-        // POST: Reservation/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
                                     //Code wishlist    //Name //ID  //COUNT //totPrijs
