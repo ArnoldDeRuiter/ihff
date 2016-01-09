@@ -34,7 +34,7 @@ namespace ihff.Controllers.Reposotories
             //todo maxAvailability hernoemen naar availability? uiteraard moet dan het field wel in mindering gebracht worden na het betalen van de order!
             Item item = itemRepository.GetItem(itemId);
 
-            if (amount < item.MaxAvailabillity)
+            if (amount > item.MaxAvailabillity)
             {
                 return false;
             }
