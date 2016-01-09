@@ -61,23 +61,29 @@ namespace ihff.Controllers
             int index = wishList.FindIndex(it => it.ItemId == id);
             Item itempje = wishList[index];
 
-            if (amount == 0)
-            {
-                wishList.RemoveAt(index);
-                Session["wishList"] = wishList;
-                return Redirect(Request.UrlReferrer.ToString());
-            }
-            
-            
+
             int count = 0;
             foreach (var item in wishList)
             {
-                if (item.ItemId==itempje.ItemId) {
+                if (item.ItemId == itempje.ItemId)
+                {
                     count++;
                 }
             }
 
+
+            if (amount == 0)
+            {
+                int offset = count - amount;
+                for (int i = 0; i < offset; i++)
+                {
+                    wishList.RemoveAt(index);
+                }
+                Session["wishList"] = wishList;
+                return Redirect(Request.UrlReferrer.ToString());
+            }
             
+                        
             if (amount <= count)
             {
                 int offset = count - amount;
