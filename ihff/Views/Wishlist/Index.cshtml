@@ -17,7 +17,6 @@
         var q = from x in sessionList
                 group x by x.ItemId into g
                 let count = g.Count()
-                orderby count descending
                 select new { Id = g.Key, Count = count, All = from a in g select a };   //.Take(sessionList.Select(u => u))};
         
 <script>
