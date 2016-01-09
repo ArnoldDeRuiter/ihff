@@ -44,25 +44,47 @@ namespace ihff.Controllers
                 wishList = (Session["wishList"]!=null) ? Session["wishList"] as List<Item> : wishList;
                 wishList.Add(selMovie);
                 Session["wishList"] = wishList;
-
-                //Prijs
-                double? totalPrijs = 0.0;
-                foreach (var item in wishList)
-                {
-                    totalPrijs += item.Price;
-                }
-                Session["totalPrijs"] = totalPrijs;
                 
                 return Redirect(Request.UrlReferrer.ToString());
             }
             return View(selMovie);
         }
         
-        public ActionResult deleteWishlistItem(int id)
+        public ActionResult wishUpdateOrder(int hiddenUpdateAmountVal, int hiddenUpdateIDVal)
         {
-            int verkregenID = id; //yay //oke dat komt later dan nog wel... Uit List verwijderen en hoppa..
-            //Of amount daarvan in die ene list aanpassen, maar dan is het niet Delete maar changeAmountWishlistItem(int id)
-            return RedirectToAction("Movies", "Home");
+
+            int amount = hiddenUpdateAmountVal;
+            int id = hiddenUpdateIDVal;
+
+            List<Item> wishList = new List<Item>();
+            wishList = Session["wishList"] as List<Item>;
+
+            int index = wishList.FindIndex(it => it.ItemId == id);
+
+            Item itempje = wishList[index];
+
+            
+            int count = 0;
+            foreach (var item in wishList)
+            {
+                if (item==itempje) {
+                    count++;
+                }
+            }
+
+            if (amount <= count)
+            {
+                wishList.RemoveAt(index);
+            } else
+            {
+                wishList.Add(itempje);
+            }
+
+            
+
+            Session["wishList"] = wishList;
+
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         private IHFFdatabasecontext db = new IHFFdatabasecontext();

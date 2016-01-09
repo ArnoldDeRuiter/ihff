@@ -6,17 +6,36 @@
 
 <!--Wishlist Partial HTML pagina-->
 
+
+
 <div>
     @if (Session["wishList"] != null)
     {
         string Code = Session["code"].ToString();
-        double? totPrijs=0.0;// = Session["totalPrijs"] as Double?;
+        double? totPrijs = 0.0;// = Session["totalPrijs"] as Double?;
         List<Item> sessionList = Session["wishList"] as List<Item>;
         var q = from x in sessionList
                 group x by x.ItemId into g
                 let count = g.Count()
                 orderby count descending
                 select new { Id = g.Key, Count = count, All = from a in g select a };   //.Take(sessionList.Select(u => u))};
+        
+<script>
+function updateAmount(id) {
+    var amount = $('#' + id).val();
+    $("#hiddenUpdateAmountVal").val(amount);
+    $("#hiddenUpdateIDVal").val(id);
+    $("#hiddenUpdateForm").submit();
+}
+</script>
+
+        using (Html.BeginForm("wishUpdateOrder", "Wishlist", FormMethod.Post, new { Id = string.Format("hiddenUpdateForm") }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="hiddenUpdateAmountVal" id="hiddenUpdateAmountVal" />
+            <input type="hidden" name="hiddenUpdateIDVal" id="hiddenUpdateIDVal" />
+        }
+
 
     @:<p><h4>Wishlist</h4></p>
 
@@ -25,13 +44,11 @@
         foreach (var i in q)
         {
             var all = i.All.ToList();
-            int index = q.Select((v, z) => new { v = v, index = z }).First(o => o.v.Id == i.Id).index;
+            //int index = q.Select((v, z) => new { v = v, index = z }).First(o => o.v.Id == i.Id).index;
             var a = all[0];
 
-            /*var iPrice = sessionList.Where(n => n.ItemId == i.Id).Select(iprice => iprice.Price).ToList();
-            var wishName = sessionList.Where(n => n.ItemId == i.Id).Select(name => name.Name).ToList();*/
-
-            totPrijs = ((double?)a.Price * (double?)i.Count);
+            double? prijsItem = ((double?)a.Price * (double?)i.Count);
+            totPrijs += ((double?)a.Price * (double?)i.Count);
             string lijn = (a.Name + " " + i.Count + "x");
             string typeFolder = "";
 
@@ -54,8 +71,9 @@
                 <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", a.Image)' class="item-icon" />
                 <div class="item-span-container">
 
-                    <p><span class="item-block-title nowrap">@Html.ActionLink(a.Name, "Detail", "Item", new { ItemId = a.ItemId }, null)</span><span class="item-block-year nowrap">@i.Count x</span></p>
+                    <p><span class="item-block-title nowrap">@Html.ActionLink(a.Name, "Detail", "Item", new { ItemId = a.ItemId }, null)</span><span class="item-block-amount nowrap">€@prijsItem ,- <input class="item-block-number" id="@a.ItemId" onchange="updateAmount(@a.ItemId);" type="number" max="50" value="@i.Count" /></span></p>
                     <p><span class="item-block-day nowrap">@string.Format("{0}", a.DateBegin.DayOfWeek+" ")</span><span class="item-block-time nowrap">@string.Format("{0}", a.DateBegin.ToString("HH:mm") + " - " + a.DateEnd.ToString("HH:mm"))</span></p> <!--Saturday 17.00 - 19.30-->
+
                 </div>
             </div>
 
