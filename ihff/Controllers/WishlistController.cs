@@ -72,7 +72,7 @@ namespace ihff.Controllers
             int count = 0;
             foreach (var item in wishList)
             {
-                if (item==itempje) {
+                if (item.ItemId==itempje.ItemId) {
                     count++;
                 }
             }
