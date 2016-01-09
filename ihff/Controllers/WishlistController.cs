@@ -77,12 +77,22 @@ namespace ihff.Controllers
                 }
             }
 
+            
             if (amount <= count)
             {
-                wishList.RemoveAt(index);
+                int offset = count - amount;
+                for (int i = 0; i < offset; i++)
+                {
+                    wishList.RemoveAt(index);
+                }
+                
             } else
             {
-                wishList.Add(itempje);
+                int offset = amount - count;
+                for (int i = 0; i < offset; i++)
+                {
+                    wishList.Add(itempje);
+                }                
             }
 
             
