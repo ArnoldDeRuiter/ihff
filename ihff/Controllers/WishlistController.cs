@@ -117,10 +117,19 @@ namespace ihff.Controllers
             List<Tuple<string, int, int, double?>> lstTuple = Session["tupleLijst"] as List<Tuple<string, int, int, double?>>;
             if (ModelState.IsValid)
             {
-                Wishlist w = new Wishlist();
-                w.WishlistCode = Code;
-                db.Wishlists.Add(w);
-                db.SaveChanges();
+                bool CodeAlready = false;
+
+                if (db.Wishlists.Any(o => o.WishlistCode == Code))
+                    CodeAlready = true;
+
+                if (!CodeAlready) { 
+                    Wishlist w = new Wishlist();
+                    w.WishlistCode = Code;
+                    db.Wishlists.Add(w);
+                    db.SaveChanges();
+                }
+
+
                 foreach (var t in lstTuple)
                 {
                     int tID = t.Item2;
@@ -133,7 +142,6 @@ namespace ihff.Controllers
                 }
                 
                 db.SaveChanges();
-                Session["tupleLijst"] = null;
                 return RedirectToAction("Index", "Reservation");
             }
             return View();
