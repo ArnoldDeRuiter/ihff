@@ -52,7 +52,6 @@ namespace ihff.Controllers
         
         public ActionResult wishUpdateOrder(int hiddenUpdateAmountVal, int hiddenUpdateIDVal)
         {
-
             int amount = hiddenUpdateAmountVal;
             int id = hiddenUpdateIDVal;
 
@@ -60,9 +59,15 @@ namespace ihff.Controllers
             wishList = Session["wishList"] as List<Item>;
 
             int index = wishList.FindIndex(it => it.ItemId == id);
-
             Item itempje = wishList[index];
 
+            if (amount == 0)
+            {
+                wishList.RemoveAt(index);
+                Session["wishList"] = wishList;
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+            
             
             int count = 0;
             foreach (var item in wishList)
