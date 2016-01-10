@@ -1,6 +1,8 @@
 ﻿@using System.Xml
 @using ihff.Controllers
 @using ihff.Controllers.Api
+@using ihff.Controllers.Reposotories
+@using ihff.Models
 @using Newtonsoft.Json.Linq
 @model ihff.Models.Item
 @{
@@ -8,6 +10,9 @@
     string imdbId = imdbParser.GetImdbId(Model);
     string poster = imdbParser.GetImdbPoster(Model);
     string imdbUrl = "http://www.imdb.com/title/" + imdbId;
+
+    IItemRepository itemRepository = new DbItemRepository();
+    Location location = itemRepository.GetItemLocation(Model.ItemId);
 }
 <div class="container Arnold-bootstrap-hax0r-fix">
     <div class="row">
@@ -27,6 +32,8 @@
                 <dd><a href="@imdbUrl">Link</a></dd>
                 <dt>Kijkwijzer®:</dt>
                 <dd>@Model.AgeClassification</dd>
+                <dt>Price:</dt>
+                <dd>€@Model.Price p.p.</dd>
             </dl>
         </div>
         <div class="col-xs-6">
@@ -42,7 +49,10 @@
 <dl class="dl-horizontal">
     <dt>Location:</dt>
     <dd>@Model.Location</dd>
-
+    <dt>Adress:</dt>
+    <dd>@location.Address</dd>
+    <dt>ZipCode:</dt>
+    <dd>@location.Zipcode</dd>
     <dt>Time and date:</dt>
     <dd>@Model.DateBegin.ToString("MM/dd/yyyy hh:mm") - @Model.DateEnd.ToString("hh:mm")</dd>
 </dl>
@@ -51,5 +61,3 @@
 {
     <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
 }
-
-<p>@imdbId</p>

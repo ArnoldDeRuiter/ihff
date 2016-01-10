@@ -7,12 +7,13 @@ using ihff.Models;
 
 namespace ihff.Controllers.Reposotories
 {
-    interface IItemRepository
+    public interface IItemRepository
     {
         IEnumerable<Item> GetAllItems();
         Item GetItem(int itemId);
         IEnumerable<Item> GetAllMovies();
         IEnumerable<Item> GetAllSpecials();
         IEnumerable<Item> GetAllDiners();
+        Location GetItemLocation(int itemId);
     }
 }

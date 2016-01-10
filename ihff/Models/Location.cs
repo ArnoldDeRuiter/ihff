@@ -16,9 +16,9 @@ namespace ihff.Models
         public string Name {get; set;}
         public string Address { get; set; }
         public string Zipcode { get; set; }
-        public int Phonenumber { get; set; }
+        public string Phonenumber { get; set; }
         public string OmschrijvingNL { get; set; }
-        public string OmschrijvingEND { get; set; }
+        public string OmschrijvingENG { get; set; }
         public int Capacity { get; set; }
     }
 }

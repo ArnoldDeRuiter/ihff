@@ -65,5 +65,20 @@ namespace ihff.Controllers
 
             return allDiners;
         }
+
+        public Location GetItemLocation(int itemId)
+        {
+            Item item = GetItem(itemId);
+
+            foreach (Location l in ctx.Locations)
+            {
+                if (item.Location == l.Name)
+                {
+                    return l;
+                }
+            }
+
+            return null;
+        }
     }
 }

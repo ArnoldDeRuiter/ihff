@@ -1,3 +1,45 @@
-﻿@model ihff.Models.Item
+﻿@using ihff.Controllers
+@using ihff.Controllers.Reposotories
+@using ihff.Models
+@model ihff.Models.Item
+    @{
+        IItemRepository itemRepository = new DbItemRepository();
+        Location location = itemRepository.GetItemLocation(Model.ItemId);
+    }
 
+<div class="container Arnold-bootstrap-hax0r-fix">
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal">
+                <dt>Title:</dt>
+                <dd>@Model.Name</dd>
+                <dt>Phonenumber:</dt>
+                <dd>@location.Phonenumber</dd>
+                <dt>Location:</dt>
+                <dd>@Model.Location</dd>
+                <dt>Price:</dt>
+                <dd>€@Model.Price p.p.</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <img src='@string.Format("../Content/img/diners/{0}", @Model.Image)' class="film-picto" />
+        </div>
+    </div>
+</div>
+<h3>Description:</h3>
 <p>@Model.DescriptionENG</p>
+<h3>Location And Time:</h3>
+<dl class="dl-horizontal">
+    <dt>Loacation:</dt>
+    <dd>@location.Name</dd>
+    <dt>Adress:</dt>
+    <dd>@location.Address</dd>
+    <dt>ZipCode:</dt>
+    <dd>@location.Zipcode</dd>
+    <dt>Time and date:</dt>
+    <dd>@Model.DateBegin.ToString("MM/dd/yyyy hh:mm") - @Model.DateEnd.ToString("hh:mm")</dd>
+</dl>
+@using (Html.BeginForm("addWish", "Wishlist", new { Id = Model.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", @Model.ItemId) }))
+{
+    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+}
