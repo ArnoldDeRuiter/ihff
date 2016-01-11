@@ -16,5 +16,6 @@ namespace ihff.Controllers.Reposotories
         bool checkTempCode(string code);
         string getTempCode();
 
+        Wishlist RetrieveWishlist(string code);
     }
 }

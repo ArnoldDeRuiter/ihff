@@ -62,5 +62,19 @@ namespace ihff.Controllers
             return CodeString;
         }
 
+        public Wishlist RetrieveWishlist(string code)
+        {
+            Wishlist wishlist = null;
+
+            foreach (Wishlist w in ctx.Wishlists)
+            {
+                if (w.WishlistCode == code)
+                {
+                    wishlist = w;
+                }
+            }
+
+            return wishlist;
+        }
     }
 }
