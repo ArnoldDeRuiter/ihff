@@ -40,7 +40,7 @@ namespace ihff.Controllers
         public Location GetItemLocation(int itemId)
         {
             Item item = GetItem(itemId);
-            return ctx.Locations.FirstOrDefault(l => l.Name == item.Name);
+            return ctx.Locations.FirstOrDefault(l => l.Name == item.Location);
         }
 
         public IEnumerable<Item> GetDinerDay(DateTime date)
