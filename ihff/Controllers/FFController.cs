@@ -23,12 +23,13 @@ namespace ihff.Controllers
             return View(diners);
         }
 
-        public ActionResult AddFFTicket(int Id, Item movie)
+        public ActionResult AddFFTicket(int itemId, int itemId2)
         {
-            Item food = itemRepository.GetItem(Id);
-            double price = 64.99;
+           // Item food = itemRepository.GetItem(Id); Dit kan weg denk ik, toch niet nodig lol.
+            double price = 67.99;
+            string wishCode = (string)Session["code"];
 
-/*            orderRepository.AddOrder(price)    Ben ermee bezig maar ga even commiten =D*/
+            orderRepository.AddOrder(price, /*amount*/, wishCode, itemId, itemId2);   // Ben ermee bezig maar ga even commiten =D
 
             return RedirectToAction("Index", "Home");
         }
