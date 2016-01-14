@@ -113,6 +113,10 @@
     float:right;
 }
 
+a.jeroenA:link {
+color: #BEC3C7;
+}
+
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {  
 
