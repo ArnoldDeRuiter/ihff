@@ -15,5 +15,6 @@ namespace ihff.Controllers.Reposotories
         IEnumerable<Item> GetAllSpecials();
         IEnumerable<Item> GetAllDiners();
         Location GetItemLocation(int itemId);
+        List<Item> GetItems(int itemId);
     }
 }

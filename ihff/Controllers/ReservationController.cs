@@ -7,17 +7,48 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ihff.Models;
-
+using ihff.Controllers.Reposotories;
 namespace ihff.Controllers
 {
     public class ReservationController : Controller
     {
         private IHFFdatabasecontext db = new IHFFdatabasecontext();
+        private IOrderRepository order = new DbOrderRepository();
+        private IItemRepository item = new DbItemRepository();
 
         // GET: Reservation
         public ActionResult Index()
         {
-            return View(db.Reservations.ToList());
+            string code = Session["code"].ToString();
+
+            List<Order> allOrders = order.GetOrders(code);
+            
+            List<Item> allItems = new List<Item>();
+            
+            foreach (Order o in allOrders)
+            {
+                allItems = item.GetItems(o.ItemId);
+            }
+
+            var samen = from q in allOrders
+                        group q by q.ItemId into g
+                        let item = g
+                        select new { IID = g.Key, ITID = item, Itempjes = from a in allItems select a };
+       
+            foreach (var i in samen)
+            {
+                int itemidorder = i.IID;
+                var a = i.Itempjes.ToList();
+                var itemitemid = a[0];
+                int itemID = itemitemid.ItemId;
+
+            }
+
+            ViewBag.allOrders = allOrders;
+            ViewBag.allItems = allItems;
+            ViewBag.ordersMetItems = samen;
+
+            return View();
         }
 
         // GET: Reservation/Details/5

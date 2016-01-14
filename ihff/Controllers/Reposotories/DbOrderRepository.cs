@@ -26,6 +26,21 @@ namespace ihff.Controllers.Reposotories
             ctx.SaveChanges();
         }
 
+        public List<Order> GetOrders(string code)
+        {
+            List<Order> ordersPerCode = new List<Order>();
+
+            foreach (Order o in ctx.Orderlines)
+            {
+                if (o.WishlistCode == code)
+                {
+                    ordersPerCode.Add(o);
+                }
+            }
+
+            return ordersPerCode;
+        }
+
         public bool checkAvailability(int amount, int itemId)
         {
             //todo maxAvailability hernoemen naar availability? uiteraard moet dan het field wel in mindering gebracht worden na het betalen van de order!

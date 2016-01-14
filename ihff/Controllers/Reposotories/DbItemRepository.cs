@@ -22,6 +22,21 @@ namespace ihff.Controllers
             return ctx.Items.SingleOrDefault(c => c.ItemId == itemId);
         }
 
+        public List<Item> GetItems(int itemId)
+        {
+            List<Item> itemsPerId = new List<Item>();
+
+            foreach (Item i in ctx.Items)
+            {
+                if (i.ItemId == itemId)
+                {
+                    itemsPerId.Add(i);
+                }
+            }
+
+            return itemsPerId ;
+        }
+
         public IEnumerable<Item> GetAllMovies()
         {
             return ctx.Items.Where(i => i.EventType == 1);
