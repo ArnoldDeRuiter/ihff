@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Movies";
+}
+@using ihff.Models;
+@model IEnumerable<Item>
+@{
+    var viewPath = ViewBag.id;
+
+}
+
+
+<link href="@Url.Content("~/Content/Movies.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/filmObject.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/objectFilter.css")" rel="stylesheet" type="text/css" />
+<link href="~/Content/isotope.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/isotope.pkgd.min.js"></script>
+
+
+
+        <div id="isotope-container" style="position: relative; height: 530.4px;">
+
+
+            <ul class="ul-film">
+                
+                @foreach (var film in Model)
+                {
+
+                        <li>
+                            <div class="film-object item @film.DateBegin.DayOfWeek">
+                                <!--~/Content/img/films/Intestellar1.png-->
+                                <a href='@Url.Action("Detail", "Item", new {ItemId = film.ItemId}, null)'>
+                                    <img src='@string.Format("../Content/img/films/{0}", @film.Image)' class="film-picto"/>
+                                </a>
+
+                                <div class="film-block">
+                                    <img src='@string.Format("../Content/img/films/kijkwijzer_{0}.png", @film.AgeClassification)' class="film-kijkwijzer" />
+                                    <div class="film-span-container">
+
+                                        <p><span class="film-block-title nowrap">@Html.ActionLink(@film.Name, "Detail", "Item", new { ItemId = film.ItemId }, null)</span><span class="film-block-year nowrap">@film.Year</span></p>
+                                        <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">@string.Format("{0}", film.DateBegin.DayOfWeek + " " + film.DateBegin.ToString("HH:mm") + " - " + film.DateEnd.ToString("HH:mm"))</span></p> <!--Saturday 17.00 - 19.30-->
+                                    </div>
+                                </div>
+                                
+                                @using (Html.BeginForm("addWish", "Wishlist", new { Id = film.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", @film.ItemId) }))
+                                {
+                                    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @film.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+                                }
+                            </div>
+                        </li>
+                    
+                }
+
+
+            </ul>
+
+
+
+        </div>
+
+<script src="@Url.Content("~/Scripts/navbar-highlight.js")"></script>
+
+<script src="~/Scripts/adrisotope.js"></script>
+<script src="~/Scripts/jquery.debouncedresize.js"></script>
