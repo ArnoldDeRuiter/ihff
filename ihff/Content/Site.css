@@ -64,7 +64,7 @@ textarea {
     background-color: #454A4E;
     color: white;
     padding: 1%;
-    padding-bottom: 14% !important;
+    /* padding-bottom: 14% !important; */
     padding-left: 2% !important;
 }
 #right-div-container {
