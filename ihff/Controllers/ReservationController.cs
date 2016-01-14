@@ -30,24 +30,25 @@ namespace ihff.Controllers
             {
                 allItems = item.GetItems(o.ItemId);
             }
-
-            var samen = from q in allOrders
-                        group q by q.ItemId into g
-                        let item = g
-                        select new { IID = g.Key, ITID = item, Itempjes = from a in allItems select a };
-
-            foreach (var i in samen)
-            {
-                int itemidorder = i.IID;
-                var a = i.Itempjes.ToList();
-                var itemitemid = a[0];
-                int itemID = itemitemid.ItemId;
-
-            }
-
+            
             ViewBag.allOrders = allOrders;
             ViewBag.allItems = allItems;
-            ViewBag.ordersMetItems = samen;
+            
+            //arnie code
+            //var samen = from q in allOrders
+            //            group q by q.ItemId into g
+            //            let item = g
+            //            select new { IID = g.Key, ITID = item, Itempjes = from a in allItems select a };
+
+            //foreach (var i in samen)
+            //{
+            //    int itemidorder = i.IID;
+            //    var a = i.Itempjes.ToList();
+            //    var itemitemid = a[0];
+            //    int itemID = itemitemid.ItemId;
+
+            //}
+            //ViewBag.ordersMetItems = samen;
 
             return View();
         }

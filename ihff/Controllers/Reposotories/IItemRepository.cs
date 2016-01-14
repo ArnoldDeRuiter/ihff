@@ -16,5 +16,6 @@ namespace ihff.Controllers.Reposotories
         IEnumerable<Item> GetAllDiners();
         Location GetItemLocation(int itemId);
         IEnumerable<Item> GetDinerDay(DateTime date);
+        List<Item> GetItems(int itemId);
     }
 }
