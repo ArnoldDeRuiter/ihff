@@ -14,12 +14,7 @@ namespace ihff.Controllers
         
         public IEnumerable<Item> GetAllItems()
         {
-            List<Item> allItems = new List<Item>();
-            foreach (Item item in ctx.Items)
-            {
-                allItems.Add(item);
-            }
-            return allItems;
+            return ctx.Items;
         }
 
         public Item GetItem(int itemId)
@@ -29,56 +24,28 @@ namespace ihff.Controllers
 
         public IEnumerable<Item> GetAllMovies()
         {
-            List<Item> allMovies = new List<Item>();
-
-            foreach (Item i in ctx.Items)
-            {
-                if (i.EventType == 1)
-                    allMovies.Add(i);
-            }
-
-            return allMovies;
+            return ctx.Items.Where(i => i.EventType == 1);
         }
 
         public IEnumerable<Item> GetAllSpecials()
         {
-            List<Item> allSpecials = new List<Item>();
-
-            foreach (Item i in ctx.Items)
-            {
-                if (i.EventType == 2)
-                    allSpecials.Add(i);
-            }
-
-            return allSpecials;
+            return ctx.Items.Where(i => i.EventType == 2);
         }
 
         public IEnumerable<Item> GetAllDiners()
         {
-            List<Item> allDiners = new List<Item>();
-
-            foreach (Item i in ctx.Items)
-            {
-                if (i.EventType == 3)
-                    allDiners.Add(i);
-            }
-
-            return allDiners;
+            return ctx.Items.Where(i => i.EventType == 3);
         }
 
         public Location GetItemLocation(int itemId)
         {
             Item item = GetItem(itemId);
-
-            foreach (Location l in ctx.Locations)
-            {
-                if (item.Location == l.Name)
-                {
-                    return l;
-                }
-            }
-
-            return null;
+            return ctx.Locations.FirstOrDefault(l => l.Name == item.Name);
         }
+
+        public IEnumerable<Item> GetDinerDay(DateTime date)
+        {
+            return ctx.Items.Where(i => i.DateBegin.Day == date.Day && i.EventType == 3); 
+        } 
     }
 }

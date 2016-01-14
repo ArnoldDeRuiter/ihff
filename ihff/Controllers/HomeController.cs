@@ -23,7 +23,7 @@ namespace ihff.Controllers
         {
             ViewBag.Message = "Movies";
 
-            List<Item> allFilms = (List<Item>) itemRepository.GetAllMovies();
+            IEnumerable<Item> allFilms = itemRepository.GetAllMovies();
 
             return View(allFilms.OrderBy(i => i.DateBegin));
         }
@@ -32,7 +32,7 @@ namespace ihff.Controllers
         {
             ViewBag.Message = "Food";
 
-            List<Item> allFilms = (List<Item>)itemRepository.GetAllDiners();
+            IEnumerable<Item> allFilms = itemRepository.GetAllDiners();
 
             return View(allFilms.OrderBy(i => i.DateBegin));
         }
@@ -41,7 +41,7 @@ namespace ihff.Controllers
         {
             ViewBag.Message = "Activities";
 
-            List<Item> allFilms = (List<Item>)itemRepository.GetAllSpecials();
+            IEnumerable<Item> allFilms = itemRepository.GetAllSpecials();
 
             return View(allFilms.OrderBy(i => i.DateBegin));
         }

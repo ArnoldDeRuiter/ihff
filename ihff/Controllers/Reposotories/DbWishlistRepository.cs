@@ -12,25 +12,10 @@ namespace ihff.Controllers
     {
         private IHFFdatabasecontext ctx = new IHFFdatabasecontext();
         
-        public IEnumerable<Item> GetAllItems()
-        {
-            List<Item> allItems = new List<Item>();
-            foreach (Item item in ctx.Items)
-            {
-                allItems.Add(item);
-            }
-            return allItems;
-        }
-
-        public Item GetItem(int itemId)
-        {
-            return ctx.Items.SingleOrDefault(c => c.ItemId == itemId);
-        }
-
-
         public bool checkTempCode(string code)
         {
             bool unique = true;
+
             foreach (Wishlist table in ctx.Wishlists)
             {
                 if (table.WishlistCode == code)
@@ -64,7 +49,8 @@ namespace ihff.Controllers
 
         public Wishlist RetrieveWishlist(string code)
         {
-            Wishlist wishlist = null;
+            return ctx.Wishlists.FirstOrDefault(w => w.WishlistCode == code);
+ /*           Wishlist wishlist = null;
 
             foreach (Wishlist w in ctx.Wishlists)
             {
@@ -72,9 +58,9 @@ namespace ihff.Controllers
                 {
                     wishlist = w;
                 }
-            }
+            } 
 
-            return wishlist;
+            return wishlist; */
         }
     }
 }

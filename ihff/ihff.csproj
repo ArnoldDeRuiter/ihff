@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Api\ImdbParser.cs" />
+    <Compile Include="Controllers\FFController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Reposotories\DbWishlistRepository.cs" />
@@ -311,6 +312,7 @@
     <Content Include="Views\Reservation\PaymentSucces.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\FF\" />
     <Folder Include="Views\Movies\" />
   </ItemGroup>
   <ItemGroup>

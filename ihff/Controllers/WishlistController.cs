@@ -13,6 +13,7 @@ namespace ihff.Controllers
     public class WishlistController : Controller
     {
         private IWishlistRepository wishlistRepository = new DbWishlistRepository();
+        private IItemRepository itemRepository = new DbItemRepository();
         
         // GET: Wishlist
         public ActionResult Index()
@@ -35,8 +36,7 @@ namespace ihff.Controllers
                 }
 
                 //Items
-                DbItemRepository x = new DbItemRepository();
-                selMovie = x.GetItem(id);
+                selMovie = itemRepository.GetItem(id);
                 List<Item> addedItems = new List<Item>();
                 addedItems.Add(selMovie);
 
