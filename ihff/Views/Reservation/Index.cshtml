@@ -1,13 +1,16 @@
-﻿@model IEnumerable<ihff.Models.OrderItemCombined>
-@{List<Order> allOrders = ViewBag.allOrders;}
+﻿@model IEnumerable<ihff.Models.OrderItemCombined.OrderItem>
 
+@{List<Order> allorders = new List<Order>(); }
 @{
     ViewBag.Title = "Index";
+
+    ViewBag.allOrders = allorders;
+    //ViewBag.allItems = allItems;
 }
 
 <h2> Reservations </h2>
 
-@foreach (var s in ordersMetItems)
+<!-- foreach (var s in ordersMetItems)
 {
-    <p> @s.Ammount </p>
-}
+    <p> //s.Ammount </p>
+} -->

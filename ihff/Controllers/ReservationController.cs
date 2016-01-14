@@ -14,21 +14,20 @@ namespace ihff.Controllers
     public class ReservationController : Controller
     {
         private IHFFdatabasecontext db = new IHFFdatabasecontext();
-        private IOrderRepository order = new DbOrderRepository();
-        private IItemRepository item = new DbItemRepository();
+        private IOrderItemRepository orderItem = new DbOrderItemRepository();
 
         // GET: Reservation
         public ActionResult Index()
         {
             string code = Session["code"].ToString();
 
-            IEnumerable<Order> allOrders = order.GetOrders(code);
+            IEnumerable<Order> allOrders = orderItem.GetOrders(code);
 
             List<Item> allItems = new List<Item>();
 
             foreach (Order o in allOrders)
             {
-                allItems = item.GetItems(o.ItemId);
+                allItems = orderItem.GetItems(o.ItemId);
             }
             
             ViewBag.allOrders = allOrders;
