@@ -13,6 +13,19 @@ namespace ihff.Controllers.Reposotories
         private IHFFdatabasecontext ctx = new IHFFdatabasecontext();
         private IItemRepository itemRepository = new DbItemRepository();
 
+        public List<Order> GetOrders(string code)
+        {
+            List<Order> ordersPerCode = new List<Order>();
+
+            foreach (Order o in ctx.Orderlines)
+            {
+                if (o.WishlistCode == code)
+                {
+                    ordersPerCode.Add(o);
+                }
+            }
+            return ordersPerCode;
+        }
         //Een order toevoegen aan de database.
         public void AddOrder(float totalPrice, int amount, string wishlistCode, int itemId)
         {

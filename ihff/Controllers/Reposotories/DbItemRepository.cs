@@ -11,7 +11,21 @@ namespace ihff.Controllers
     public class DbItemRepository : IItemRepository
     {
         private IHFFdatabasecontext ctx = new IHFFdatabasecontext();
-        
+
+        public List<Item> GetItems(int itemId)
+        {
+            List<Item> itemsPerId = new List<Item>();
+
+            foreach (Item i in ctx.Items)
+            {
+                if (i.ItemId == itemId)
+                {
+                    itemsPerId.Add(i);
+                }
+            }
+
+            return itemsPerId;
+        }
         public IEnumerable<Item> GetAllItems()
         {
             return ctx.Items;
