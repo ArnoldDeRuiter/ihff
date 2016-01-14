@@ -5,17 +5,7 @@
 }
 <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/filmObject.css")" rel="stylesheet" type="text/css" />
-<div id="div-center">
 
-    <div id="welcome-intro">
-        <h1>Welcome to</h1>
-        <h3>the website of IHFF</h3>
-    </div>
-
-
-
-
-    <div id="left-div-container">
         <div>
             <h3>@Model.Name</h3>
 
@@ -36,14 +26,5 @@
             }
 
         </div>
-    </div>
 
 
-
-
-    <div id="right-div-container">
-        @Html.Partial("~/Views/Wishlist/index.cshtml", null)
-    </div>
-    <div id="footer-div-container">
-    </div>
-</div>
