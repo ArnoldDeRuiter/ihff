@@ -39,7 +39,7 @@
                             <div class="film-block">
                                 <div class="film-span-container">
                                     <p><span class="film-block-title nowrap">@Html.ActionLink(item.Name, "Detail", "Item", new { ItemId = item.ItemId }, null)</span></p>
-                                    <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">@string.Format("{0}", item.DateBegin.DayOfWeek + " " + item.DateBegin.ToString("HH:mm") + " - " + item.DateEnd.ToString("HH:mm"))</span></p> <!--Saturday 17.00 - 19.30-->
+                                    <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">@string.Format("{0}", item.DateBegin.DayOfWeek + " " + item.DateBegin.ToString("HH:mm") + " - " + item.DateEnd.ToString("HH:mm"))</span></p>
                                 </div>
                             </div>
                             @using (Html.BeginForm("addWish", "Wishlist", new { Id = item.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", item.ItemId) }))

@@ -302,6 +302,7 @@
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Item\Detail.cshtml" />
     <Content Include="Views\Item\DinerDetailParital.cshtml" />
+    <Content Include="Views\FF\Index.cshtml" />
     <None Include="Views\Item\MovieDetailParital.cshtml" />
     <Content Include="Views\Item\SpecialDetailParital.cshtml" />
     <Content Include="Views\Reservation\Create.cshtml" />
@@ -312,7 +313,6 @@
     <Content Include="Views\Reservation\PaymentSucces.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\FF\" />
     <Folder Include="Views\Movies\" />
   </ItemGroup>
   <ItemGroup>

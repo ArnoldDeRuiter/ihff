@@ -15,9 +15,9 @@ namespace ihff.Controllers
         public ActionResult Index(int Id)
         {
             Item item = itemRepository.GetItem(Id);
+            IEnumerable<Item> diners = itemRepository.GetDinerDay(item.DateBegin);
 
-
-            return View();
+            return View(diners);
         }
     }
 }
