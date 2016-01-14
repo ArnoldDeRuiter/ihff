@@ -9,10 +9,10 @@ namespace ihff.Controllers.Reposotories
 {
     interface IOrderRepository
     {
-        void AddOrder(float totalPrice, int amount, string wishlistCode, int itemId);
+        void AddOrder(double totalPrice, int amount, string wishlistCode, int itemId, int? itemId2);
 
         bool checkAvailability(int amount, int itemId);
 
-        List<Order> GetOrders(string code);
+        IEnumerable<Order> GetOrders(string code);
     }
 }

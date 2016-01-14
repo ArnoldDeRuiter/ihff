@@ -22,7 +22,7 @@ namespace ihff.Controllers
         {
             string code = Session["code"].ToString();
 
-            List<Order> allOrders = order.GetOrders(code);
+            IEnumerable<Order> allOrders = order.GetOrders(code);
 
             List<Item> allItems = new List<Item>();
 

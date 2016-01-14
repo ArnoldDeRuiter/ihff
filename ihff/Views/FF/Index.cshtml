@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Food";
+    Item item1 = ViewBag.item1;
 }
 @using ihff.Models;
 @model IEnumerable<Item>
@@ -27,9 +28,9 @@
                             <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">@string.Format("{0}", item.DateBegin.DayOfWeek + " " + item.DateBegin.ToString("HH:mm") + " - " + item.DateEnd.ToString("HH:mm"))</span></p>
                         </div>
                     </div>
-                    @using (Html.BeginForm("addWish", "Wishlist", new { Id = item.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", item.ItemId) }))
+                    @using (Html.BeginForm("AddFFTicket", "FF", new { Id2 = item.ItemId, Item1 = item1}, FormMethod.Post, new { Id2 = string.Format("form{0}", item.ItemId) }))
                     {
-                        <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", item.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+                        <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", item.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Food & Film ticket</span></div>
                     }
                 </div>
             </li>

@@ -13,9 +13,12 @@ namespace ihff.Controllers.Reposotories
         private IHFFdatabasecontext ctx = new IHFFdatabasecontext();
         private IItemRepository itemRepository = new DbItemRepository();
 
-        public List<Order> GetOrders(string code)
+        public IEnumerable<Order> GetOrders(string code)
         {
-            List<Order> ordersPerCode = new List<Order>();
+            return ctx.Orderlines.Where(o => o.WishlistCode == code);
+
+            //weggehaald en bovenstaande voor gebruikt.
+ /*           List<Order> ordersPerCode = new List<Order>();
 
             foreach (Order o in ctx.Orderlines)
             {
@@ -24,16 +27,18 @@ namespace ihff.Controllers.Reposotories
                     ordersPerCode.Add(o);
                 }
             }
-            return ordersPerCode;
+            return ordersPerCode; */
         }
+
         //Een order toevoegen aan de database.
-        public void AddOrder(float totalPrice, int amount, string wishlistCode, int itemId)
+        public void AddOrder(double totalPrice, int amount, string wishlistCode, int itemId, int? itemId2)
         {
             Order order = new Order();
             order.TotalPrice = totalPrice;
             order.Amount = amount;
             order.WishlistCode = wishlistCode;
             order.ItemId = itemId;
+            order.ItemId2 = itemId2;
 
             ctx.Orderlines.Add(order);
             ctx.SaveChanges();

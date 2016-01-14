@@ -50,17 +50,6 @@ namespace ihff.Controllers
         public Wishlist RetrieveWishlist(string code)
         {
             return ctx.Wishlists.FirstOrDefault(w => w.WishlistCode == code);
- /*           Wishlist wishlist = null;
-
-            foreach (Wishlist w in ctx.Wishlists)
-            {
-                if (w.WishlistCode == code)
-                {
-                    wishlist = w;
-                }
-            } 
-
-            return wishlist; */
         }
     }
 }

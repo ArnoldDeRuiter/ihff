@@ -14,7 +14,8 @@ namespace ihff.Controllers
     {
         private IWishlistRepository wishlistRepository = new DbWishlistRepository();
         private IItemRepository itemRepository = new DbItemRepository();
-        
+        private IHFFdatabasecontext db = new IHFFdatabasecontext();
+
         // GET: Wishlist
         public ActionResult Index()
         {
@@ -108,7 +109,7 @@ namespace ihff.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
-        private IHFFdatabasecontext db = new IHFFdatabasecontext();
+
         [HttpPost]
         [ValidateAntiForgeryToken]
                                     //Code wishlist    //Name //ID  //COUNT //totPrijs
