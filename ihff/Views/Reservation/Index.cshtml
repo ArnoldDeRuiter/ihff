@@ -3,40 +3,58 @@
 
 @{
     ViewBag.Title = "Index";
-    List<ihff.Models.OrderItemCombined> allCombined = ViewBag.AllCombined;
+    //  List<ihff.Models.OrderItemCombined> allCombined =
     //ViewBag.allItems = allItems;
     // Html.DisplayFor(model => model.)
 }
 <h2> Reservations </h2>
-
-@{
-    foreach (ihff.Models.OrderItemCombined i in allCombined)
-    {
-        string typeFolder = "";
-
-        if (i.EventType == 1)
+<table>
+    @{
+        foreach (ihff.Models.OrderItemCombined i in Model)
         {
-            typeFolder = "films";
+            string typeFolder = "";
 
-        }
+            if (i.EventType == 1)
+            {
+                typeFolder = "films";
+
+            }
 
             else if (i.EventType == 2)
             {
                 typeFolder = "specials";
             }
 
-                else
-                {
-                    typeFolder = "diners";
-                }
+            else
+            {
+                typeFolder = "diners";
+            }
 
-        <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", i.Image)' class="item-icon" />
+            <tr>
+                <td><img src='@string.Format("../Content/img/" + typeFolder + "/{0}", i.Image)' class="item-icon" /></td>
+                <td>Naam :@i.Name</td>
+            </tr>
+
+            <tr>
+                <td>Locatie :@i.Location</td>
+            </tr>
+            <tr>
+                <td>Aanvang: @i.DateBegin</td>
+                <td> - @i.DateEnd</td>
+            </tr>
+
+            <tr>
+                <td>Prijs : @i.Price -</td>
+                <td> @i.Amount -</td>
+                <td> @i.TotalPrice</td>
+            </tr>
+        }
+
 
     }
 
-}
 
-<!-- foreach (var s in ordersMetItems)
-{
-    <p> //s.Ammount </p>
-} -->
+    <!-- foreach (var s in ordersMetItems)
+    {
+        <p> //s.Ammount </p>
+    } -->

@@ -14,7 +14,7 @@ namespace ihff.Controllers.Reposotories
         public List<Order> GetOrders(string code)
         {
             List<Order> ordersPerCode = ctx.Orderlines.Where(o => o.WishlistCode == code).ToList();
-            
+
             //foreach (Order o in ctx.Orderlines)
             //{
 
@@ -26,17 +26,17 @@ namespace ihff.Controllers.Reposotories
             return ordersPerCode;
         }
 
-        public List<Item> GetItems(int itemId)
+        public Item GetItem(int itemId)
         {
-            List<Item> itemsPerId = new List<Item>();
+            Item itemsPerId = ctx.Items.Where(o => o.ItemId == itemId).Single<Item>();
 
-            foreach (Item i in ctx.Items)
-            {
-                if (i.ItemId == itemId)
-                {
-                    itemsPerId.Add(i);
-                }
-            }
+            //foreach (Item i in ctx.Items)
+            //{
+            //    if (i.ItemId == itemId)
+            //    {
+            //        itemsPerId = i;
+            //    }
+            //}
 
             return itemsPerId;
         }

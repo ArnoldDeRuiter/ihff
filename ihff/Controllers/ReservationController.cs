@@ -18,43 +18,48 @@ namespace ihff.Controllers
 
         // GET: Reservation
         public ActionResult Index()
-        {            
+        {
             string code = Session["code"].ToString();
-            
+
             // orders ophalen
             List<Order> allOrders = orderItem.GetOrders(code);
 
             List<Item> allItems = new List<Item>();
-     
+
             OrderItemCombined combined = new OrderItemCombined();
 
             List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
-            //arnoldsmoederwashere
+
             foreach (Order o in allOrders)
             {
-                allItems = orderItem.GetItems(o.ItemId);
+                Item q = orderItem.GetItem(o.ItemId);
+                if (!allItems.Contains<Item>(q))
+                {
+                    allItems.Add(q);
+                    combined.ItemId = o.ItemId;
+                    combined.Amount = o.Amount;
+                    combined.TotalPrice = o.TotalPrice;
+                    combined.WishlistCode = o.WishlistCode;
+                }
 
-                combined.ItemId = o.ItemId;
-                combined.Amount = o.Amount;
-                combined.TotalPrice = o.TotalPrice;
-                combined.WishlistCode = o.WishlistCode;
+                foreach (Item i in allItems)
+                {
+
+                    combined.DateBegin = i.DateBegin;
+                    combined.DateEnd = i.DateEnd;
+                    combined.EventType = i.EventType;
+                    combined.Image = i.Image;
+                    combined.ItemId = i.ItemId;
+                    combined.Location = i.Location;
+                    combined.MaxAvailabillity = i.MaxAvailabillity;
+                    combined.Name = i.Name;
+                    combined.Price = i.Price;
+
+                }
 
                 allCombined.Add(combined);
             }
 
-            foreach (Item i in allItems)
-            {
-                combined.DateBegin = i.DateBegin;
-                combined.DateEnd = i.DateEnd;
-                combined.EventType = i.EventType;
-                combined.Image = i.Image;
-                combined.ItemId = i.ItemId;
-                combined.Location = i.Location;
-                combined.MaxAvailabillity = i.MaxAvailabillity;
-                combined.Name = i.Name;
-                combined.Price = i.Price;
-                allCombined.Add(combined);
-            }
 
             //foreach (var l in masterTuple)
             //{
@@ -64,8 +69,8 @@ namespace ihff.Controllers
 
             //ViewBag.allOrders = allOrders;
             //ViewBag.allItems = allItems;
-            ViewBag.AllCombined = allCombined;
-            
+            //ViewBag.AllCombined = allCombined;
+
             //arnie code
             //var samen = from q in allOrders
             //            group q by q.ItemId into g
