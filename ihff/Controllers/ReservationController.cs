@@ -29,7 +29,7 @@ namespace ihff.Controllers
             OrderItemCombined combined = new OrderItemCombined();
 
             List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
-
+            //arnoldsmoederwashere
             foreach (Order o in allOrders)
             {
                 allItems = orderItem.GetItems(o.ItemId);
