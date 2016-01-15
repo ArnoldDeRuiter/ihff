@@ -26,36 +26,33 @@ namespace ihff.Controllers
 
             List<Item> allItems = new List<Item>();
 
-            OrderItemCombined combined = new OrderItemCombined();
+            
 
             List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
 
             foreach (Order o in allOrders)
             {
                 Item q = orderItem.GetItem(o.ItemId);
-                if (!allItems.Contains<Item>(q))
-                {
-                    allItems.Add(q);
-                    combined.ItemId = o.ItemId;
-                    combined.Amount = o.Amount;
-                    combined.TotalPrice = o.TotalPrice;
-                    combined.WishlistCode = o.WishlistCode;
-                }
 
-                foreach (Item i in allItems)
-                {
+                OrderItemCombined combined = new OrderItemCombined();
+                //Order
+                combined.ItemId = o.ItemId;
+                combined.Amount = o.Amount;
+                combined.TotalPrice = o.TotalPrice;
+                combined.WishlistCode = o.WishlistCode;
 
-                    combined.DateBegin = i.DateBegin;
-                    combined.DateEnd = i.DateEnd;
-                    combined.EventType = i.EventType;
-                    combined.Image = i.Image;
-                    combined.ItemId = i.ItemId;
-                    combined.Location = i.Location;
-                    combined.MaxAvailabillity = i.MaxAvailabillity;
-                    combined.Name = i.Name;
-                    combined.Price = i.Price;
+                //Item
+                combined.DateBegin = q.DateBegin;
+                combined.DateEnd = q.DateEnd;
+                combined.EventType = q.EventType;
+                combined.Image = q.Image;
+                //combined.ItemId = i.ItemId;
+                combined.Location = q.Location;
+                combined.MaxAvailabillity = q.MaxAvailabillity;
+                combined.Name = q.Name;
+                combined.Price = q.Price;
 
-                }
+                
 
                 allCombined.Add(combined);
             }
