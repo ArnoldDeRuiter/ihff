@@ -25,8 +25,7 @@ namespace ihff.Controllers
         Models.Item selMovie;
         [HttpPost]
         public ActionResult addWish(int id)
-        {
-            
+        {   
             if (ModelState.IsValid)
             {
                 //Code
@@ -101,9 +100,7 @@ namespace ihff.Controllers
                     wishList.Add(itempje);
                 }                
             }
-
             
-
             Session["wishList"] = wishList;
 
             return Redirect(Request.UrlReferrer.ToString());
@@ -136,6 +133,7 @@ namespace ihff.Controllers
                     double? tTotPrijs = t.Item4;
                     Order o = new Order();
                     o.ItemId = tID;
+                    o.Amount = t.Item3;
                     o.TotalPrice = tTotPrijs;
                     o.WishlistCode = Code;
                     db.Orderlines.Add(o);

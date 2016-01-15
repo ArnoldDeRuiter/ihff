@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using ihff.Controllers.Reposotories;
@@ -13,15 +13,16 @@ namespace ihff.Controllers.Reposotories
         private IHFFdatabasecontext ctx = new IHFFdatabasecontext();
         public List<Order> GetOrders(string code)
         {
-            List<Order> ordersPerCode = new List<Order>();
+            List<Order> ordersPerCode = ctx.Orderlines.Where(o => o.WishlistCode == code).ToList();
+            
+            //foreach (Order o in ctx.Orderlines)
+            //{
 
-            foreach (Order o in ctx.Orderlines)
-            {
-                if (o.WishlistCode == code)
-                {
-                    ordersPerCode.Add(o);
-                }
-            }
+            //    if (o.WishlistCode == code)
+            //    {
+            //        ordersPerCode.Add(o);
+            //    }
+            //}
             return ordersPerCode;
         }
 

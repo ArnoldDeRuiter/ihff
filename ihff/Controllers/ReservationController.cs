@@ -20,13 +20,12 @@ namespace ihff.Controllers
         public ActionResult Index()
         {
             string code = Session["code"].ToString();
-
-            //List<Tuple<double?, int, int, int, string, string, string,Tuple<double?, DateTime, DateTime, int, string, int>>> masterTuple;
-
+            
+            // orders ophalen
             List<Order> allOrders = orderItem.GetOrders(code);
 
             List<Item> allItems = new List<Item>();
-
+     
             OrderItemCombined combined = new OrderItemCombined();
 
             List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
@@ -63,8 +62,8 @@ namespace ihff.Controllers
             //}
 
 
-            ViewBag.allOrders = allOrders;
-            ViewBag.allItems = allItems;
+            //ViewBag.allOrders = allOrders;
+            //ViewBag.allItems = allItems;
             ViewBag.AllCombined = allCombined;
             
             //arnie code

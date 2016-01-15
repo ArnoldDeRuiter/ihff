@@ -3,32 +3,38 @@
 
 @{
     ViewBag.Title = "Index";
-    List<ihff.Models.OrderItemCombined> allCombined = ViewBag.allCombined;
+    List<ihff.Models.OrderItemCombined> allCombined = ViewBag.AllCombined;
     //ViewBag.allItems = allItems;
     // Html.DisplayFor(model => model.)
 }
 <h2> Reservations </h2>
 
 @{
-    foreach (ihff.Models.OrderItemCombined i in Model)
+    foreach (ihff.Models.OrderItemCombined i in allCombined)
     {
         string typeFolder = "";
-        switch ((int)i.EventType)
+
+        if (i.EventType == 1)
+        {
+            typeFolder = "films";
+
+        }
+
+            else if (i.EventType == 2)
+            {
+                typeFolder = "specials";
+            }
+
+                else
                 {
-                    case 1:
-                        typeFolder = "films";
-                        break;
-                    case 2:
-                        typeFolder = "specials";
-                        break;
-                    case 3:
-                        typeFolder = "diners";
-                        break;
-                    default:
-                        break;
+                    typeFolder = "diners";
                 }
+
         <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", i.Image)' class="item-icon" />
+
     }
+
+}
 }
 <!-- foreach (var s in ordersMetItems)
 {
