@@ -29,7 +29,7 @@ namespace ihff.Controllers
             double price = 67.99;
             string wishCode = (string)Session["code"];
 
-            orderRepository.AddOrder(price, /*amount*/, wishCode, itemId, itemId2);   // Ben ermee bezig maar ga even commiten =D
+            //orderRepository.AddOrder(price, /*amount*/, wishCode, itemId, itemId2);   // Ben ermee bezig maar ga even commiten =D
 
             return RedirectToAction("Index", "Home");
         }

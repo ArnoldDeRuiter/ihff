@@ -26,17 +26,17 @@ namespace ihff.Controllers.Reposotories
             return ordersPerCode;
         }
 
-        public List<Item> GetItems(int itemId)
+        public Item GetItem(int itemId)
         {
-            List<Item> itemsPerId = new List<Item>();
+            Item itemsPerId = ctx.Items.Where(o => o.ItemId == itemId).Single<Item>();
 
-            foreach (Item i in ctx.Items)
-            {
-                if (i.ItemId == itemId)
-                {
-                    itemsPerId.Add(i);
-                }
-            }
+            //foreach (Item i in ctx.Items)
+            //{
+            //    if (i.ItemId == itemId)
+            //    {
+            //        itemsPerId = i;
+            //    }
+            //}
 
             return itemsPerId;
         }

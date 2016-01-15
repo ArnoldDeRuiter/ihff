@@ -10,6 +10,6 @@ namespace ihff.Controllers.Reposotories
     interface IOrderItemRepository
     {
         List<Order> GetOrders(string code);
-        List<Item> GetItems(int itemId);
+        Item GetItem(int itemId);
     }
 }
