@@ -130,7 +130,6 @@ namespace ihff.Controllers
                     db.SaveChanges();
                 }
 
-
                 foreach (var t in lstTuple)
                 {
                     int tID = t.Item2;

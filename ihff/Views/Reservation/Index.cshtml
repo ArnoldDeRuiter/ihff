@@ -1,15 +1,35 @@
-﻿@model IEnumerable<ihff.Models.OrderItemCombined.OrderItem>
+﻿@model IEnumerable<ihff.Models.OrderItemCombined>
 
-@{List<Order> allorders = new List<Order>(); }
+
 @{
     ViewBag.Title = "Index";
-
-    ViewBag.allOrders = allorders;
+    List<ihff.Models.OrderItemCombined> allCombined = ViewBag.allCombined;
     //ViewBag.allItems = allItems;
+    // Html.DisplayFor(model => model.)
 }
-
 <h2> Reservations </h2>
 
+@{
+    foreach (ihff.Models.OrderItemCombined i in Model)
+    {
+        string typeFolder = "";
+        switch ((int)i.EventType)
+                {
+                    case 1:
+                        typeFolder = "films";
+                        break;
+                    case 2:
+                        typeFolder = "specials";
+                        break;
+                    case 3:
+                        typeFolder = "diners";
+                        break;
+                    default:
+                        break;
+                }
+        <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", i.Image)' class="item-icon" />
+    }
+}
 <!-- foreach (var s in ordersMetItems)
 {
     <p> //s.Ammount </p>

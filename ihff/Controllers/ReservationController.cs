@@ -21,17 +21,51 @@ namespace ihff.Controllers
         {
             string code = Session["code"].ToString();
 
-            IEnumerable<Order> allOrders = orderItem.GetOrders(code);
+            //List<Tuple<double?, int, int, int, string, string, string,Tuple<double?, DateTime, DateTime, int, string, int>>> masterTuple;
+
+            List<Order> allOrders = orderItem.GetOrders(code);
 
             List<Item> allItems = new List<Item>();
+
+            OrderItemCombined combined = new OrderItemCombined();
+
+            List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
 
             foreach (Order o in allOrders)
             {
                 allItems = orderItem.GetItems(o.ItemId);
+
+                combined.ItemId = o.ItemId;
+                combined.Amount = o.Amount;
+                combined.TotalPrice = o.TotalPrice;
+                combined.WishlistCode = o.WishlistCode;
+
+                allCombined.Add(combined);
             }
-            
+
+            foreach (Item i in allItems)
+            {
+                combined.DateBegin = i.DateBegin;
+                combined.DateEnd = i.DateEnd;
+                combined.EventType = i.EventType;
+                combined.Image = i.Image;
+                combined.ItemId = i.ItemId;
+                combined.Location = i.Location;
+                combined.MaxAvailabillity = i.MaxAvailabillity;
+                combined.Name = i.Name;
+                combined.Price = i.Price;
+                allCombined.Add(combined);
+            }
+
+            //foreach (var l in masterTuple)
+            //{
+
+            //}
+
+
             ViewBag.allOrders = allOrders;
             ViewBag.allItems = allItems;
+            ViewBag.AllCombined = allCombined;
             
             //arnie code
             //var samen = from q in allOrders
@@ -49,7 +83,7 @@ namespace ihff.Controllers
             //}
             //ViewBag.ordersMetItems = samen;
 
-            return View();
+            return View(allCombined);
         }
 
         // GET: Reservation/Details/5
