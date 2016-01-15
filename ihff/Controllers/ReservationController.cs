@@ -18,7 +18,7 @@ namespace ihff.Controllers
 
         // GET: Reservation
         public ActionResult Index()
-        {
+        {            
             string code = Session["code"].ToString();
             
             // orders ophalen

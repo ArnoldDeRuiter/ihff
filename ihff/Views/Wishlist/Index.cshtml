@@ -5,7 +5,14 @@
 <link href="@Url.Content("~/Content/wishlist.css")" rel="stylesheet" type="text/css" />
 
 <!--Wishlist Partial HTML pagina-->
-
+<script>
+function updateAmount(id) {
+    var amount = $('#' + id).val();
+    $("#hiddenUpdateAmountVal").val(amount);
+    $("#hiddenUpdateIDVal").val(id);
+    $("#hiddenUpdateForm").submit();
+}
+</script>
 
 
 <div>
@@ -19,14 +26,7 @@
                 let count = g.Count()
                 select new { Id = g.Key, Count = count, All = from a in g select a };   //.Take(sessionList.Select(u => u))};
         
-<script>
-function updateAmount(id) {
-    var amount = $('#' + id).val();
-    $("#hiddenUpdateAmountVal").val(amount);
-    $("#hiddenUpdateIDVal").val(id);
-    $("#hiddenUpdateForm").submit();
-}
-</script>
+
 
         using (Html.BeginForm("wishUpdateOrder", "Wishlist", FormMethod.Post, new { Id = string.Format("hiddenUpdateForm") }))
         {

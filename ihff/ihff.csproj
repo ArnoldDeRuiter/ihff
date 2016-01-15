@@ -171,8 +171,12 @@
     <Compile Include="Controllers\FFController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Reposotories\DbOrderItemRepository.cs" />
+    <Compile Include="Controllers\Reposotories\DbReservationRepository.cs" />
     <Compile Include="Controllers\Reposotories\DbWishlistRepository.cs" />
     <Compile Include="Controllers\Reposotories\DbOrderRepository.cs" />
+    <Compile Include="Controllers\Reposotories\IOrderItemRepository.cs" />
+    <Compile Include="Controllers\Reposotories\IReservationRepository.cs" />
     <Compile Include="Controllers\Reposotories\IWishlistRepository.cs" />
     <Compile Include="Controllers\Reposotories\IItemRepository.cs" />
     <Compile Include="Controllers\Reposotories\DbItemRepository.cs" />
@@ -191,6 +195,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MVCDatabaseContext.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItemCombined.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\OrderWishlist.cs" />
     <Compile Include="Models\Wishlist.cs" />
