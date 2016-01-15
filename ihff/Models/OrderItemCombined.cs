@@ -26,5 +26,12 @@ namespace ihff.Models
         public int MaxAvailabillity { get; set; }
         public string Image { get; set; }
         public int EventType { get; set; }
+        public int? Year { get; set; }
+        public string Director { get; set; }
+        public string Length { get; set; }
+        public string DescriptionNL { get; set; }
+        public string DescriptionENG { get; set; }
+        public string Cast { get; set; }
+        public int AgeClassification { get; set; }
     }
 }

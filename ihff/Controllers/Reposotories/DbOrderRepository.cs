@@ -31,7 +31,7 @@ namespace ihff.Controllers.Reposotories
         }
 
         //Een order toevoegen aan de database.
-        public void AddOrder(double totalPrice, int amount, string wishlistCode, int itemId, int? itemId2)
+        public void AddOrder(double? totalPrice, int amount, string wishlistCode, int itemId, int? itemId2)
         {
             Order order = new Order();
             order.TotalPrice = totalPrice;

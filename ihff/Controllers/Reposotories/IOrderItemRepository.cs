@@ -12,5 +12,8 @@ namespace ihff.Controllers.Reposotories
 
         List<Order> GetOrders(string code);
         Item GetItem(int itemId);
+
+        void AddOrder(Order order);
+        void RemoveOrder(int itemId);
     }
 }

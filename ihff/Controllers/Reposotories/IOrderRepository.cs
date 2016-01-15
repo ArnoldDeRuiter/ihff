@@ -9,7 +9,7 @@ namespace ihff.Controllers.Reposotories
 {
     interface IOrderRepository
     {
-        void AddOrder(double totalPrice, int amount, string wishlistCode, int itemId, int? itemId2);
+        void AddOrder(double? totalPrice, int amount, string wishlistCode, int itemId, int? itemId2);
 
         bool checkAvailability(int amount, int itemId);
 

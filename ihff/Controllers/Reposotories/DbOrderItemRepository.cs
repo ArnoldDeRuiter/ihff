@@ -40,5 +40,19 @@ namespace ihff.Controllers.Reposotories
 
             return itemsPerId;
         }
+
+        public void AddOrder(Order order)
+        {
+            ctx.Orderlines.Add(order);
+            ctx.SaveChanges();
+        }
+        
+
+        public void RemoveOrder(int itemId)
+        {
+            var itemToRemove = ctx.Orderlines.SingleOrDefault(x => x.ItemId == 1); //returns a single item.
+            ctx.Orderlines.Remove(itemToRemove);
+            ctx.SaveChanges();
+        }
     }
 }

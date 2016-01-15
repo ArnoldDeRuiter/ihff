@@ -34,7 +34,7 @@ namespace ihff.Controllers
             {
                 Item q = orderItem.GetItem(o.ItemId);
 
-                OrderItemCombined combined = new OrderItemCombined();
+                OrderItemCombined combined = new OrderItemCombined(); //< nogal cruciaal dat deze in je loop staat :3 
                 //Order
                 combined.ItemId = o.ItemId;
                 combined.Amount = o.Amount;
@@ -46,43 +46,13 @@ namespace ihff.Controllers
                 combined.DateEnd = q.DateEnd;
                 combined.EventType = q.EventType;
                 combined.Image = q.Image;
-                //combined.ItemId = i.ItemId;
                 combined.Location = q.Location;
                 combined.MaxAvailabillity = q.MaxAvailabillity;
                 combined.Name = q.Name;
                 combined.Price = q.Price;
-
                 
-
                 allCombined.Add(combined);
             }
-
-
-            //foreach (var l in masterTuple)
-            //{
-
-            //}
-
-
-            //ViewBag.allOrders = allOrders;
-            //ViewBag.allItems = allItems;
-            //ViewBag.AllCombined = allCombined;
-
-            //arnie code
-            //var samen = from q in allOrders
-            //            group q by q.ItemId into g
-            //            let item = g
-            //            select new { IID = g.Key, ITID = item, Itempjes = from a in allItems select a };
-
-            //foreach (var i in samen)
-            //{
-            //    int itemidorder = i.IID;
-            //    var a = i.Itempjes.ToList();
-            //    var itemitemid = a[0];
-            //    int itemID = itemitemid.ItemId;
-
-            //}
-            //ViewBag.ordersMetItems = samen;
 
             return View(allCombined);
         }

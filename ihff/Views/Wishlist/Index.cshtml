@@ -1,33 +1,23 @@
-﻿@{
+﻿@model IEnumerable<ihff.Models.OrderItemCombined>
+@{
     ViewBag.Title = "Wishlist";
 }
-@using ihff.Models;
 <link href="@Url.Content("~/Content/wishlist.css")" rel="stylesheet" type="text/css" />
 
 <!--Wishlist Partial HTML pagina-->
 <script>
-function updateAmount(id) {
-    var amount = $('#' + id).val();
-    $("#hiddenUpdateAmountVal").val(amount);
-    $("#hiddenUpdateIDVal").val(id);
-    $("#hiddenUpdateForm").submit();
-}
+    function updateAmount(id) {
+        var amount = $('#' + id).val();
+        $("#hiddenUpdateAmountVal").val(amount);
+        $("#hiddenUpdateIDVal").val(id);
+        $("#hiddenUpdateForm").submit();
+    }
 </script>
 
 
 <div>
     @if (Session["wishList"] != null)
     {
-        string Code = Session["code"].ToString();
-        double? totPrijs = 0.0;// = Session["totalPrijs"] as Double?;
-        List<Item> sessionList = Session["wishList"] as List<Item>;
-        var q = from x in sessionList
-                group x by x.ItemId into g
-                let count = g.Count()
-                select new { Id = g.Key, Count = count, All = from a in g select a };   //.Take(sessionList.Select(u => u))};
-        
-
-
         using (Html.BeginForm("wishUpdateOrder", "Wishlist", FormMethod.Post, new { Id = string.Format("hiddenUpdateForm") }))
         {
             @Html.AntiForgeryToken()
@@ -35,25 +25,19 @@ function updateAmount(id) {
             <input type="hidden" name="hiddenUpdateIDVal" id="hiddenUpdateIDVal" />
         }
 
-
-    @:<p><h4>Wishlist</h4></p>
-
-        List<Tuple<string, int, int, double?>> tLijst = new List<Tuple<string, int, int, double?>>(); //met alles zoals wordt geshowed.. oja nog wel ff prijs
-
-        foreach (var i in q)
+        @:<p><h4>Wishlist</h4></p>
+        
+        double? totPrijs = 0.0;
+        string Code = Session["code"].ToString();
+        foreach (ihff.Models.OrderItemCombined i in Model)
         {
-            var all = i.All.ToList();
-            //int index = q.Select((v, z) => new { v = v, index = z }).First(o => o.v.Id == i.Id).index;
-            var a = all[0];
-
-            double? prijsItem = ((double?)a.Price * (double?)i.Count);
-            totPrijs += ((double?)a.Price * (double?)i.Count);
-            string lijn = (a.Name + " " + i.Count + "x");
+            totPrijs += ((double?)i.Price * (double?)i.Amount);
+            string lijn = (i.Name + " " + i.Amount + "x");
             string typeFolder = "";
 
             <div class="item-block">
-                
-                @switch ((int)a.EventType)
+
+                @switch ((int)i.EventType)
                 {
                     case 1:
                         typeFolder = "films";
@@ -67,45 +51,26 @@ function updateAmount(id) {
                     default:
                         break;
                 }
-                <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", a.Image)' class="item-icon" />
+                <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", i.Image)' class="item-icon" />
                 <div class="item-span-container">
 
-                    <p><span class="item-block-title nowrap">@Html.ActionLink(a.Name, "Detail", "Item", new { ItemId = a.ItemId }, null)</span><span class="item-block-amount nowrap">€@prijsItem ,- <input class="item-block-number" id="@a.ItemId" onchange="updateAmount(@a.ItemId);" type="number" max="50" value="@i.Count" /></span></p>
-                    <p><span class="item-block-day nowrap">@string.Format("{0}", a.DateBegin.DayOfWeek+" ")</span><span class="item-block-time nowrap">@string.Format("{0}", a.DateBegin.ToString("HH:mm") + " - " + a.DateEnd.ToString("HH:mm"))</span></p> <!--Saturday 17.00 - 19.30-->
+                    <p><span class="item-block-title nowrap">@Html.ActionLink((string)i.Name, "Detail", "Item", new { ItemId = i.ItemId }, null)</span><span class="item-block-amount nowrap">€@(i.Price * i.Amount) ,- <input class="item-block-number" id="@i.ItemId" onchange="updateAmount(@i.ItemId);" type="number" max="50" value="@i.Amount" /></span></p>
+                    <p><span class="item-block-day nowrap">@string.Format("{0}", i.DateBegin.DayOfWeek + " ")</span><span class="item-block-time nowrap">@string.Format("{0}", i.DateBegin.ToString("HH:mm") + " - " + i.DateEnd.ToString("HH:mm"))</span></p> <!--Saturday 17.00 - 19.30-->
 
                 </div>
             </div>
-
-
-            /*
-            @:<p class="wishp">
-            @lijn;
-            
-                @:<h3 class="wishh2">
-                @Html.ActionLink(
-                " ×",                                                     // linkText
-                "deleteWishlistItem",                                    // actionName
-                "Wishlist",                                             // routeValues
-                new { i.Id },
-                null
-                )
-                @:</h3>
-            @:</p>
-            */
-            Tuple<string, int, int, double?> tTuple = new Tuple<string, int, int, double?>(a.Name, i.Id, i.Count, totPrijs);
-            tLijst.Add(tTuple);
-            
         }
 
-        <hr id="wishHR" />
-        @:<p class="pImportantLine"><b>Total Price: </b>€ @string.Format("{0}",((double?)totPrijs)) ,-</p>
-        
+          <hr id="wishHR" />
+        @:<p class="pImportantLine"><b>Total Price: </b>€ @string.Format("{0}", ((double?)totPrijs)) ,-</p>
+                        
         @:<p class="pImportantLine"><b>Code: </b>@string.Format("{0}", Code)</p>
 
+        
         //plaats code in wishlist tabel
         //maak orderline aan en plaats code ook daar in
-        Session["tupleLijst"] = tLijst;                     //, tupleLijst = tLijst
-        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code }, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
+        //Session["tupleLijst"] = tLijst;                     //, tupleLijst = tLijst
+        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code, }, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
         {
             @Html.AntiForgeryToken()
             <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", Code)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Place Order</span></div>

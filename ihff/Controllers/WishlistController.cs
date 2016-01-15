@@ -15,11 +15,59 @@ namespace ihff.Controllers
         private IWishlistRepository wishlistRepository = new DbWishlistRepository();
         private IItemRepository itemRepository = new DbItemRepository();
         private IHFFdatabasecontext db = new IHFFdatabasecontext();
+        //nee        
+        private IOrderItemRepository orderItem = new DbOrderItemRepository();
+        //ja
+        private IOrderRepository orderLine = new DbOrderRepository();
 
         // GET: Wishlist
         public ActionResult Index()
         {
-            return View();
+            List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
+            //Code
+            
+            List<Item> sessionList = Session["wishList"] as List<Item>;
+            if (sessionList != null)
+            {
+                string Code = Session["code"].ToString();
+                var q = from x in sessionList
+                        group x by x.ItemId into g
+                        let count = g.Count()
+                        select new { Id = g.Key, Amount = count, All = from a in g select a };
+
+                foreach (var i in q)
+                {
+                    var a = i.All.ToList()[0];
+                    double? prijsItem = ((double?)a.Price * (double?)i.Amount);
+
+                    OrderItemCombined combined = new OrderItemCombined();
+                    //Order
+                    combined.ItemId = a.ItemId;
+                    combined.Amount = i.Amount;
+                    combined.TotalPrice = prijsItem;
+                    combined.WishlistCode = Code;
+
+                    //Item
+                    combined.AgeClassification = a.AgeClassification;
+                    combined.Cast = a.Cast;
+                    combined.DescriptionENG = a.DescriptionENG;
+                    combined.DescriptionNL = a.DescriptionNL;
+                    combined.Director = a.Director;
+                    combined.Length = a.Length;
+                    combined.Year = a.Year;
+                    combined.DateBegin = a.DateBegin;
+                    combined.DateEnd = a.DateEnd;
+                    combined.EventType = a.EventType;
+                    combined.Image = a.Image;
+                    //combined.ItemId = a.ItemId;
+                    combined.MaxAvailabillity = a.MaxAvailabillity;
+                    combined.Name = a.Name;
+                    combined.Price = a.Price;
+                    combined.Price = a.Price;
+                    allCombined.Add(combined);
+                }
+            }
+            return PartialView(allCombined);
         }
                 
         Models.Item selMovie;
@@ -34,7 +82,7 @@ namespace ihff.Controllers
                     string code = wishlistRepository.getTempCode();
                     Session["code"] = code;
                 }
-
+                
                 //Items
                 selMovie = itemRepository.GetItem(id);
                 List<Item> addedItems = new List<Item>();
