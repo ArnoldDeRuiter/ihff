@@ -23,7 +23,7 @@ namespace ihff.Controllers
             return View(diners);
         }
 
-        public ActionResult AddFFTicket(int Id1, int Id2)
+        public ActionResult AddFFTicket(int Id1, int Id2) //123
         {
            // Item food = itemRepository.GetItem(Id); Dit kan weg denk ik, toch niet nodig lol.
             double price = 67.99;
