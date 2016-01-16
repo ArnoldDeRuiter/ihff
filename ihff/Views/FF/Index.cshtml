@@ -30,11 +30,11 @@
                         </div>
                     </div>
 
-                    @using (Html.BeginForm("AddFFTicket", "FF", new { Id2 = item.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", item.ItemId) }))
+                    @using (Html.BeginForm("AddFFTicket", "FF", new { Id1 = item1.ItemId, Id2 = item.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", item.ItemId) }))
                     {
-                        //using (Html.BeginForm("wishReturningCode", "Wishlist", FormMethod.Post, new { Id = string.Format("formCReturningode") }))
-                        //{
-                            @Html.AntiForgeryToken()
+                        @Html.AntiForgeryToken()
+
+
                         <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", item.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Food & Film ticket</span></div>
                     }
                 </div>
