@@ -70,7 +70,7 @@ namespace ihff.Controllers
                 
         
         [HttpPost]
-        public ActionResult addWish(int id)
+        public ActionResult addWish(int id, int? id2)
         {   
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace ihff.Controllers
                  bool newItem = true;
                 foreach (Order o in allOrders)
                 {
-                    if (o.ItemId == id) {//jeroen? ItemId2
+                    if (o.ItemId == id) {
                         newItem = false;
                         db.Orderlines.Attach(o);
                         db.Entry(o).State = System.Data.Entity.EntityState.Modified;
@@ -110,13 +110,16 @@ namespace ihff.Controllers
                         Models.Item selItem = itemRepository.GetItem(id);
 
                         o.ItemId = id;
-                        //o.ItemId2 = null; //jeroen?
                         o.Amount = (o.Amount + 1);
                         o.TotalPrice = (o.Amount * selItem.Price);
                         o.WishlistCode = Code;
+                        if (id2 != null)
+                            o.ItemId2 = id2;
+                        else
+                            o.ItemId2 = null;
 
-                         //db.Orderlines.Add(o);
-                        db.SaveChanges();
+                            //db.Orderlines.Add(o);
+                            db.SaveChanges();
                     }
                 }
                 //Orderline nieuw
@@ -165,6 +168,7 @@ namespace ihff.Controllers
             o.Amount = (o.Amount + 1);
             o.TotalPrice = (o.Amount * selItem.Price);
             o.WishlistCode = Code;
+
 
             /*db.Orderlines.Add(o);
             db.SaveChanges();*/

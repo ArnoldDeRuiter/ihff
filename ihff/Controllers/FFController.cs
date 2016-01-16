@@ -12,6 +12,7 @@ namespace ihff.Controllers
     {
         private IItemRepository itemRepository = new DbItemRepository();
         private IOrderRepository orderRepository = new DbOrderRepository();
+        private WishlistController wishController = new WishlistController();
         // GET: FF
         public ActionResult Index(int Id)
         {
@@ -25,12 +26,11 @@ namespace ihff.Controllers
 
         public ActionResult AddFFTicket(int itemId, int itemId2)
         {
-           // Item food = itemRepository.GetItem(Id); Dit kan weg denk ik, toch niet nodig lol.
-            double price = 67.99;
-            string wishCode = (string)Session["code"];
+            //double price = 67.99;
+            //string wishCode = (string)Session["code"];
 
-            //orderRepository.AddOrder(price, /*amount*/, wishCode, itemId, itemId2);   // Ben ermee bezig maar ga even commiten =D
-
+            wishController.addWish(itemId, itemId2);
+            
             return RedirectToAction("Index", "Home");
         }
     }
