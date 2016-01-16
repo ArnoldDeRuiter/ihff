@@ -63,7 +63,6 @@ namespace ihff.Controllers
                     combined.MaxAvailabillity = a.MaxAvailabillity;
                     combined.Name = a.Name;
                     combined.Price = a.Price;
-                    combined.Price = a.Price;
                     allCombined.Add(combined);
                 }
             }
@@ -158,7 +157,7 @@ namespace ihff.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
                                     //Code wishlist    //Name //ID  //COUNT //totPrijs
-        public ActionResult wishOrder(string Code) //, List<Tuple<string, int, int, double?>> lstTuple
+        public ActionResult wishOrder(string Code, ihff.Models.OrderItemCombined  model) //, List<Tuple<string, int, int, double?>> lstTuple
         {
             List<Tuple<string, int, int, double?>> lstTuple = Session["tupleLijst"] as List<Tuple<string, int, int, double?>>;
             if (ModelState.IsValid)

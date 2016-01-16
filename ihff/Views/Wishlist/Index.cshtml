@@ -66,13 +66,44 @@
                         
         @:<p class="pImportantLine"><b>Code: </b>@string.Format("{0}", Code)</p>
 
-        
+
         //plaats code in wishlist tabel
         //maak orderline aan en plaats code ook daar in
         //Session["tupleLijst"] = tLijst;                     //, tupleLijst = tLijst
-        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code, }, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
+        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code, model = Model}, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
         {
-            @Html.AntiForgeryToken()
+            //Model.Count
+            //Model model = ihff.Models.OrderItemCombined as Model;
+            //ihff.Models.OrderItemCombined i in Model
+
+            /*@for (int i = 0; i < ihff.Models.OrderItemCombined.; i++)
+            {*/
+            foreach (ihff.Models.OrderItemCombined i in Model) {
+                //@Html.HiddenFor(e => i.Amount, new { @id = "some_property", @Name = "some_property" });
+                //Order
+                @Html.HiddenFor(a => i.ItemId);
+                @Html.HiddenFor(a => i.Amount);
+                @Html.HiddenFor(a => i.TotalPrice);
+                @Html.HiddenFor(a => i.WishlistCode);
+
+                //Item
+                @Html.HiddenFor(a => i.AgeClassification);
+                @Html.HiddenFor(a => i.Cast);
+                @Html.HiddenFor(a => i.DescriptionENG);
+                @Html.HiddenFor(a => i.DescriptionNL);
+                @Html.HiddenFor(a => i.Director);
+                @Html.HiddenFor(a => i.Length);
+                @Html.HiddenFor(a => i.Year);
+                @Html.HiddenFor(a => i.DateBegin);
+                @Html.HiddenFor(a => i.DateEnd);
+                @Html.HiddenFor(a => i.EventType);
+                @Html.HiddenFor(a => i.Image);
+                //@Html.HiddenFor(a => i.ItemId);
+                @Html.HiddenFor(a => i.MaxAvailabillity);
+                @Html.HiddenFor(a => i.Name);
+                @Html.HiddenFor(a => i.Price);
+            }
+            //@Html.AntiForgeryToken()
             <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", Code)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Place Order</span></div>
         }
     }
