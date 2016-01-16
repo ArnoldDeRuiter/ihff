@@ -16,7 +16,7 @@
 
 
 <div>
-    @if (Session["wishList"] != null)
+    @if (Session["code"] != null)
     {
         using (Html.BeginForm("wishUpdateOrder", "Wishlist", FormMethod.Post, new { Id = string.Format("hiddenUpdateForm") }))
         {
@@ -35,27 +35,28 @@
             string lijn = (i.Name + " " + i.Amount + "x");
             string typeFolder = "";
 
-            <div class="item-block">
+                <div class="item-block">
 
-                @switch ((int)i.EventType)
-                {
-                    case 1:
-                        typeFolder = "films";
-                        break;
-                    case 2:
-                        typeFolder = "specials";
-                        break;
-                    case 3:
-                        typeFolder = "diners";
-                        break;
-                    default:
-                        break;
-                }
+                    @switch ((int)i.EventType)
+                    {
+                        case 1:
+                            typeFolder = "films";
+                            break;
+                        case 2:
+                            typeFolder = "specials";
+                            break;
+                        case 3:
+                            typeFolder = "diners";
+                            break;
+                        default:
+                            break;
+                    }
+
                 <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", i.Image)' class="item-icon" />
                 <div class="item-span-container">
 
                     <p><span class="item-block-title nowrap">@Html.ActionLink((string)i.Name, "Detail", "Item", new { ItemId = i.ItemId }, null)</span><span class="item-block-amount nowrap">€@(i.Price * i.Amount) ,- <input class="item-block-number" id="@i.ItemId" onchange="updateAmount(@i.ItemId);" type="number" max="50" value="@i.Amount" /></span></p>
-                    <p><span class="item-block-day nowrap">@string.Format("{0}", i.DateBegin.DayOfWeek + " ")</span><span class="item-block-time nowrap">@string.Format("{0}", i.DateBegin.ToString("HH:mm") + " - " + i.DateEnd.ToString("HH:mm"))</span></p> <!--Saturday 17.00 - 19.30-->
+                    <p class="aangepasteP"><span class="item-block-day nowrap">@string.Format("{0}", i.DateBegin.DayOfWeek + " ")</span><span class="item-block-time nowrap">@string.Format("{0}", i.DateBegin.ToString("HH:mm") + " - " + i.DateEnd.ToString("HH:mm"))</span><span class="item-block-delete nowrap"><a>×</a></span></p> <!--Saturday 17.00 - 19.30-->
 
                 </div>
             </div>
@@ -65,50 +66,35 @@
         @:<p class="pImportantLine"><b>Total Price: </b>€ @string.Format("{0}", ((double?)totPrijs)) ,-</p>
                         
         @:<p class="pImportantLine"><b>Code: </b>@string.Format("{0}", Code)</p>
-
-
-        //plaats code in wishlist tabel
-        //maak orderline aan en plaats code ook daar in
-        //Session["tupleLijst"] = tLijst;                     //, tupleLijst = tLijst
-        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code, model = Model}, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
+        
+        using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code }, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
         {
-            //Model.Count
-            //Model model = ihff.Models.OrderItemCombined as Model;
-            //ihff.Models.OrderItemCombined i in Model
-
-            /*@for (int i = 0; i < ihff.Models.OrderItemCombined.; i++)
-            {*/
-            foreach (ihff.Models.OrderItemCombined i in Model) {
-                //@Html.HiddenFor(e => i.Amount, new { @id = "some_property", @Name = "some_property" });
-                //Order
-                @Html.HiddenFor(a => i.ItemId);
-                @Html.HiddenFor(a => i.Amount);
-                @Html.HiddenFor(a => i.TotalPrice);
-                @Html.HiddenFor(a => i.WishlistCode);
-
-                //Item
-                @Html.HiddenFor(a => i.AgeClassification);
-                @Html.HiddenFor(a => i.Cast);
-                @Html.HiddenFor(a => i.DescriptionENG);
-                @Html.HiddenFor(a => i.DescriptionNL);
-                @Html.HiddenFor(a => i.Director);
-                @Html.HiddenFor(a => i.Length);
-                @Html.HiddenFor(a => i.Year);
-                @Html.HiddenFor(a => i.DateBegin);
-                @Html.HiddenFor(a => i.DateEnd);
-                @Html.HiddenFor(a => i.EventType);
-                @Html.HiddenFor(a => i.Image);
-                //@Html.HiddenFor(a => i.ItemId);
-                @Html.HiddenFor(a => i.MaxAvailabillity);
-                @Html.HiddenFor(a => i.Name);
-                @Html.HiddenFor(a => i.Price);
+            int iteratie = 0;
+            foreach (ihff.Models.OrderItemCombined i in Model)
+            {
+                iteratie++;
+                @Html.HiddenFor(a => i.ItemId, new { id = "ItemId_" + iteratie, Name = "ItemId_" + iteratie });
+                @Html.HiddenFor(a => i.ItemId2, new { id = "ItemId2_" + iteratie, Name = "ItemId2_" + iteratie });
+                @Html.HiddenFor(a => i.Amount, new { id = "Amount_" + iteratie, Name = "Amount_" + iteratie });
+                @Html.HiddenFor(a => i.TotalPrice, new { id = "TotalPrice_" + iteratie, Name = "TotalPrice_" + iteratie });
+                @Html.HiddenFor(a => i.WishlistCode, new { id = "WishlistCode_" + iteratie, Name = "WishlistCode_" + iteratie });
             }
-            //@Html.AntiForgeryToken()
+                @Html.HiddenFor(a => iteratie, new { id = "Iteratie" + iteratie, Name = "Iteratie" });
+            @Html.AntiForgeryToken()
             <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", Code)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Place Order</span></div>
         }
     }
     else
     {
         <p class="p-title">This is your wishlist, it is empty at the moment. You can add @Html.ActionLink("movies", "Movies", "Home"), @Html.ActionLink("lectures", "Activities", "Home") and @Html.ActionLink("restaurants", "Food", "Home") to your wishlist by clicking the add to wishlist button.</p>
+
+        using (Html.BeginForm("wishReturningCode", "Wishlist", FormMethod.Post, new { Id = string.Format("formCReturningode") }))
+        {
+            @Html.AntiForgeryToken()
+                <p class="p-title">
+                    @Html.TextBox("Code", "Code", new { maxlength = "5" })
+                </p>
+                <div class="order-wishlist" onClick="document.getElementById(@string.Format("'formCReturningode'")).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Get Wishlist</span></div>
+        }
     }
 </div>

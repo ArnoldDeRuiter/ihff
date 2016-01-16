@@ -117,6 +117,22 @@ a.jeroenA:link {
 color: #BEC3C7;
 }
 
+.item-block-delete {
+    font-size: 1.8em;
+    vertical-align: -1px;
+    padding-left:1%;
+    
+    position:relative;
+    top:2px;
+
+    text-decoration: none !important;
+}
+.aangepasteP {
+    position:relative !important;
+    top:-13px !important;
+    margin:0;
+}
+
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {  
 
