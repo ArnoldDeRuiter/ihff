@@ -12,7 +12,7 @@ namespace ihff.Models
     public class Order
     {
         [Key]
-        //public int OrderlineId {get; set;}
+        public int OrderlineId {get; set;}
         public double? TotalPrice { get; set; }
         public int Amount { get; set; }
         public int ItemId { get; set; }

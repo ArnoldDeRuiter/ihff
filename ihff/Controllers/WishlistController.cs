@@ -30,7 +30,8 @@ namespace ihff.Controllers
             {
                 string Code = Session["code"].ToString();
 
-                List<Order> allOrders = orderItem.GetOrders(Code);
+                List<Order> allOrders = new List<Order>();
+                allOrders = orderItem.GetOrders(Code);
 
                 foreach (Order o in allOrders)
                 {
@@ -62,8 +63,8 @@ namespace ihff.Controllers
 
                     allCombined.Add(combined);
                 }
-
             }
+
             return PartialView(allCombined);
         }
                 
@@ -78,10 +79,8 @@ namespace ihff.Controllers
                 {
                     string code = wishlistRepository.getTempCode();
                     Session["code"] = code;
-                }                
+                }
                 string Code = Session["code"].ToString();
-
-
 
                 //Wishlist Code
                 bool CodeAlready = false;
@@ -116,7 +115,7 @@ namespace ihff.Controllers
                         o.TotalPrice = (o.Amount * selItem.Price);
                         o.WishlistCode = Code;
 
-                        db.Orderlines.Add(o);
+                         //db.Orderlines.Add(o);
                         db.SaveChanges();
                     }
                 }
@@ -143,36 +142,45 @@ namespace ihff.Controllers
             }
             return View();
         }
+
         
         public ActionResult wishUpdateOrder(int hiddenUpdateAmountVal, int hiddenUpdateIDVal)
         {
+            //deze methode is tevens delete, indien amount is/word 0
             int amount = hiddenUpdateAmountVal;
             int id = hiddenUpdateIDVal;
 
-            List<Item> wishList = new List<Item>();
-            wishList = Session["wishList"] as List<Item>;
+            string Code = Session["code"].ToString();
+            List<Order> allOrders = orderItem.GetOrders(Code);
+            int index = allOrders.FindIndex(it => it.ItemId == id); //Jeroen? ItemId2
 
-            int index = wishList.FindIndex(it => it.ItemId == id);
-            Item itempje = wishList[index];
+            Order o = allOrders[index];
+            db.Orderlines.Attach(o);
+            db.Entry(o).State = System.Data.Entity.EntityState.Modified;
 
+            Models.Item selItem = itemRepository.GetItem(id);
 
-            int count = 0;
-            foreach (var item in wishList)
-            {
-                if (item.ItemId == itempje.ItemId)
-                {
-                    count++;
-                }
-            }
+            o.ItemId = id;
+            //o.ItemId2 = null; //jeroen?
+            o.Amount = (o.Amount + 1);
+            o.TotalPrice = (o.Amount * selItem.Price);
+            o.WishlistCode = Code;
+
+            /*db.Orderlines.Add(o);
+            db.SaveChanges();*/
+
+            int count = o.Amount;
 
             if (amount == 0)
             {
-                int offset = count - amount;
-                for (int i = 0; i < offset; i++)
-                {
-                    wishList.RemoveAt(index);
-                }
-                Session["wishList"] = wishList;
+                //int offset = count - amount;
+                //for (int i = 0; i < offset; i++)
+                //{
+                    //wishList.RemoveAt(index);
+                    db.Orderlines.Remove(o);
+                //}
+                //Session["wishList"] = wishList;
+                db.SaveChanges();
                 return Redirect(Request.UrlReferrer.ToString());
             }
             
@@ -182,7 +190,8 @@ namespace ihff.Controllers
                 int offset = count - amount;
                 for (int i = 0; i < offset; i++)
                 {
-                    wishList.RemoveAt(index);
+                    //wishList.RemoveAt(index);
+                    o.Amount--;
                 }
                 
             } else
@@ -190,11 +199,13 @@ namespace ihff.Controllers
                 int offset = amount - count;
                 for (int i = 0; i < offset; i++)
                 {
-                    wishList.Add(itempje);
+                    //wishList.Add(itempje);
+                    o.Amount++;
                 }                
             }
-            
-            Session["wishList"] = wishList;
+            //Session["wishList"] = wishList;
+            //db.Orderlines.Add(o);
+            db.SaveChanges();
 
             return Redirect(Request.UrlReferrer.ToString());
         }
@@ -233,7 +244,7 @@ namespace ihff.Controllers
                     o.Amount = Amount;
                     o.TotalPrice = TotalPrice;
                     o.WishlistCode = WishlistCode;
-                    db.Orderlines.Add(o);
+                    //db.Orderlines.Add(o);
                 }
 
                 db.SaveChanges();
