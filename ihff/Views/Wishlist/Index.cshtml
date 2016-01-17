@@ -32,17 +32,17 @@
         }
 
         @:<p><h4>Wishlist</h4></p>
-        
+
         double? totPrijs = 0.0;
         string Code = Session["code"].ToString();
         foreach (ihff.Models.OrderItemCombined i in Model)
         {
             totPrijs += ((double?)i.Price * (double?)i.Amount);
             string lijn = (i.Name + " " + i.Amount + "x");
-            
-                <div class="item-block">
 
-                <img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image)' class="item-icon" />
+                <div class="item-block">
+                    
+                <img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image);' class="item-icon" />
                 <div class="item-span-container">
 
                     <p><span class="item-block-title nowrap">@Html.ActionLink((string)i.Name, "Detail", "Item", new { ItemId = i.ItemId }, null)</span><span class="item-block-amount nowrap">€@(i.Price * i.Amount) ,- <input class="item-block-number" id="@i.ItemId" onchange="updateAmount(@i.ItemId);" type="number" max="50" value="@i.Amount" /></span></p>

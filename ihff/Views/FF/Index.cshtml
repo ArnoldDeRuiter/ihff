@@ -21,7 +21,8 @@
             <li>
                 <div class="film-object item @item.DateBegin.DayOfWeek">
                     <a href='@Url.Action("Detail", "Item", new {ItemId = item.ItemId}, null)'>
-                        <img src='@string.Format("../../Content/img/diners/{0}", item.Image)' class="film-picto" />
+
+                        <img src='@string.Format("../../../Content/img/{0}/{1}", @item.EventType, @item.Image)' class="film-picto" />
                     </a>
                     <div class="film-block">
                         <div class="film-span-container">

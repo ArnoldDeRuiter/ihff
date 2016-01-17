@@ -45,7 +45,7 @@
                                 </a>
 
                                 <div class="film-block">
-                                    <img src='@string.Format("../Content/img/films/kijkwijzer_{0}.png", @film.AgeClassification)' class="film-kijkwijzer" />
+                                    <img src='@string.Format("../Content/img/{0}/kijkwijzer_{1}.png", @film.EventType, @film.AgeClassification)' class="film-kijkwijzer" />
                                     <div class="film-span-container">
 
                                         <p><span class="film-block-title nowrap">@Html.ActionLink(@film.Name, "Detail", "Item", new { ItemId = film.ItemId }, null)</span><span class="film-block-year nowrap">@film.Year</span></p>
