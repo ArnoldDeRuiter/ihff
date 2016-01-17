@@ -12,6 +12,7 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/isotope.pkgd.min.js"></script>
 
+
 <div id="isotope-container" style="position: relative; height: 530.4px;">
     <ul class="ul-film">
 
@@ -28,8 +29,12 @@
                             <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">@string.Format("{0}", item.DateBegin.DayOfWeek + " " + item.DateBegin.ToString("HH:mm") + " - " + item.DateEnd.ToString("HH:mm"))</span></p>
                         </div>
                     </div>
-                    @using (Html.BeginForm("AddFFTicket", "FF", new { Id2 = item.ItemId, Item1 = item1}, FormMethod.Post, new { Id2 = string.Format("form{0}", item.ItemId) }))
+
+                    @using (Html.BeginForm("AddFFTicket", "FF", new { Id1 = item1.ItemId, Id2 = item.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", item.ItemId) }))
                     {
+                        @Html.AntiForgeryToken()
+
+
                         <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", item.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Food & Film ticket</span></div>
                     }
                 </div>

@@ -12,7 +12,10 @@ namespace ihff.Controllers
     {
         private IItemRepository itemRepository = new DbItemRepository();
         private IOrderRepository orderRepository = new DbOrderRepository();
-        private WishlistController wishController = new WishlistController();
+        private IWishlistRepository wishlistRepository = new DbWishlistRepository();
+        private IHFFdatabasecontext db = new IHFFdatabasecontext();
+        private IOrderItemRepository orderItem = new DbOrderItemRepository();
+
         // GET: FF
         public ActionResult Index(int Id)
         {
@@ -24,14 +27,80 @@ namespace ihff.Controllers
             return View(diners);
         }
 
-        public ActionResult AddFFTicket(int itemId, int itemId2)
+        public ActionResult AddFFTicket(int Id1, int Id2)
         {
-            //double price = 67.99;
-            //string wishCode = (string)Session["code"];
+            if (ModelState.IsValid)
+            {
+                //Code
+                if (Session["code"] == null)
+                {
+                    string code = wishlistRepository.getTempCode();
+                    Session["code"] = code;
+                }
+                string Code = Session["code"].ToString();
 
-            wishController.addWish(itemId, itemId2);
-            
-            return RedirectToAction("Index", "Home");
+                //Wishlist Code
+                bool CodeAlready = false;
+
+                if (db.Wishlists.Any(wo => wo.WishlistCode == Code))
+                    CodeAlready = true;
+
+                if (!CodeAlready)
+                {
+                    Wishlist w = new Wishlist();
+                    w.WishlistCode = Code;
+                    db.Wishlists.Add(w);
+                    db.SaveChanges();
+                }
+
+
+                //Orderline bestaand
+                List<Order> allOrders = orderItem.GetOrders(Code);
+                bool newItem = true;
+                foreach (Order o in allOrders)
+                {
+                    if (o.ItemId == Id1)
+                    {
+                        newItem = false;
+                        db.Orderlines.Attach(o);
+                        db.Entry(o).State = System.Data.Entity.EntityState.Modified;
+
+                        Models.Item selItem = itemRepository.GetItem(Id1);
+
+                        o.ItemId = Id1;
+                        o.Amount = (o.Amount + 1);
+                        o.TotalPrice = (o.Amount * selItem.Price);
+                        o.WishlistCode = Code;
+                        o.ItemId2 = Id2;
+
+
+                        //db.Orderlines.Add(o);
+                        db.SaveChanges();
+                    }
+                }
+                //Orderline nieuw
+                if (newItem)
+                {
+                    Models.Item selItem = itemRepository.GetItem(Id1);
+                    selItem.Price = 67.99;
+
+                    Order o = new Order();
+
+                    o.ItemId = Id1;
+                    int totAm = (o.Amount + 1);
+                    o.Amount = totAm;
+                    double? totPr = (o.Amount * selItem.Price);
+                    o.TotalPrice = totPr;
+                    o.WishlistCode = Code.ToString();
+                    o.ItemId2 = Id2;
+
+                    db.Orderlines.Add(o);
+                    db.SaveChanges();
+                }
+
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+            return View();
         }
     }
 }

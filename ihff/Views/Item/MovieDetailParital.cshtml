@@ -59,9 +59,10 @@
 
 
 
-<div class="film-wishlist"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">
-    @Html.ActionLink("Order Food & Film ticket", "Index", new { controller = "FF", id = 1 }, new { @class = "jeroenA" })
-</span></div>
+@using (Html.BeginForm("index", "FF", new { Id = Model.ItemId }, FormMethod.Post, new { Id = string.Format("formFF", @Model.ItemId) }))
+{
+    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'formFF'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Order Food & Film ticket</span></div>
+}
 
 
 @using (Html.BeginForm("addWish", "Wishlist", new { Id = Model.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", @Model.ItemId) }))
