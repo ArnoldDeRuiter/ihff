@@ -175,7 +175,12 @@ namespace ihff.Controllers
 
             string Code = Session["code"].ToString();
             List<Order> allOrders = orderItem.GetOrders(Code);
-            int index = allOrders.FindIndex(it => it.ItemId == id1 && it.ItemId2 == id2);
+            int index = 0;
+            if (id2==0) { 
+                index = allOrders.FindIndex(it => it.ItemId == id1);
+            } else { 
+                index = allOrders.FindIndex(it => it.ItemId == id1 && it.ItemId2 == id2);
+            }
 
             Order o = allOrders[index];
             db.Orderlines.Attach(o);
@@ -184,7 +189,10 @@ namespace ihff.Controllers
             Models.Item selItem = itemRepository.GetItem(id1);
 
             o.ItemId = id1;
-            o.ItemId2 = id2;
+            if (id2 != 0)
+            {
+                o.ItemId2 = id2;
+            }
             o.Amount = (o.Amount + 1);
             o.TotalPrice = (o.Amount * o.TotalPrice);
             o.WishlistCode = Code;
