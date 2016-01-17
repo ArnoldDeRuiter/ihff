@@ -26,6 +26,21 @@ namespace ihff.Controllers.Reposotories
             return ordersPerCode;
         }
 
+        public Order GetOrder(string code, int itemId)
+        {
+            Order ordersPerCodeEnId = ctx.Orderlines.Where(o => o.WishlistCode == code && o.ItemId == itemId).FirstOrDefault();
+
+            //foreach (Order o in ctx.Orderlines)
+            //{
+
+            //    if (o.WishlistCode == code)
+            //    {
+            //        ordersPerCode.Add(o);
+            //    }
+            //}
+            return ordersPerCodeEnId;
+        }
+
         public Item GetItem(int itemId)
         {
             Item itemsPerId = ctx.Items.Where(o => o.ItemId == itemId).Single<Item>();

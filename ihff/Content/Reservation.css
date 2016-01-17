@@ -15,25 +15,35 @@
 
 .Res_IMG
 {
-    height:auto;
-    width:65%;
+    height:18%;
+    width:auto;
 
 }
 
 .res_Table
 {
-
+    width:100%;
+    margin:0 auto;
 }
 
 .res_Table td
 {
     width:140px;
+    white-space:nowrap;
+    padding-bottom:2%;
+    padding-right:1em;
 }
 
 .res_Table th
 {
-    text-decoration:solid;
+    text-decoration:underline;
+
 }
+
+    .res_Table tr 
+{
+        margin-bottom:2%;
+    }
 .res_Table
 {
     width:auto;
@@ -41,8 +51,7 @@
 
 .res_Naam
 {
-    margin-right:-1.5%;
-    text-decoration:underline;
+    text-decoration:solid;
 }
 
 .res_Locatie
