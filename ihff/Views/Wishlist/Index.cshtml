@@ -81,7 +81,7 @@
     else
     {
         <p class="p-title">This is your wishlist, it is empty at the moment. You can add @Html.ActionLink("movies", "Movies", "Home"), @Html.ActionLink("lectures", "Activities", "Home") and @Html.ActionLink("restaurants", "Food", "Home") to your wishlist by clicking the add to wishlist button.</p>
-        <p>If you've got an whislist code, you can enter it below.</p>
+        <p class="p-title">If you've got an whislist code, you can enter it below.</p>
 
         using (Html.BeginForm("wishReturningCode", "Wishlist", FormMethod.Post, new { Id = string.Format("formCReturningode") }))
         {
