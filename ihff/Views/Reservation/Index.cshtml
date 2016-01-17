@@ -7,48 +7,38 @@
     //ViewBag.allItems = allItems;
     // Html.DisplayFor(model => model.)
 }
+
+<link href="@Url.Content("~/Content/Reservation.css")" rel="stylesheet" type="text/css" />
+
 <h2> Reservations </h2>
-<table>
+<table class="res_Table">
+    <thead>
+        <tr>
+            <th> </th>
+            <th> Name</th>
+            <th> Location</th>
+            <th> Date</th>
+            <th> Begins</th>
+            <th> Price</th>
+            <th> Amount</th>
+            <th> Totalprice</th>
+        </tr>
+    </thead>
     @{
         foreach (ihff.Models.OrderItemCombined i in Model)
         {
-            string typeFolder = "";
-
-            if (i.EventType == 1)
-            {
-                typeFolder = "films";
-
-            }
-
-            else if (i.EventType == 2)
-            {
-                typeFolder = "specials";
-            }
-
-            else
-            {
-                typeFolder = "diners";
-            }
-
             <tr>
-                <td><img src='@string.Format("../Content/img/" + typeFolder + "/{0}", i.Image)' class="item-icon" /></td>
-                <td>Naam :@i.Name</td>
+                <td><img src='@string.Format("../Content/img/{0}/{1}", i.EventType , i.Image)' class="Res_IMG" /></td>
+                <td class="res_Naam">@i.Name</td>
+                <td class="res_Locatie">@i.Location</td>
+                <td class="res_Aanvang"> @i.DateBegin.ToString("dd/MM")</td>
+                <td class="res_Aanvang"> - @i.DateBegin.ToString("HH:mm")</td>
+                <td class="res_Prijs">@i.Price - </td>
+                <td class="res_Prijs"> @i.Amount -</td>
+                <td class="res_Prijs"> @i.TotalPrice</td>
+                <td> x </td>
             </tr>
-
-            <tr>
-                <td>Locatie :@i.Location</td>
-            </tr>
-            <tr>
-                <td>Aanvang: @i.DateBegin</td>
-                <td> - @i.DateEnd</td>
-            </tr>
-
-            <tr>
-                <td>Prijs : @i.Price -</td>
-                <td> @i.Amount -</td>
-                <td> @i.TotalPrice</td>
-            </tr>
-        }
+           }
 
     }
 </table>

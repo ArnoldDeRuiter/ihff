@@ -1,0 +1,61 @@
+﻿body {
+
+
+}
+
+#left-div-container
+{
+    width:100%;
+}
+
+#right-div-container
+{
+    visibility:hidden;
+}
+
+.Res_IMG
+{
+    height:auto;
+    width:65%;
+
+}
+
+.res_Table
+{
+
+}
+
+.res_Table td
+{
+    width:140px;
+}
+
+.res_Table th
+{
+    text-decoration:solid;
+}
+.res_Table
+{
+    width:auto;
+}
+
+.res_Naam
+{
+    margin-right:-1.5%;
+    text-decoration:underline;
+}
+
+.res_Locatie
+{
+
+}
+
+.res_Aanvang
+{
+    
+}
+
+.res_Prijs
+{
+    
+}

@@ -25,9 +25,7 @@ namespace ihff.Controllers
             List<Order> allOrders = orderItem.GetOrders(code);
 
             List<Item> allItems = new List<Item>();
-
             
-
             List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
 
             foreach (Order o in allOrders)
