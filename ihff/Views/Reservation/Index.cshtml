@@ -39,9 +39,14 @@
                 <td colspan="3" class="res_Aanvang"> @i.DateBegin.ToString("dd/MM") - @i.DateBegin.ToString("HH:mm")</td>
                 <td class="res_Prijs">@i.Amount </td>
                 <td class="res_Prijs">&euro; @i.TotalPrice</td>
-                <td>@Html.BeginForm("DeleteOrder", "Reservation", i){<input type="submit" value="x">} </td>
-             </tr>
-           }
+                <td>
+                    @using (Html.BeginForm("DeleteOrder", "Reservation", i, FormMethod.Post))
+                    {
+                        <input type="submit" value="x">
+                    }
+                </td>
+            </tr>
+        }
     }
     <tr>
         <td></td>
@@ -49,7 +54,11 @@
         <td></td>
         <td></td>
         <td></td>
-        <td>@Html.BeginForm("CreatePage", "Reservation", Model){<input type="submit" value="Create Reservation">}</td>  
+        <td>
+        @using (Html.BeginForm("CreatePage", "Reservation", Model, FormMethod.Post))
+        {
+            <input type = "submit" value = "Create Reservation" />
+        }</td>  
     </tr>
 </table>
 

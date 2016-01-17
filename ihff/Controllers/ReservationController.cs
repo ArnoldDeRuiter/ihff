@@ -136,14 +136,13 @@ namespace ihff.Controllers
             }
 
             Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
-
+            db.Orderlines.Attach(order);
             if (order.Amount > 1)
             {
-                db.Orderlines.Attach(order);
+                
                 db.Entry(order).State = System.Data.Entity.EntityState.Modified;
                 order.Amount = (order.Amount - 1);
             }
-
             else
             {
                 db.Orderlines.Remove(order);
