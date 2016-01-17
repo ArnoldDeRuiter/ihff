@@ -41,7 +41,7 @@
                             <div class="film-object item @film.DateBegin.DayOfWeek">
                                 <!--~/Content/img/films/Intestellar1.png-->
                                 <a href='@Url.Action("Detail", "Item", new {ItemId = film.ItemId}, null)'>
-                                    <img src='@string.Format("../Content/img/films/{0}", @film.Image)' class="film-picto"/>
+                                    <img src='@string.Format("../Content/img/{0}/{1}", @film.EventType, @film.Image)' class="film-picto"/>
                                 </a>
 
                                 <div class="film-block">
