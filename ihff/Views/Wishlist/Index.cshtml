@@ -39,26 +39,10 @@
         {
             totPrijs += ((double?)i.Price * (double?)i.Amount);
             string lijn = (i.Name + " " + i.Amount + "x");
-            string typeFolder = "";
-
+            
                 <div class="item-block">
 
-                    @switch ((int)i.EventType)
-                    {
-                        case 1:
-                            typeFolder = "films";
-                            break;
-                        case 2:
-                            typeFolder = "specials";
-                            break;
-                        case 3:
-                            typeFolder = "diners";
-                            break;
-                        default:
-                            break;
-                    }
-
-                <img src='@string.Format("../Content/img/"+typeFolder+"/{0}", i.Image)' class="item-icon" />
+                <img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image)' class="item-icon" />
                 <div class="item-span-container">
 
                     <p><span class="item-block-title nowrap">@Html.ActionLink((string)i.Name, "Detail", "Item", new { ItemId = i.ItemId }, null)</span><span class="item-block-amount nowrap">€@(i.Price * i.Amount) ,- <input class="item-block-number" id="@i.ItemId" onchange="updateAmount(@i.ItemId);" type="number" max="50" value="@i.Amount" /></span></p>
