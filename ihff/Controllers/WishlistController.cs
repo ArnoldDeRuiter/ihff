@@ -43,23 +43,43 @@ namespace ihff.Controllers
                     combined.Amount = o.Amount;
                     combined.TotalPrice = o.TotalPrice;
                     combined.WishlistCode = o.WishlistCode;
+                    combined.ItemId2 = o.ItemId2;
 
-                    //Item
-                    combined.AgeClassification = it.AgeClassification;
-                    combined.Cast = it.Cast;
-                    combined.DescriptionENG = it.DescriptionENG;
-                    combined.DescriptionNL = it.DescriptionNL;
-                    combined.Director = it.Director;
-                    combined.Length = it.Length;
-                    combined.Year = it.Year;
-                    combined.DateBegin = it.DateBegin;
-                    combined.DateEnd = it.DateEnd;
-                    combined.EventType = it.EventType;
-                    combined.Image = it.Image;
-                    combined.MaxAvailabillity = it.MaxAvailabillity;
-                    combined.Name = it.Name;
-                    combined.Price = it.Price;
-                    combined.ItemId2 = null;
+                    string Name = it.Name;
+                    DateTime realEnding = it.DateEnd;
+                    double? realPricing = it.Price;
+                    if (combined.ItemId2 != null)
+                    {
+
+                        int item2 = (int.TryParse(o.ItemId2.ToString(), out item2)) ? Convert.ToInt32(o.ItemId2) : 0;
+                        Item it2 = orderItem.GetItem(item2);
+
+                        //Item
+                        //combined.EventType = it2.EventType;
+                        //combined.Image = it2.Image;
+                        Name = it.Name +" & "+ it2.Name;
+                        realEnding = it2.DateEnd;
+                        realPricing = o.TotalPrice;
+                    }
+
+
+
+                        //Item
+                        combined.AgeClassification = it.AgeClassification;
+                        combined.Cast = it.Cast;
+                        combined.DescriptionENG = it.DescriptionENG;
+                        combined.DescriptionNL = it.DescriptionNL;
+                        combined.Director = it.Director;
+                        combined.Length = it.Length;
+                        combined.Year = it.Year;
+                        combined.DateBegin = it.DateBegin;
+                        combined.DateEnd = realEnding;// it.DateEnd;
+                        combined.EventType = it.EventType;
+                        combined.Image = it.Image;
+                        combined.MaxAvailabillity = it.MaxAvailabillity;
+                        combined.Name = Name;
+                        combined.Price = realPricing;//it.Price;
+                    
 
                     allCombined.Add(combined);
                 }
@@ -102,7 +122,7 @@ namespace ihff.Controllers
                  bool newItem = true;
                 foreach (Order o in allOrders)
                 {
-                    if (o.ItemId == id) {
+                    if (o.ItemId == id && o.ItemId2 == null) {
                         newItem = false;
                         db.Orderlines.Attach(o);
                         db.Entry(o).State = System.Data.Entity.EntityState.Modified;
@@ -143,26 +163,30 @@ namespace ihff.Controllers
         }
 
         
-        public ActionResult wishUpdateOrder(int hiddenUpdateAmountVal, int hiddenUpdateIDVal)
+        public ActionResult wishUpdateOrder(int hiddenUpdateAmountVal, int hiddenUpdateID1Val, int hiddenUpdateID2Val)
         {
             //deze methode is tevens delete, indien amount is/word 0
             int amount = hiddenUpdateAmountVal;
-            int id = hiddenUpdateIDVal;
+            int id1 = hiddenUpdateID1Val;
+
+
+            int id2 = (int.TryParse(hiddenUpdateID2Val.ToString(), out id2)) ? hiddenUpdateID2Val : 0;
+            //int id2 = hiddenUpdateID2Val;
 
             string Code = Session["code"].ToString();
             List<Order> allOrders = orderItem.GetOrders(Code);
-            int index = allOrders.FindIndex(it => it.ItemId == id);
+            int index = allOrders.FindIndex(it => it.ItemId == id1 && it.ItemId2 == id2);
 
             Order o = allOrders[index];
             db.Orderlines.Attach(o);
             db.Entry(o).State = System.Data.Entity.EntityState.Modified;
 
-            Models.Item selItem = itemRepository.GetItem(id);
+            Models.Item selItem = itemRepository.GetItem(id1);
 
-            o.ItemId = id;
-            o.ItemId2 = null;
+            o.ItemId = id1;
+            o.ItemId2 = id2;
             o.Amount = (o.Amount + 1);
-            o.TotalPrice = (o.Amount * selItem.Price);
+            o.TotalPrice = (o.Amount * o.TotalPrice);
             o.WishlistCode = Code;
 
             /*db.Orderlines.Add(o);

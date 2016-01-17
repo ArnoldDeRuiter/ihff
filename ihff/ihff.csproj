@@ -375,7 +375,7 @@
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Item\Detail.cshtml" />
     <Content Include="Views\Item\DinerDetailParital.cshtml" />
-    <Content Include="Views\FF\Index.cshtml" />
+    <Content Include="Views\FF\index.cshtml" />
     <None Include="Views\Item\MovieDetailParital.cshtml" />
     <Content Include="Views\Item\SpecialDetailParital.cshtml" />
     <Content Include="Views\Reservation\Create.cshtml" />

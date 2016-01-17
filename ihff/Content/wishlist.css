@@ -92,6 +92,7 @@
     color:#BEC3C7;
     padding-left: 1%;
     margin-left: 1%;
+    
 }
 
 
@@ -111,6 +112,8 @@
     width:13%;
     height:1%;
     float:right;
+    position: relative;
+    z-index:100;
 }
 
 a.jeroenA:link {
@@ -131,6 +134,7 @@ color: #BEC3C7;
     position:relative !important;
     top:-13px !important;
     margin:0;
+    z-index:0;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
