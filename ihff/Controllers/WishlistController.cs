@@ -59,10 +59,7 @@ namespace ihff.Controllers
                     combined.MaxAvailabillity = it.MaxAvailabillity;
                     combined.Name = it.Name;
                     combined.Price = it.Price;
-                    if (o.ItemId2 != null)
-                        combined.ItemId2 = o.ItemId2;
-                    else
-                        combined.ItemId2 = null;
+                    combined.ItemId2 = null;
 
                     allCombined.Add(combined);
                 }
@@ -73,7 +70,7 @@ namespace ihff.Controllers
                 
         
         [HttpPost]
-        public ActionResult addWish(int id, int? id2)
+        public ActionResult addWish(int id)
         {   
             if (ModelState.IsValid)
             {
@@ -116,10 +113,6 @@ namespace ihff.Controllers
                         o.Amount = (o.Amount + 1);
                         o.TotalPrice = (o.Amount * selItem.Price);
                         o.WishlistCode = Code;
-                        if (id2 != null)
-                            o.ItemId2 = id2;
-                        else
-                            o.ItemId2 = null;
 
                         //db.Orderlines.Add(o);
                         db.SaveChanges();
@@ -133,15 +126,12 @@ namespace ihff.Controllers
                     Order o = new Order();
 
                     o.ItemId = id;
+                    o.ItemId2 = null;
                     int totAm = (o.Amount + 1);
                     o.Amount = totAm;
                     double? totPr = (o.Amount * selItem.Price);
                     o.TotalPrice = totPr;
                     o.WishlistCode = Code.ToString();
-                    if (id2 != null)
-                        o.ItemId2 = id2;
-                    else
-                        o.ItemId2 = null;
 
                     db.Orderlines.Add(o);
                     db.SaveChanges();
@@ -161,7 +151,7 @@ namespace ihff.Controllers
 
             string Code = Session["code"].ToString();
             List<Order> allOrders = orderItem.GetOrders(Code);
-            int index = allOrders.FindIndex(it => it.ItemId == id); //Jeroen? ItemId2
+            int index = allOrders.FindIndex(it => it.ItemId == id);
 
             Order o = allOrders[index];
             db.Orderlines.Attach(o);
@@ -170,7 +160,7 @@ namespace ihff.Controllers
             Models.Item selItem = itemRepository.GetItem(id);
 
             o.ItemId = id;
-            //o.ItemId2 = null; //jeroen?
+            o.ItemId2 = null;
             o.Amount = (o.Amount + 1);
             o.TotalPrice = (o.Amount * selItem.Price);
             o.WishlistCode = Code;
@@ -249,7 +239,7 @@ namespace ihff.Controllers
 
                     Order o = new Order();
                     o.ItemId = ItemId;
-                    o.ItemId2 = null; //jeroen? ItemId2
+                    o.ItemId2 = ItemId2;
                     o.Amount = Amount;
                     o.TotalPrice = TotalPrice;
                     o.WishlistCode = WishlistCode;
