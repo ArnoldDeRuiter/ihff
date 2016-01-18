@@ -68,8 +68,6 @@ namespace ihff.Controllers
         }
 
         // POST: Reservation/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(string name, string tel, string paymentMethod)
@@ -147,6 +145,7 @@ namespace ihff.Controllers
             // attach order aan de db
             db.Orderlines.Attach(order);
             
+            // geef aan dat de status van de entry is aangepast.
             db.Entry(order).State = EntityState.Modified;
             
             // vul order.Amount met de amountinput
@@ -174,10 +173,26 @@ namespace ihff.Controllers
 
             // haal de juiste order op dmv wishlistcode en itemId
             Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
+
+            // TODO TODO TODO TODO
+            // if de bool van js van arnold is true !Keep in wishlist!
+            // dan wil ik de bestaande List<order> ophalen en daarvan voor elke order de wishlistcode veranderen
+            // wishlist session code blijft dan de code voor het te verwijderen item en nieuwe session list code2 word voor de nieuwe reservation List<order> wishcode
+            // Zoniet dan onderstaande code uitvoeren
+
+            List<Order> orders = orderItem.GetOrders(i.WishlistCode);
+
+            
+
+            // !Throw away completely! 
+
             // attach order aan de db
             db.Orderlines.Attach(order);
             // haal order uit de db
             db.Orderlines.Remove(order);
+            
+            // !Throw away completely! 
+
             //sla wijzigingen op
             db.SaveChanges();
 
