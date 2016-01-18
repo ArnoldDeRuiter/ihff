@@ -50,7 +50,7 @@
         }
     }
 </table>
-
+<!-- TODO : FIX VALIDATION-->
 @using (Html.BeginForm("Create", "Reservation", Model, FormMethod.Post))
 {
     @Html.AntiForgeryToken();
@@ -62,10 +62,5 @@
         <option value="Cash">Cash at booth</option>
      </select>
 
-        <input type="submit" value="Make Resrvation" />
+        <input type="submit" value="Make Reservation" />
 }
-
-        <!-- foreach (var s in ordersMetItems)
-        {
-            <p> //s.Ammount </p>
-        } -->

@@ -20,27 +20,34 @@ namespace ihff.Controllers
         // GET: Reservation
         public ActionResult Index()
         {
+            // wishlistcode ophalen
             string code = Session["code"].ToString();
             
             // orders ophalen
             List<Order> allOrders = orderItem.GetOrders(code);
 
+            // items ophalen
             List<Item> allItems = new List<Item>();
             
+            // lijst van het gecombineerde model aanmaken
             List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
 
+            // voor elke Order in allOrders 
             foreach (Order o in allOrders)
             {
+                // haal de info van het item op dmv ItemId
                 Item q = orderItem.GetItem(o.ItemId);
 
-                OrderItemCombined combined = new OrderItemCombined(); //< nogal cruciaal dat deze in je loop staat :3 
-                //Order
+                // maak een instantie van het gecombineerde model aan
+                OrderItemCombined combined = new OrderItemCombined();  
+                
+                // combined met de orderinfo vullen
                 combined.ItemId = o.ItemId;
                 combined.Amount = o.Amount;
                 combined.TotalPrice = o.TotalPrice;
                 combined.WishlistCode = o.WishlistCode;
 
-                //Item
+                // combined met de iteminfo vullen
                 combined.DateBegin = q.DateBegin;
                 combined.DateEnd = q.DateEnd;
                 combined.EventType = q.EventType;
@@ -50,31 +57,14 @@ namespace ihff.Controllers
                 combined.Name = q.Name;
                 combined.Price = q.Price;
                 
+                // vul de lijst van het gecombineerde model met de instantie van het gecombineerde model
                 allCombined.Add(combined);
+
+                //rinse, repeat
             }
 
+            // return lijstje van het gecombineerde model (als het goed is gevuld)
             return View(allCombined);
-        }
-
-        // GET: Reservation/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Reservation reservation = db.Reservations.Find(id);
-            if (reservation == null)
-            {
-                return HttpNotFound();
-            }
-            return View(reservation);
-        }
-
-        // GET: Reservation/Create
-        public ActionResult Create()
-        {
-            return View();
         }
 
         // POST: Reservation/Create
@@ -84,55 +74,89 @@ namespace ihff.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(string name, string tel, string paymentMethod)
         {
+            // haal wishlistcode uit sessie
             string code = Session["code"].ToString();
 
+            // lijst met orders om weg te gooien na het maken van de reservering
+            List<Order> allOrders = orderItem.GetOrders(code);
+
+            //  maak reservation instantie aan
             Reservation res = new Reservation();
 
+            // vul reservation instantie met info uit de view
             res.ReservationName = name;
             res.TelNumber = tel;
             res.PaymentMethod = paymentMethod;
             res.WishlistCode = code;
+
+            // todo : schrijf eigen methode om reservationcode aan te maken
+            // ik jat nu nog de wishlistrepo.GetTempCode voor de reserverings code
             res.ReservationCode = wishlistRepository.getTempCode();
 
+            // reservering toevoegen
             db.Reservations.Add(res);
+
+            // wishlist legen
+            foreach (Order o in allOrders)
+            {
+                // attach de order aan de db
+                db.Orderlines.Attach(o);
+
+                // items ophalen die bij die order horen om zo de MaxAvailabillity te wijzigen
+                Item i = orderItem.GetItem(o.ItemId);
+
+                // attach db.items aan item
+                db.Items.Attach(i);
+
+                //kijken of item voldoet
+                db.Entry(i).State = EntityState.Modified;
+
+                //Change MaxAvailabillity
+                i.MaxAvailabillity = (i.MaxAvailabillity - o.Amount);
+
+                // verwijder de order uit de db
+                db.Orderlines.Remove(o);
+
+            }
+            // sla wijzigingen aan de db op
             db.SaveChanges();
-            return RedirectToAction("PaymentSucces");
+
+            // laat de payment succes pagina zien en geef 'res' mee voor de res.ReservationCode
+            return RedirectToAction("PaymentSucces", res);
             
          }
-
-        // GET: Reservation/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Reservation reservation = db.Reservations.Find(id);
-            if (reservation == null)
-            {
-                return HttpNotFound();
-            }
-            return View(reservation);
-        }
-
+        
         [HttpPost]
         public ActionResult AlterOrder(OrderItemCombined i, int inputAmount)
         {
+            // check of object word meegegeven
             if (i == null)
             {
+                // standaardfoutmelding yeey
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            // pak de order met de juiste wishlistcode en het juiste itemID
             Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
+
+            // haal Item op via ItemID
+            Item item = orderItem.GetItem(i.ItemId);
+            // vul variabele prijspp met prijs van het Item
+            double? prijspp = item.Price;
+
+            // attach order aan de db
             db.Orderlines.Attach(order);
-            db.Entry(order).State = System.Data.Entity.EntityState.Modified;
-
-            double? prijspp = (order.TotalPrice / order.Amount );
+            
+            db.Entry(order).State = EntityState.Modified;
+            
+            // vul order.Amount met de amountinput
             order.Amount = inputAmount;
+            // vul order.Totalprice met het aantal kaartjes * de prijs van het item
             order.TotalPrice = (inputAmount * prijspp);
-
+            // sla veranderingen in de db op
             db.SaveChanges();
 
+            // laadt de pagina opnieuw
             return Redirect(Request.UrlReferrer.ToString());
 
         }
@@ -141,31 +165,34 @@ namespace ihff.Controllers
         [HttpPost]
         public ActionResult DeleteOrder(OrderItemCombined i)
         {
+            // kijken of het object niet null is
             if (i == null)
             {
+                // standaard foutmelding..
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            // haal de juiste order op dmv wishlistcode en itemId
             Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
+            // attach order aan de db
             db.Orderlines.Attach(order);
+            // haal order uit de db
             db.Orderlines.Remove(order);
+            //sla wijzigingen op
             db.SaveChanges();
 
+            // refresh
             return Redirect(Request.UrlReferrer.ToString());
 
         }
 
-        // POST: Reservation/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult PaymentSucces (Reservation res)
         {
-            Reservation reservation = db.Reservations.Find(id);
-            db.Reservations.Remove(reservation);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            // return view PaymentSucces met parameter res
+            return View(res);
         }
 
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
