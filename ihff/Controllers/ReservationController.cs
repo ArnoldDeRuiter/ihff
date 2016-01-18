@@ -162,7 +162,7 @@ namespace ihff.Controllers
 
         // GET: Reservation/Delete/5
         [HttpPost]
-        public ActionResult DeleteOrder(OrderItemCombined i)
+        public ActionResult DeleteOrder(OrderItemCombined i, bool hiddenDeleteKnopBoolVal)
         {
             // kijken of het object niet null is
             if (i == null)

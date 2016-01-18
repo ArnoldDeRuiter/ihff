@@ -2,10 +2,24 @@
 
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reservation";
 }
 
 <link href="@Url.Content("~/Content/Reservation.css")" rel="stylesheet" type="text/css" />
+
+<script>
+    function dialogJaNee() {
+        if (confirm('Hallo?')) {
+            alert('Je klikte op OK'); //kan weg
+            $("#hiddenDeleteKnopBoolVal").val(true);
+            //$("#hiddenDeleteKnopResForm").submit(); //deleteOrder 
+        } else {
+            alert('Je klikte op annuleren.'); //kan weg
+            $("#hiddenDeleteKnopBoolVal").val(false);
+            //$("#hiddenDeleteKnopResForm").submit(); //deleteOrder 
+        }
+    }
+</script>
 
 <h2> Reservations </h2>
 <table class="res_Table">
@@ -43,7 +57,9 @@
                 <td>
                     @using (Html.BeginForm("DeleteOrder", "Reservation", i, FormMethod.Post))
                     {
-                        <input type="submit" value="x">
+                        
+                        <input type="submit" value="x" onclick="dialogJaNee();">
+                        <input type="hidden" name="hiddenDeleteKnopBoolVal" id="hiddenDeleteKnopBoolVal" />
                     }
                 </td>
             </tr>
@@ -56,7 +72,7 @@
     @Html.AntiForgeryToken();
     <p> naam </p>@Html.TextBox("name");
     <p> Telefoonnummer </p>@Html.TextBox("tel");
-    <select id="paymentMethod">
+    <select id="paymentMethod" name="paymentMethod">
         <option value="iDeal">iDeal</option>
         <option value="Creditcard">Creditcard</option>
         <option value="Cash">Cash at booth</option>
