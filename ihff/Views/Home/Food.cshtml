@@ -2,6 +2,7 @@
     ViewBag.Title = "Food";
 }
 @using ihff.Models;
+@using Resources
 @model IEnumerable<Item>
 
 <link href="@Url.Content("~/Content/Food.css")" rel="stylesheet" type="text/css" />
@@ -15,12 +16,12 @@
 
         <nav class="filmFilter ">
             <ul id="filters" class="option-set" data-option-key="filter">
-                <li><a href="#" data-option-value=".Wednesday" class="">Wednesday</a></li> -
-                <li><a href="#" data-option-value=".Thursday" class="">Thursday</a></li> -
-                <li><a href="#" data-option-value=".Friday">Friday</a></li> -
-                <li><a href="#" data-option-value=".Saturday" class="">Saturday</a></li> -
-                <li><a href="#" data-option-value=".Sunday" class="">Sunday</a></li> -
-                <li><a href="#" data-option-value="*" class="selected">Overview</a></li>
+                <li><a href="#" data-option-value=".Wednesday" class="">@Resource.Wednesday</a></li> -
+                <li><a href="#" data-option-value=".Thursday" class="">@Resource.Thursday</a></li> -
+                <li><a href="#" data-option-value=".Friday">@Resource.Friday</a></li> -
+                <li><a href="#" data-option-value=".Saturday" class="">@Resource.Saturday</a></li> -
+                <li><a href="#" data-option-value=".Sunday" class="">@Resource.Sunday</a></li> -
+                <li><a href="#" data-option-value="*" class="selected">@Resource.Overview</a></li>
             </ul>
         </nav>
         <div id="isotope-container" style="position: relative; height: 530.4px;">
@@ -38,12 +39,12 @@
                             <div class="film-block">
                                 <div class="film-span-container">
                                     <p><span class="film-block-title nowrap">@Html.ActionLink(item.Name, "Detail", "Item", new { ItemId = item.ItemId }, null)</span></p>
-                                    <p><span class="film-block-time-txt nowrap">Time:</span><span class="film-block-time nowrap">@string.Format("{0}", item.DateBegin.DayOfWeek + " " + item.DateBegin.ToString("HH:mm") + " - " + item.DateEnd.ToString("HH:mm"))</span></p>
+                                    <p><span class="film-block-time-txt nowrap">@Resource.TimeLbl</span><span class="film-block-time nowrap">@string.Format("{0}", item.DateBegin.DayOfWeek + " " + item.DateBegin.ToString("HH:mm") + " - " + item.DateEnd.ToString("HH:mm"))</span></p>
                                 </div>
                             </div>
                             @using (Html.BeginForm("addWish", "Wishlist", new { Id = item.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", item.ItemId) }))
                             {
-                                <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", item.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+                                <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", item.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">@Resource.AddWishlistBtn</span></div>
                             }
                         </div>
                     </li>

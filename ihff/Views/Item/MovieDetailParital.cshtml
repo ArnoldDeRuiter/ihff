@@ -1,9 +1,12 @@
-﻿@using System.Xml
+﻿@using System.Globalization
+@using System.Threading
+@using System.Xml
 @using ihff.Controllers
 @using ihff.Controllers.Api
 @using ihff.Controllers.Reposotories
 @using ihff.Models
 @using Newtonsoft.Json.Linq
+@using Resources
 @model ihff.Models.Item
 @{
     ImdbParser imdbParser = new ImdbParser();
@@ -18,21 +21,21 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal">
-                <dt>Title:</dt>
+                <dt>@Resource.TitleLbl</dt>
                 <dd>@Model.Name</dd>
-                <dt>Year:</dt>
+                <dt>@Resource.YearLbl</dt>
                 <dd>@Model.Year</dd>
-                <dt>Director:</dt>
+                <dt>@Resource.DirectorLbl</dt>
                 <dd>@Model.Director</dd>
-                <dt>Cast:</dt>
+                <dt>@Resource.CastLbl</dt>
                 <dd>@Model.Cast</dd>
-                <dt>IMDB Rating:</dt>
+                <dt>@Resource.ImdbRatingLbl</dt>
                 <dd>@Model.ImdbRating</dd>
-                <dt>IMDB Pagina:</dt>
+                <dt>@Resource.ImdbPageLbl</dt>
                 <dd><a href="@imdbUrl">Link</a></dd>
-                <dt>Kijkwijzer®:</dt>
+                <dt>@Resource.AgeClassificationLbl:</dt>
                 <dd>@Model.AgeClassification</dd>
-                <dt>Price:</dt>
+                <dt>@Resource.PriceLbl:</dt>
                 <dd>€@Model.Price p.p.</dd>
             </dl>
         </div>
@@ -42,18 +45,29 @@
     </div>
 </div>
 
-<h3>Description:</h3>
-<p>@Model.DescriptionENG</p>
+<h3>@Resource.DescriptionLbl</h3>
+@{
+    CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
+    if (currentCulture.Name == "en-US")
+    {
+        <p>@Model.DescriptionENG</p>
+    }
+    else
+    {
+        <p>@Model.DescriptionNL</p>
+    }
+}
 
-<h3>Location And Time:</h3>
+
+<h3>@Resource.LocationTimeLbl</h3>
 <dl class="dl-horizontal">
-    <dt>Location:</dt>
+    <dt>@Resource.LocationLbl</dt>
     <dd>@Model.Location</dd>
-    <dt>Adress:</dt>
+    <dt>@Resource.AddressLbl</dt>
     <dd>@location.Address</dd>
-    <dt>ZipCode:</dt>
+    <dt>@Resource.ZipCodeLbl</dt>
     <dd>@location.Zipcode</dd>
-    <dt>Time and date:</dt>
+    <dt>@Resource.TimeDateLbl</dt>
     <dd>@Model.DateBegin.ToString("MM/dd/yyyy hh:mm") - @Model.DateEnd.ToString("hh:mm")</dd>
 </dl>
 
@@ -61,13 +75,13 @@
 
 @using (Html.BeginForm("index", "FF", new { Id = Model.ItemId }, FormMethod.Post, new { Id = string.Format("formFF", @Model.ItemId) }))
 {
-    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'formFF'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Order Food & Film ticket</span></div>
+    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'formFF'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">@Resource.OrderFFBtn</span></div>
 }
 
 
 @using (Html.BeginForm("addWish", "Wishlist", new { Id = Model.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", @Model.ItemId) }))
 {
-    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">@Resource.AddWishlistBtn</span></div>
 }
 <!-- using (Html.BeginForm("Index", "FF", new { Id = Model.ItemId }, FormMethod.Post, new { Item = string.Format("form{0}", Model) }))
 {

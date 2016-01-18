@@ -8,7 +8,7 @@ using ihff.Models;
 
 namespace ihff.Controllers
 {
-    public class ItemController : Controller
+    public class ItemController : BaseController
     {
         private IItemRepository itemRepository = new DbItemRepository();
         // GET: Item

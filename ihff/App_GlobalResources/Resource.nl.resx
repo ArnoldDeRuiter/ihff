@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressLbl" xml:space="preserve">
+    <value>Adres:</value>
+  </data>
+  <data name="AddWishlistBtn" xml:space="preserve">
+    <value>Voeg toe aan Wishlist</value>
+  </data>
+  <data name="AgeClassificationLbl" xml:space="preserve">
+    <value>Kijkwijzer®</value>
+  </data>
+  <data name="AuthorLbl" xml:space="preserve">
+    <value>Auteur:</value>
+  </data>
+  <data name="CastLbl" xml:space="preserve">
+    <value>Cast:</value>
+  </data>
+  <data name="DescriptionLbl" xml:space="preserve">
+    <value>Beschrijving:</value>
+  </data>
+  <data name="DirectorLbl" xml:space="preserve">
+    <value>Regiseur:</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Vrijdag</value>
+  </data>
   <data name="HomeContent" xml:space="preserve">
     <value>&lt;p&gt;Welkom in Haarlem en welkom op het International Haarlems Film Festival. Het thema dit jaar is: Science of Fiction / Celluloid Realism. &lt;/p&gt;
 &lt;p&gt;
@@ -128,5 +152,56 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   </data>
   <data name="HomeTitle" xml:space="preserve">
     <value>Introductie</value>
+  </data>
+  <data name="ImdbPageLbl" xml:space="preserve">
+    <value>IMDB Pagina:</value>
+  </data>
+  <data name="ImdbRatingLbl" xml:space="preserve">
+    <value>IMDB Beoordeling:</value>
+  </data>
+  <data name="LocationLbl" xml:space="preserve">
+    <value>Locatie:</value>
+  </data>
+  <data name="LocationTimeLbl" xml:space="preserve">
+    <value>Locatie en tijd:</value>
+  </data>
+  <data name="OrderFFBtn" xml:space="preserve">
+    <value>Bestel Food &amp; Film Kaartje</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="PhoneLbl" xml:space="preserve">
+    <value>Telefoonnummer:</value>
+  </data>
+  <data name="PriceLbl" xml:space="preserve">
+    <value>Prijs:</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Zaterdag</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Zondag</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Donderdag</value>
+  </data>
+  <data name="TimeDateLbl" xml:space="preserve">
+    <value>Datum en tijd:</value>
+  </data>
+  <data name="TimeLbl" xml:space="preserve">
+    <value>Tijd:</value>
+  </data>
+  <data name="TitleLbl" xml:space="preserve">
+    <value>Titel:</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Woensdag</value>
+  </data>
+  <data name="YearLbl" xml:space="preserve">
+    <value>Jaar:</value>
+  </data>
+  <data name="ZipCodeLbl" xml:space="preserve">
+    <value>Postcode:</value>
   </data>
 </root>

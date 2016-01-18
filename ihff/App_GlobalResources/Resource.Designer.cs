@@ -61,10 +61,83 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address:.
+        /// </summary>
+        internal static string AddressLbl {
+            get {
+                return ResourceManager.GetString("AddressLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add to Wishlist.
+        /// </summary>
+        internal static string AddWishlistBtn {
+            get {
+                return ResourceManager.GetString("AddWishlistBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kijkwijzer®.
+        /// </summary>
+        internal static string AgeClassificationLbl {
+            get {
+                return ResourceManager.GetString("AgeClassificationLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author:.
+        /// </summary>
+        internal static string AuthorLbl {
+            get {
+                return ResourceManager.GetString("AuthorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cast:.
+        /// </summary>
+        internal static string CastLbl {
+            get {
+                return ResourceManager.GetString("CastLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description:.
+        /// </summary>
+        internal static string DescriptionLbl {
+            get {
+                return ResourceManager.GetString("DescriptionLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Director:.
+        /// </summary>
+        internal static string DirectorLbl {
+            get {
+                return ResourceManager.GetString("DirectorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friday.
+        /// </summary>
+        internal static string Friday {
+            get {
+                return ResourceManager.GetString("Friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;Welcome to Haarlem and welcome to the international Haarlem film festival. This year’s theme is The Science of Fiction / Celluloid Realism. &lt;/p&gt;
         ///&lt;p&gt;
         ///Ever since Georges Méliès, film is pre- eminently the medium where experiments and vision go hand in hand. Countless directors envisioned with their films a future in which mechanisation and technology are omnipresent. And always the questions are the same: “In what way do man and machine influence each other and how does that affect our society”. &lt;/p&gt;
-        ///&lt;p [rest of string was truncated]&quot;;.
+        ///&lt;p&gt;
+        ///O [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string HomeContent {
             get {
@@ -78,6 +151,159 @@ namespace Resources {
         internal static string HomeTitle {
             get {
                 return ResourceManager.GetString("HomeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IMDB Page:.
+        /// </summary>
+        internal static string ImdbPageLbl {
+            get {
+                return ResourceManager.GetString("ImdbPageLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IMDB Rating:.
+        /// </summary>
+        internal static string ImdbRatingLbl {
+            get {
+                return ResourceManager.GetString("ImdbRatingLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location:.
+        /// </summary>
+        internal static string LocationLbl {
+            get {
+                return ResourceManager.GetString("LocationLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location and Time:.
+        /// </summary>
+        internal static string LocationTimeLbl {
+            get {
+                return ResourceManager.GetString("LocationTimeLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Food &amp; Film Ticket.
+        /// </summary>
+        internal static string OrderFFBtn {
+            get {
+                return ResourceManager.GetString("OrderFFBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overview.
+        /// </summary>
+        internal static string Overview {
+            get {
+                return ResourceManager.GetString("Overview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phonenumber:.
+        /// </summary>
+        internal static string PhoneLbl {
+            get {
+                return ResourceManager.GetString("PhoneLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price:.
+        /// </summary>
+        internal static string PriceLbl {
+            get {
+                return ResourceManager.GetString("PriceLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saturday.
+        /// </summary>
+        internal static string Saturday {
+            get {
+                return ResourceManager.GetString("Saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sunday.
+        /// </summary>
+        internal static string Sunday {
+            get {
+                return ResourceManager.GetString("Sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thursday.
+        /// </summary>
+        internal static string Thursday {
+            get {
+                return ResourceManager.GetString("Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time and Date:.
+        /// </summary>
+        internal static string TimeDateLbl {
+            get {
+                return ResourceManager.GetString("TimeDateLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time:.
+        /// </summary>
+        internal static string TimeLbl {
+            get {
+                return ResourceManager.GetString("TimeLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title:.
+        /// </summary>
+        internal static string TitleLbl {
+            get {
+                return ResourceManager.GetString("TitleLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wednesday.
+        /// </summary>
+        internal static string Wednesday {
+            get {
+                return ResourceManager.GetString("Wednesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year:.
+        /// </summary>
+        internal static string YearLbl {
+            get {
+                return ResourceManager.GetString("YearLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZipCode:.
+        /// </summary>
+        internal static string ZipCodeLbl {
+            get {
+                return ResourceManager.GetString("ZipCodeLbl", resourceCulture);
             }
         }
     }

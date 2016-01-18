@@ -1,6 +1,9 @@
-﻿@using ihff.Controllers
+﻿@using System.Globalization
+@using System.Threading
+@using ihff.Controllers
 @using ihff.Controllers.Reposotories
 @using ihff.Models
+@using Resources
 @model ihff.Models.Item
     @{
         IItemRepository itemRepository = new DbItemRepository();
@@ -11,13 +14,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal">
-                <dt>Title:</dt>
+                <dt>@Resource.TitleLbl</dt>
                 <dd>@Model.Name</dd>
-                <dt>Phonenumber:</dt>
+                <dt>@Resource.PhoneLbl</dt>
                 <dd>@location.Phonenumber</dd>
-                <dt>Location:</dt>
+                <dt>@Resource.LocationLbl</dt>
                 <dd>@Model.Location</dd>
-                <dt>Price:</dt>
+                <dt>@Resource.PriceLbl</dt>
                 <dd>€@Model.Price p.p.</dd>
             </dl>
         </div>
@@ -26,20 +29,30 @@
         </div>
     </div>
 </div>
-<h3>Description:</h3>
-<p>@Model.DescriptionENG</p>
-<h3>Location And Time:</h3>
+<h3>@Resource.DescriptionLbl</h3>
+@{
+    CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
+    if (currentCulture.Name == "en-US")
+    {
+        <p>@Model.DescriptionENG</p>
+    }
+    else
+    {
+        <p>@Model.DescriptionNL</p>
+    }
+}
+<h3>@Resource.LocationTimeLbl</h3>
 <dl class="dl-horizontal">
-    <dt>Loacation:</dt>
+    <dt>@Resource.LocationLbl</dt>
     <dd>@location.Name</dd>
-    <dt>Adress:</dt>
+    <dt>@Resource.AddressLbl</dt>
     <dd>@location.Address</dd>
-    <dt>ZipCode:</dt>
+    <dt>@Resource.ZipCodeLbl</dt>
     <dd>@location.Zipcode</dd>
-    <dt>Time and date:</dt>
+    <dt>@Resource.TimeDateLbl</dt>
     <dd>@Model.DateBegin.ToString("MM/dd/yyyy hh:mm") - @Model.DateEnd.ToString("hh:mm")</dd>
 </dl>
 @using (Html.BeginForm("addWish", "Wishlist", new { Id = Model.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", @Model.ItemId) }))
 {
-    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Add to Wishlist</span></div>
+    <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">@Resource.AddWishlistBtn</span></div>
 }
