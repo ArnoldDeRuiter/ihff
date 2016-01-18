@@ -15,7 +15,7 @@ namespace ihff.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
+        private ApplicationSignInManager ha;
         private ApplicationUserManager _userManager;
 
         public AccountController()
@@ -32,11 +32,11 @@ namespace ihff.Controllers
         {
             get
             {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                return ha ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
             private set 
             { 
-                _signInManager = value; 
+                ha = value; 
             }
         }
 
@@ -413,10 +413,10 @@ namespace ihff.Controllers
                     _userManager = null;
                 }
 
-                if (_signInManager != null)
+                if (ha != null)
                 {
-                    _signInManager.Dispose();
-                    _signInManager = null;
+                    ha.Dispose();
+                    ha = null;
                 }
             }
 

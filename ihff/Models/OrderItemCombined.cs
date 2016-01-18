@@ -10,15 +10,18 @@ namespace ihff.Models
     {
         public List<Order> Order { get; set; }
         public List<Item> Item { get; set; }
+        public List<Reservation> Reservation { get; set; }
         public List<OrderItemCombined> AllCombined { get; set; }
-
         public double? TotalPrice { get; set; }
         public int Amount { get; set; }
         public int ItemId { get; set; }
         public int? ItemId2 { get; set; }
         public string WishlistCode { get; set; }
-        //public int ItemId { get; set; }
+        public string PaymentMethod { get; set; }
+        public int PaymentSucces { get; set; }
         public string Name { get; set; }
+        public string ReservationName { get; set; }
+        public string ReservationNumber { get; set; }
         public string Location { get; set; }
         public double? Price { get; set; }
         public DateTime DateBegin { get; set; }
@@ -33,5 +36,8 @@ namespace ihff.Models
         public string DescriptionENG { get; set; }
         public string Cast { get; set; }
         public int AgeClassification { get; set; }
+        public string ReservationCode { get; set; }
+        public string BetaalMethode { get;  set;}
+       
     }
 }

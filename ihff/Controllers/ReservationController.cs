@@ -15,12 +15,13 @@ namespace ihff.Controllers
     {
         private IHFFdatabasecontext db = new IHFFdatabasecontext();
         private IOrderItemRepository orderItem = new DbOrderItemRepository();
+        private IWishlistRepository wishlistRepository = new DbWishlistRepository();
 
         // GET: Reservation
         public ActionResult Index()
         {
             string code = Session["code"].ToString();
-
+            
             // orders ophalen
             List<Order> allOrders = orderItem.GetOrders(code);
 
@@ -80,19 +81,23 @@ namespace ihff.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReservationId,ReservationCode,WishlistCode,Name")] Reservation reservation)
+        public ActionResult Create(string name, string tel, string paymentMethod)
         {
-            if (ModelState.IsValid)
-            {
+            string code = Session["code"].ToString();
 
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
-                return RedirectToAction("PaymentSucces");
-            }
+            Reservation res = new Reservation();
 
-            return View(reservation);
-        }
+            res.ReservationName = name;
+            res.TelNumber = tel;
+            res.PaymentMethod = paymentMethod;
+            res.WishlistCode = code;
+            res.ReservationCode = wishlistRepository.getTempCode();
+
+            db.Reservations.Add(res);
+            db.SaveChanges();
+            return RedirectToAction("PaymentSucces");
+            
+         }
 
         // GET: Reservation/Edit/5
         public ActionResult Edit(int? id)
@@ -108,23 +113,6 @@ namespace ihff.Controllers
             }
             return View(reservation);
         }
-
-        // POST: Reservation/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReservationId,ReservationCode,WishlistCode,Name")] Reservation reservation)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(reservation).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(reservation);
-        }
-
         
         // GET: Reservation/Delete/5
         [HttpPost]
@@ -137,12 +125,15 @@ namespace ihff.Controllers
 
             Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
             db.Orderlines.Attach(order);
+
             if (order.Amount > 1)
             {
                 
                 db.Entry(order).State = System.Data.Entity.EntityState.Modified;
                 order.Amount = (order.Amount - 1);
+                order.TotalPrice = (order.TotalPrice - i.Price);
             }
+
             else
             {
                 db.Orderlines.Remove(order);

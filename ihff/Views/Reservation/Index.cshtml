@@ -1,11 +1,8 @@
-﻿@model IEnumerable<ihff.Models.OrderItemCombined>
+﻿@model IEnumerable <ihff.Models.OrderItemCombined>
 
 
 @{
     ViewBag.Title = "Index";
-    //  List<ihff.Models.OrderItemCombined> allCombined =
-    //ViewBag.allItems = allItems;
-    // Html.DisplayFor(model => model.)
 }
 
 <link href="@Url.Content("~/Content/Reservation.css")" rel="stylesheet" type="text/css" />
@@ -48,24 +45,22 @@
             </tr>
         }
     }
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-        @using (Html.BeginForm("CreatePage", "Reservation", Model, FormMethod.Post))
-        {
-            <input type = "submit" value = "Create Reservation" />
-        }</td>  
-    </tr>
 </table>
 
+@using (Html.BeginForm("Create", "Reservation", Model, FormMethod.Post))
+{
+    @Html.TextBox("name");
+    @Html.TextBox("tel");
+    <select id="paymentMethod">
+        <option value="iDeal">iDeal</option>
+        <option value="Creditcard">Saab</option>
+        <option value="Cash">Mercedes</option>
+     </select>
 
+        <input type = "submit" value = "Make Resrvation" />
+}
 
-
-    <!-- foreach (var s in ordersMetItems)
-    {
-        <p> //s.Ammount </p>
-    } -->
+        <!-- foreach (var s in ordersMetItems)
+        {
+            <p> //s.Ammount </p>
+        } -->

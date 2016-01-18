@@ -15,7 +15,10 @@ namespace ihff.Models
         public int ReservationId  {get; set;}
         public string ReservationCode { get; set; }
         public string WishlistCode { get; set; }
-        public string Name { get; set; }
+        public string ReservationName { get; set; }
+        public string TelNumber { get; set; }
+        public string PaymentMethod { get; set; }
+        public int PaymentSucces { get; set; }
 
         public Reservation()
         { }
@@ -24,7 +27,7 @@ namespace ihff.Models
         {
             this.ReservationCode = reservationCode;
             this.WishlistCode = wishlistCode;
-            this.Name = name;
+            this.ReservationName = name;
         }
     }
 }
