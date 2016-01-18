@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+@using System.Threading
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -28,7 +30,24 @@
                 <li class="navbar-li">@Html.ActionLink("Food & Film Ticket", "FoodFilm", "Home")</li>
                 <li class="navbar-li">@Html.ActionLink("About", "About", "Home")</li>
                 <li class="navbar-li">@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                <li class="navbar-li">
+                    @{
+                        CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
+                        if (currentCulture.Name == "en-US")
+                        {
+                            @Html.ActionLink("NL", "ChangeCurrentCulture", "Home", new {id = 1}, null)
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Eng", "ChangeCurrentCulture", "Home", new {id = 0}, null)
+                        }
+                    }
+                </li>
+
             </ul>
+
+
             <!--@Html.Partial("_LoginPartial")-->
         </div>
     </div>

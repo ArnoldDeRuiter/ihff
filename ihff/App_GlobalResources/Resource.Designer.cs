@@ -61,11 +61,23 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English.
+        ///   Looks up a localized string similar to &lt;p&gt;Welcome to Haarlem and welcome to the international Haarlem film festival. This year’s theme is The Science of Fiction / Celluloid Realism. &lt;/p&gt;
+        ///&lt;p&gt;
+        ///Ever since Georges Méliès, film is pre- eminently the medium where experiments and vision go hand in hand. Countless directors envisioned with their films a future in which mechanisation and technology are omnipresent. And always the questions are the same: “In what way do man and machine influence each other and how does that affect our society”. &lt;/p&gt;
+        ///&lt;p [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string String1 {
+        internal static string HomeContent {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("HomeContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Introduction.
+        /// </summary>
+        internal static string HomeTitle {
+            get {
+                return ResourceManager.GetString("HomeTitle", resourceCulture);
             }
         }
     }

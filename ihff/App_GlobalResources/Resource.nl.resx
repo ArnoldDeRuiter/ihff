@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="String1" xml:space="preserve">
-    <value>Nederlands</value>
+  <data name="HomeContent" xml:space="preserve">
+    <value>&lt;p&gt;Welkom in Haarlem en welkom op het International Haarlems Film Festival. Het thema dit jaar is: Science of Fiction / Celluloid Realism. &lt;/p&gt;
+&lt;p&gt;
+Vanaf Georges Méliès is film het medium bij uitstek waarbij expirimenten en visie hand in hand gaan. Talloze regiseurs hebben zich een toekomstige wereld voorgesteld in hun films waarin mechanisering en technologie alomtegenwoordig zijn. En altijd zijn de vragen het zelfde: "Op welke wijze de mens en machine elkaar beïnvloeden en hoe dat onze samenleving beïnvloeden". &lt;/p&gt;
+&lt;p&gt;
+Van alle beelden zijn er maar enkele werkelijkheid geworden. De realisteit is altijd beangstigender dan de fantasie, voorral nu technologie een steeds grotere rol gaat spelen in onze samenleving. Er zullen steeds opnieuw morele vragen beantwoord moeten worden. Met 23 films en 10 ‘Specials’ proberen wij een beeld te schetsen van de heil en tegenspoeit in ons heden en onze toekomst.&lt;/p&gt;
+&lt;p&gt;
+Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
+  </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Introductie</value>
   </data>
 </root>
