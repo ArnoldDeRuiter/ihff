@@ -46,8 +46,7 @@
             int? item2 = (i.ItemId2!=null) ? i.ItemId2 : 0;
             string inputNumberId = i.ItemId + "en" + item2;
                 <div class="item-block">
-                    
-                <img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image)' class="item-icon" />
+                    <img src='@string.Format("../../Content/img/{0}/{1}", i.EventType, i.Image)' class="item-icon" />
                 <div class="item-span-container">
 
                     <p><span class="item-block-title nowrap">@Html.ActionLink((string)i.Name, "Detail", "Item", new { ItemId = i.ItemId }, null)</span><span class="item-block-amount nowrap">€@(i.TotalPrice) ,- <input class="item-block-number" id="@inputNumberId" onchange="updateAmount(@i.ItemId,@item2);" type="number" max="50" value="@i.Amount" /></span></p>
