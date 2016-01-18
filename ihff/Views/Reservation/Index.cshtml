@@ -34,7 +34,11 @@
                 <td colspan="6" class="res_Naam">@i.Name</td>
                 <td class="res_Locatie">@i.Location</td>
                 <td colspan="3" class="res_Aanvang"> @i.DateBegin.ToString("dd/MM") - @i.DateBegin.ToString("HH:mm")</td>
-                <td class="res_Prijs">@i.Amount </td>
+                <td class="res_Prijs">@using (Html.BeginForm("AlterOrder", "Reservation", i, FormMethod.Post))
+                {
+                    @Html.TextBox("inputAmount", @i.Amount, new { type = "number", min = "1", max = "10"});
+                    <input type="submit" value="+-"/>
+                } </td>
                 <td class="res_Prijs">&euro; @i.TotalPrice</td>
                 <td>
                     @using (Html.BeginForm("DeleteOrder", "Reservation", i, FormMethod.Post))

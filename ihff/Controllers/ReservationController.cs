@@ -114,7 +114,26 @@ namespace ihff.Controllers
             }
             return View(reservation);
         }
-        
+
+        [HttpPost]
+        public ActionResult AlterOrder(OrderItemCombined i, int inputAmount)
+        {
+            if (i == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
+            db.Orderlines.Attach(order);
+            db.Entry(order).State = System.Data.Entity.EntityState.Modified;
+            order.Amount = inputAmount;
+
+            db.SaveChanges();
+
+            return Redirect(Request.UrlReferrer.ToString());
+
+        }
+
         // GET: Reservation/Delete/5
         [HttpPost]
         public ActionResult DeleteOrder(OrderItemCombined i)
