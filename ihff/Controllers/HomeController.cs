@@ -5,11 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using ihff.Models;
 using ihff.Controllers;
+using ihff.Controllers.Helper;
 using ihff.Controllers.Reposotories;
 
 namespace ihff.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -65,6 +66,23 @@ namespace ihff.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+
+        public ActionResult ChangeCurrentCulture(int id)
+        {
+            //
+            // Change the current culture for this user.
+            //
+            CultureSessionManager.CurrentCulture = id;
+            //
+            // Cache the new current culture into the user HTTP session. 
+            //
+            Session["CurrentCulture"] = id;
+            //
+            // Redirect to the same page from where the request was made! 
+            //
+            return RedirectToAction("Index");
         }
     }
 }
