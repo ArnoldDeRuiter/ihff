@@ -81,6 +81,7 @@ namespace ihff.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(string name, string tel, string paymentMethod)
         {
             string code = Session["code"].ToString();

@@ -49,15 +49,16 @@
 
 @using (Html.BeginForm("Create", "Reservation", Model, FormMethod.Post))
 {
-    @Html.TextBox("name");
-    @Html.TextBox("tel");
+    @Html.AntiForgeryToken();
+    <p> naam </p>@Html.TextBox("name");
+    <p> Telefoonnummer </p>@Html.TextBox("tel");
     <select id="paymentMethod">
         <option value="iDeal">iDeal</option>
-        <option value="Creditcard">Saab</option>
-        <option value="Cash">Mercedes</option>
+        <option value="Creditcard">Creditcard</option>
+        <option value="Cash">Cash at booth</option>
      </select>
 
-        <input type = "submit" value = "Make Resrvation" />
+        <input type="submit" value="Make Resrvation" />
 }
 
         <!-- foreach (var s in ordersMetItems)
