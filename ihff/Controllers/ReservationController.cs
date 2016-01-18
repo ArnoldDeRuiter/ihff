@@ -179,23 +179,49 @@ namespace ihff.Controllers
             // dan wil ik de bestaande List<order> ophalen en daarvan voor elke order de wishlistcode veranderen
             // wishlist session code blijft dan de code voor het te verwijderen item en nieuwe session list code2 word voor de nieuwe reservation List<order> wishcode
             // Zoniet dan onderstaande code uitvoeren
+            if (hiddenDeleteKnopBoolVal == true)
+            {
+               List<Order> orders = orderItem.GetOrders(i.WishlistCode);
+                
+                if (Session["code2"] == null)
+                {
+                    string code2 = wishlistRepository.getTempCode();
 
-            List<Order> orders = orderItem.GetOrders(i.WishlistCode);
+                    Session["code2"] = code2;
 
-            
+                    foreach (Order o in orders)
+                    {
+                        db.Orderlines.Attach(o);
+                        o.WishlistCode = code2;
+                        db.SaveChanges();
+                    }
+                }
+
+                else
+                {
+                   string code = Session["code"].ToString();
+
+                    foreach (Order o in orders)
+                    {
+                        db.Orderlines.Attach(o);
+                        o.WishlistCode = code;
+                        db.SaveChanges();
+                    }
+                }
+
+            }
 
             // !Throw away completely! 
-
-            // attach order aan de db
-            db.Orderlines.Attach(order);
-            // haal order uit de db
-            db.Orderlines.Remove(order);
-            
+            else
+            {
+                // attach order aan de db
+                db.Orderlines.Attach(order);
+                // haal order uit de db
+                db.Orderlines.Remove(order);
+                db.SaveChanges();
+            }
             // !Throw away completely! 
-
-            //sla wijzigingen op
-            db.SaveChanges();
-
+            
             // refresh
             return Redirect(Request.UrlReferrer.ToString());
 

@@ -50,24 +50,58 @@
                 <td colspan="3" class="res_Aanvang"> @i.DateBegin.ToString("dd/MM") - @i.DateBegin.ToString("HH:mm")</td>
                 <td class="res_Prijs">@using (Html.BeginForm("AlterOrder", "Reservation", i, FormMethod.Post))
                 {
-                    @Html.TextBox("inputAmount", @i.Amount, new { type = "number", min = "1", max = "10"});
+                    @Html.TextBox("inputAmount", @i.Amount, new { type = "number", min = "1", max = "10" });
                     <input type="submit" value="+-"/>
                 } </td>
                 <td class="res_Prijs">&euro; @i.TotalPrice</td>
+                
+                <!-- HIER WIL IK DIE INFO VAN ITEMID2-->
+                 @*@if (i.ItemId2 != null)
+                    {
+                       </tr>
+                        <tr>
+                            <td><img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image)' class="Res_IMG" /></td>
+                            <td colspan="6" class="res_Naam">@i.Name</td>
+                            <td class="res_Locatie">@i.Location</td>
+                            <td colspan="3" class="res_Aanvang"> @i.DateBegin.ToString("dd/MM") - @i.DateBegin.ToString("HH:mm")</td>
+                            <td class="res_Prijs">
+                                @using (Html.BeginForm("AlterOrder", "Reservation", i, FormMethod.Post))
+                            {
+                                @Html.TextBox("inputAmount", @i.Amount, new { type = "number", min = "1", max = "10" });
+                                <input type="submit" value="+-" />
+                            }
+                        </td>
+                        <td class="res_Prijs">&euro; @i.TotalPrice</td>
+                    }*@
+                   
+                }
                 <td>
                     @using (Html.BeginForm("DeleteOrder", "Reservation", i, FormMethod.Post))
                     {
-                        
+
                         <input type="submit" value="x" onclick="dialogJaNee();">
                         <input type="hidden" name="hiddenDeleteKnopBoolVal" id="hiddenDeleteKnopBoolVal" />
                     }
                 </td>
             </tr>
+            }
         }
-    }
 </table>
-<!-- TODO : FIX VALIDATION-->
-@using (Html.BeginForm("Create", "Reservation", Model, FormMethod.Post))
+<script>
+    function validateReservation() {
+        if (!$("#name").val().match(/^[a-zA-Z\ {0.45} ]+$/)) {
+            alert("Vul een naam in.");
+            return false;
+        }
+        if (!$("#tel").val().match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)) {
+            alert("Telefoonnummer");
+            return false;
+        }
+       return true;
+    }
+</script>
+
+@using (Html.BeginForm("Create", "Reservation", Model, FormMethod.Post, new { onsubmit="return validateReservation();" }))
 {
     @Html.AntiForgeryToken();
     <p> naam </p>@Html.TextBox("name");
