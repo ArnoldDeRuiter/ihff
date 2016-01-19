@@ -51,7 +51,7 @@
     <dt>@Resource.ZipCodeLbl</dt>
     <dd>@location.Zipcode</dd>
     <dt>@Resource.TimeDateLbl</dt>
-    <dd>@Model.DateBegin.ToString("MM/dd/yyyy hh:mm") - @Model.DateEnd.ToString("hh:mm")</dd>
+    <dd>@Model.DateBegin.ToString("MM/dd/yyyy hh:mm") - @Model.DateEnd.ToString("HH:mm")</dd>
 </dl>
 @using (Html.BeginForm("addWish", "Wishlist", new { Id = Model.ItemId }, FormMethod.Post, new { Id = string.Format("form{0}", @Model.ItemId) }))
 {

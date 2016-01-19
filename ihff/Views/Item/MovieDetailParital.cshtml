@@ -70,7 +70,7 @@
     <dt>@Resource.ZipCodeLbl</dt>
     <dd>@location.Zipcode</dd>
     <dt>@Resource.TimeDateLbl</dt>
-    <dd>@Model.DateBegin.ToString("MM/dd/yyyy hh:mm") - @Model.DateEnd.ToString("hh:mm")</dd>
+    <dd>@Model.DateBegin.ToString("MM/dd/yyyy hh:mm") - @Model.DateEnd.ToString("HH:mm")</dd>
 </dl>
 
 
@@ -85,7 +85,3 @@
 {
     <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">@Resource.AddWishlistBtn</span></div>
 }
-<!-- using (Html.BeginForm("Index", "FF", new { Id = Model.ItemId }, FormMethod.Post, new { Item = string.Format("form{0}", Model) }))
-{
-    <div class="film-wishlist" onClick="document.getElementById(string.Format("'form{0}'", Model.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">Order Food&Film Ticket</span></div>
-}-->
