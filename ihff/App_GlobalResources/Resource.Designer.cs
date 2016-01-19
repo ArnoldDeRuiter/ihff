@@ -462,6 +462,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to save this item in your wishlist?.
+        /// </summary>
+        internal static string SaveOrderWishlistLbl {
+            get {
+                return ResourceManager.GetString("SaveOrderWishlistLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sunday.
         /// </summary>
         internal static string Sunday {
