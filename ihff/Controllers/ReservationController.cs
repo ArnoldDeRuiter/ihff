@@ -31,7 +31,7 @@ namespace ihff.Controllers
             {
                 // nieuwe wishlistcode ophalen 
                 code = Session["code2"].ToString();
-                
+
                 // orders ophalen met nieuwe wishlistcode
                 allOrders = orderItem.GetOrders(code);
 
@@ -55,7 +55,7 @@ namespace ihff.Controllers
 
             // items ophalen
             List<Item> allItems = new List<Item>();
-            
+
             // lijst van het gecombineerde model aanmaken
             List<OrderItemCombined> allCombined = new List<OrderItemCombined>();
 
@@ -127,7 +127,7 @@ namespace ihff.Controllers
             string code = Session["code"].ToString();
 
             // orders ophalen
-            List<Order>allOrders = orderItem.GetOrders(code);
+            List<Order> allOrders = orderItem.GetOrders(code);
 
             //  maak reservation instantie aan
             Reservation res = new Reservation();
@@ -171,9 +171,9 @@ namespace ihff.Controllers
 
             // laat de payment succes pagina zien en geef 'res' mee voor de res.ReservationCode
             return RedirectToAction("PaymentSucces", res);
-            
-         }
-        
+
+        }
+
         [HttpPost]
         public ActionResult AlterOrder(OrderItemCombined i, int inputAmount)
         {
@@ -188,10 +188,10 @@ namespace ihff.Controllers
             // Item it3 = orderItem.GetItem(Convert.ToInt32(o.ItemId2));
             Item item = orderItem.GetItem(i.ItemId);
             int id2 = (int.TryParse(i.ItemId2.ToString(), out id2)) ? id2 : 0;
-            
+
             // lijst allOrders vullen met Orders 
             List<Order> allOrders = orderItem.GetOrders(i.WishlistCode);
-            
+
             // index aanmaken
             int index = 0;
 
@@ -230,7 +230,7 @@ namespace ihff.Controllers
 
             // attach order aan de db
             db.Orderlines.Attach(order);
-            
+
             // geef aan dat de status van de entry is aangepast.
             db.Entry(order).State = EntityState.Modified;
 
@@ -259,51 +259,43 @@ namespace ihff.Controllers
             // Wil de gebruiker de order bewaren?
             if (hiddenDeleteKnopBoolVal == true)
             {
-                // lijst vullen met orders die de orginele wishlistcode hebben
-                List<Order> orders = orderItem.GetOrders(Session["code"].ToString());
+                List<Order> orders = new List<Order>();
 
                 string code2 = "";
 
                 // als deze session leeg is
                 if (Session["code2"] == null)
-                    {
-                        // haal dan een nieuwe code op
-                        code2 = wishlistRepository.getTempCode();
-                        // sla dat in de session op 
-                        Session["code2"] = code2;
-
-                    }
-
-                    else
-                    {
-                        // anders is code2 gewoon de code uit de sessie
-                        code2 = Session["code2"].ToString();
-                        
-                    }
-
-                //Wishlist Code
-                // bool codealready aanmaken op false zetten
-                bool CodeAlready = false;
-
-                // als de wishlist tabel een instantie bevat van de wishlist code
-                if (db.Wishlists.Any(wo => wo.WishlistCode == code2))
-                    CodeAlready = true;
-
-                // als de codeAlready bool niet true is
-                if (!CodeAlready)
                 {
-                    // maak een nieuwe instantie van wishlist aan
-                    Wishlist w = new Wishlist();
-                    // vul die instantie van wishlist met met de code
-                    w.WishlistCode = code2;
-                    // add nieuwe row in de tabel met de info uit wishlist w
-                    db.Wishlists.Add(w);
-                    // sla veranderingen op 
-                    db.SaveChanges();
-                }
+                    // haal dan een nieuwe code op
+                    code2 = wishlistRepository.getTempCode();
+                    // sla dat in de session op 
+                    Session["code2"] = code2;
 
-                // voor elke order in de lijst orders
-                foreach (Order o in orders)
+                    // lijst vullen met orders die de orginele wishlistcode hebben
+                    orders = orderItem.GetOrders(Session["code"].ToString());
+
+                    // bool codealready aanmaken op false zetten
+                    bool CodeAlready = false;
+
+                    // als de wishlist tabel een instantie bevat van de wishlist code
+                    if (db.Wishlists.Any(wo => wo.WishlistCode == code2))
+                        CodeAlready = true;
+
+                    // als de codeAlready bool niet true is
+                    if (!CodeAlready)
+                    {
+                        // maak een nieuwe instantie van wishlist aan
+                        Wishlist w = new Wishlist();
+                        // vul die instantie van wishlist met met de code
+                        w.WishlistCode = code2;
+                        // add nieuwe row in de tabel met de info uit wishlist w
+                        db.Wishlists.Add(w);
+                        // sla veranderingen op 
+                        db.SaveChanges();
+                    }
+
+                    // voor elke order in de lijst orders
+                    foreach (Order o in orders)
                     {
                         // koppel o aan de db in de tabel Orderlines
                         db.Orderlines.Attach(o);
@@ -314,18 +306,35 @@ namespace ihff.Controllers
                         // sla veranderingen op
                         db.SaveChanges();
                     }
-                // maak een instantie voor de oude order met de order die wishlistcode2 en i.itemID heeft
-                Order oldOrder = orderItem.GetOrder(Session["code2"].ToString(), i.ItemId);
-                // koppel oldOrder aan de db in de tabel Orderlines
-                db.Orderlines.Attach(oldOrder);
-                // laat weten dan oldOrder is aangepast
-                db.Entry(oldOrder).State = EntityState.Modified;
-                // oude wishlistcode toevoegen aan oude order
-                oldOrder.WishlistCode = Session["code"].ToString();
-                // sla wijzigingen op 
-                db.SaveChanges();
+
+                    // maak een instantie voor de oude order met de order die wishlistcode2 en i.itemID heeft
+                    Order oldOrder = orderItem.GetOrder(Session["code2"].ToString(), i.ItemId);
+                    // koppel oldOrder aan de db in de tabel Orderlines
+                    db.Orderlines.Attach(oldOrder);
+                    // laat weten dan oldOrder is aangepast
+                    db.Entry(oldOrder).State = EntityState.Modified;
+                    // oude wishlistcode toevoegen aan oude order
+                    oldOrder.WishlistCode = Session["code"].ToString();
+                    // sla wijzigingen op 
+                    db.SaveChanges();
 
                 }
+
+                // als code2 niet null is
+                else
+                {
+                    // attach dan de order die mee word gegeven                   
+                    db.Orderlines.Attach(order);
+                    // geef aan dat order in de db word aangepast
+                    db.Entry(order).State = EntityState.Modified;
+                    // order krijgt nu wishlist code
+                    order.WishlistCode = Session["code"].ToString();
+                    // sla wijzigingen op
+                    db.SaveChanges();
+
+                }
+
+            }
 
             // !Throw away completely! 
             else
@@ -334,16 +343,17 @@ namespace ihff.Controllers
                 db.Orderlines.Attach(order);
                 // haal order uit de db
                 db.Orderlines.Remove(order);
+                // sla wijzigingen op
                 db.SaveChanges();
             }
             // !Throw away completely! 
-            
+
             // refresh
             return Redirect(Request.UrlReferrer.ToString());
 
         }
 
-        public ActionResult PaymentSucces (Reservation res)
+        public ActionResult PaymentSucces(Reservation res)
         {
             // nog even kijken wanneer ik die code2 remove
             Session.Remove("code2");
