@@ -305,7 +305,7 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
     <value>Voor een telefoonnummer in a.u.b.</value>
   </data>
   <data name="ActivitiesLink" xml:space="preserve">
-    <value>Specials</value>
+    <value>Lectures</value>
   </data>
   <data name="FoodLink" xml:space="preserve">
     <value>Restaurants</value>
@@ -313,11 +313,11 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   <data name="HaarlemLink" xml:space="preserve">
     <value>Over Haarlem</value>
   </data>
-  <data name="HaartlemTxt" xml:space="preserve">
+  <data name="HaarlemTxt" xml:space="preserve">
     <value>Haarlem is de zesde monumentenstad van Nederland. De stad telt 1149 rijksmonumenten. In de binnenstad staan dan ook de meeste van de monumenten, zoals de Grote of Sint-Bavokerk, het Stadhuis en de Vleeshal. De stad kent echter ook een aantal toonaangevende moderne bouwwerken, zoals de Toneelschuur, het Patronaat en de nieuwbouw van de Stadsschouwburg. Van de kerken in Haarlem zijn de Grote of Sint-Bavokerk, gebouwd tussen 1370 en 1520 en de Kathedrale Basiliek Sint Bavo, gebouwd in 1930, de bekendste twee. Aangezien beide kerken de heiligennaam 'Bavo' dragen, worden ze ook wel Oude en Nieuwe Baaf genoemd. In de Sint-Bavokerk klinken elke avond tussen negen en half tien de Damiaatjes, ter herinnering aan de verovering van de Egyptische stad Damietta. Haarlem telt in totaal 22 musea en expositieruimten, genoeg om te bezoeken dus.</value>
   </data>
   <data name="LanguageLbl" xml:space="preserve">
-    <value>NL</value>
+    <value>ENG</value>
   </data>
   <data name="MovieLink" xml:space="preserve">
     <value>Films</value>

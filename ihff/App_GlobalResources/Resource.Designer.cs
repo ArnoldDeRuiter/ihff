@@ -299,7 +299,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Eng.
+        ///   Looks up a localized string similar to NL.
         /// </summary>
         internal static string LanguageLbl {
             get {
