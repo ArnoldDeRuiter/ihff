@@ -12,9 +12,9 @@ namespace ihff.Controllers
 {
     public class WishlistController : BaseController
     {
+        private IHFFdatabasecontext db = new IHFFdatabasecontext();
         private IWishlistRepository wishlistRepository = new DbWishlistRepository();
         private IItemRepository itemRepository = new DbItemRepository();
-        private IHFFdatabasecontext db = new IHFFdatabasecontext();
         private IOrderItemRepository orderItem = new DbOrderItemRepository();
 
         //Index word uitgevoerd bij laden pagina.
