@@ -32,7 +32,6 @@
                 {
                     <li>
                         <div class="film-object item @item.DateBegin.DayOfWeek">
-                            <!--~/Content/img/films/Intestellar1.png-->
                             <a href='@Url.Action("Detail", "Item", new { ItemId = item.ItemId }, null)'>
                                 <img src='@string.Format("../Content/img/{0}/{1}", item.EventType, item.Image)' class="film-picto" />
                             </a>
