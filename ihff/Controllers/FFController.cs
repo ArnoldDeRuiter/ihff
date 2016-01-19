@@ -8,7 +8,7 @@ using ihff.Models;
 
 namespace ihff.Controllers
 {
-    public class FFController : Controller
+    public class FFController : BaseController
     {
         private IItemRepository itemRepository = new DbItemRepository();
         private IOrderRepository orderRepository = new DbOrderRepository();
@@ -19,6 +19,7 @@ namespace ihff.Controllers
         // GET: FF
         public ActionResult Index(int Id)
         {
+            //Item ophalen om alle diners te tonen op dezelfde dag.
             Item item = itemRepository.GetItem(Id);
             IEnumerable<Item> diners = itemRepository.GetDinerDay(item.DateBegin);
 
@@ -27,6 +28,7 @@ namespace ihff.Controllers
             return View(diners);
         }
 
+        //Toevoegen van FFTicket aan Orderline/Wishlist.
         public ActionResult AddFFTicket(int Id1, int Id2)
         {
             if (ModelState.IsValid)
@@ -59,7 +61,7 @@ namespace ihff.Controllers
                 bool newItem = true;
                 foreach (Order o in allOrders)
                 {
-                    if (o.ItemId == Id1 && o.ItemId2 == Id2) // even om wat duidelijk te maken
+                    if (o.ItemId == Id1 && o.ItemId2 == Id2)
                     {
                         newItem = false;
                         db.Orderlines.Attach(o);
@@ -69,12 +71,10 @@ namespace ihff.Controllers
 
                         o.ItemId = Id1;
                         o.Amount = (o.Amount + 1);
-                        o.TotalPrice = (o.Amount * 67.99);//selItem.Price);
+                        o.TotalPrice = (o.Amount * 67.99);
                         o.WishlistCode = Code.ToString();
                         o.ItemId2 = Id2;
 
-
-                        //db.Orderlines.Add(o);
                         db.SaveChanges();
                     }
                 }
@@ -82,14 +82,13 @@ namespace ihff.Controllers
                 if (newItem)
                 {
                     Models.Item selItem = itemRepository.GetItem(Id1);
-                    //selItem.Price = 67.99;
 
                     Order o = new Order();
 
                     o.ItemId = Id1;
                     int totAm = (o.Amount + 1);
                     o.Amount = totAm;
-                    double? totPr = (o.Amount* 67.99);//selItem.Price);
+                    double? totPr = (o.Amount* 67.99);
                     o.TotalPrice = totPr;
                     o.WishlistCode = Code.ToString();
                     o.ItemId2 = Id2;
@@ -97,7 +96,6 @@ namespace ihff.Controllers
                     db.Orderlines.Add(o);
                     db.SaveChanges();
                 }
-
                 return Redirect(Request.UrlReferrer.ToString());
             }
             return View();

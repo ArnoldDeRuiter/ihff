@@ -10,7 +10,7 @@ using System.Net;
 
 namespace ihff.Controllers
 {
-    public class WishlistController : Controller
+    public class WishlistController : BaseController
     {
         private IWishlistRepository wishlistRepository = new DbWishlistRepository();
         private IItemRepository itemRepository = new DbItemRepository();
@@ -55,8 +55,6 @@ namespace ihff.Controllers
                         Item it2 = orderItem.GetItem(item2);
 
                         //Item
-                        //combined.EventType = it2.EventType;
-                        //combined.Image = it2.Image;
                         Name = it.Name +" & "+ it2.Name;
                         realEnding = it2.DateEnd;
                         realPricing = o.TotalPrice;
@@ -134,7 +132,6 @@ namespace ihff.Controllers
                         o.TotalPrice = (o.Amount * selItem.Price);
                         o.WishlistCode = Code;
 
-                        //db.Orderlines.Add(o);
                         db.SaveChanges();
                     }
                 }
@@ -199,20 +196,11 @@ namespace ihff.Controllers
             }
             o.WishlistCode = Code;
 
-            /*db.Orderlines.Add(o);
-            db.SaveChanges();*/
-
             int count = o.Amount;
 
             if (amount == 0)
             {
-                //int offset = count - amount;
-                //for (int i = 0; i < offset; i++)
-                //{
-                    //wishList.RemoveAt(index);
-                    db.Orderlines.Remove(o);
-                //}
-                //Session["wishList"] = wishList;
+                db.Orderlines.Remove(o);
                 db.SaveChanges();
                 return Redirect(Request.UrlReferrer.ToString());
             }
@@ -223,7 +211,6 @@ namespace ihff.Controllers
                 int offset = count - amount;
                 for (int i = 0; i < offset; i++)
                 {
-                    //wishList.RemoveAt(index);
                     o.Amount--;
                 }
                 
@@ -232,12 +219,9 @@ namespace ihff.Controllers
                 int offset = amount - count;
                 for (int i = 0; i < offset; i++)
                 {
-                    //wishList.Add(itempje);
                     o.Amount++;
                 }                
             }
-            //Session["wishList"] = wishList;
-            //db.Orderlines.Add(o);
             db.SaveChanges();
 
             return Redirect(Request.UrlReferrer.ToString());
@@ -277,7 +261,6 @@ namespace ihff.Controllers
                     o.Amount = Amount;
                     o.TotalPrice = TotalPrice;
                     o.WishlistCode = WishlistCode;
-                    //db.Orderlines.Add(o);
                 }
 
                 db.SaveChanges();
@@ -304,14 +287,5 @@ namespace ihff.Controllers
             }
             return View();   
         }
-
-        /*
-        //terwijl dit v zou voldoen: moet er ^ gebeuren :p
-        public void savewish(Models.Item miForm)
-        {
-            //string id = form["itemId"];
-            int id = miForm.ItemId;
-        }
-        */
     }
 }
