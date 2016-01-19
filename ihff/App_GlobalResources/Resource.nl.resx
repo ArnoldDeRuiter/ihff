@@ -322,4 +322,13 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   <data name="MovieLink" xml:space="preserve">
     <value>Films</value>
   </data>
+  <data name="FoodLbl" xml:space="preserve">
+    <value>Restaurants</value>
+  </data>
+  <data name="MoviesLbl" xml:space="preserve">
+    <value>Films</value>
+  </data>
+  <data name="SpecialsLbl" xml:space="preserve">
+    <value>Specials</value>
+  </data>
 </root>
