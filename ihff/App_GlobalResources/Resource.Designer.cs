@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to Food &amp; Film Ticket.
+        /// </summary>
+        internal static string AddToFFLbl {
+            get {
+                return ResourceManager.GetString("AddToFFLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add to Wishlist.
         /// </summary>
         internal static string AddWishlistBtn {
@@ -115,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your order has been confirmed..
+        /// </summary>
+        internal static string ConfirmedTxt {
+            get {
+                return ResourceManager.GetString("ConfirmedTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact Us.
         /// </summary>
         internal static string ContactLbl {
@@ -138,6 +156,15 @@ namespace Resources {
         internal static string DirectorLbl {
             get {
                 return ResourceManager.GetString("DirectorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can choose to send your reservation per email.
+        /// </summary>
+        internal static string EmailCodeTxt {
+            get {
+                return ResourceManager.GetString("EmailCodeTxt", resourceCulture);
             }
         }
         
@@ -273,6 +300,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment Succeeded.
+        /// </summary>
+        internal static string PaymentTitle {
+            get {
+                return ResourceManager.GetString("PaymentTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phonenumber:.
         /// </summary>
         internal static string PhoneLbl {
@@ -296,6 +332,123 @@ namespace Resources {
         internal static string PriceLbl {
             get {
                 return ResourceManager.GetString("PriceLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        internal static string ResAmountLbl {
+            get {
+                return ResourceManager.GetString("ResAmountLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make Reservation.
+        /// </summary>
+        internal static string ResBtn {
+            get {
+                return ResourceManager.GetString("ResBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take note of this code.
+        /// </summary>
+        internal static string ResCodeTxt1 {
+            get {
+                return ResourceManager.GetString("ResCodeTxt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to as this will be the way to retrieve your tickets..
+        /// </summary>
+        internal static string ResCodeTxt2 {
+            get {
+                return ResourceManager.GetString("ResCodeTxt2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Or print it directly from our page..
+        /// </summary>
+        internal static string ResCodeTxt3 {
+            get {
+                return ResourceManager.GetString("ResCodeTxt3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        internal static string ResCustomerNameLbl {
+            get {
+                return ResourceManager.GetString("ResCustomerNameLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phonenumber:.
+        /// </summary>
+        internal static string ResCustomerPhoneLbl {
+            get {
+                return ResourceManager.GetString("ResCustomerPhoneLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date - Time.
+        /// </summary>
+        internal static string ResDateTimeLbl {
+            get {
+                return ResourceManager.GetString("ResDateTimeLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservations.
+        /// </summary>
+        internal static string ReservationsTitle {
+            get {
+                return ResourceManager.GetString("ReservationsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        internal static string ResLocationLbl {
+            get {
+                return ResourceManager.GetString("ResLocationLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string ResNameLbl {
+            get {
+                return ResourceManager.GetString("ResNameLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a method of payment.
+        /// </summary>
+        internal static string ResPaymentOptionsLbl {
+            get {
+                return ResourceManager.GetString("ResPaymentOptionsLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Price.
+        /// </summary>
+        internal static string ResTotalPriveLbl {
+            get {
+                return ResourceManager.GetString("ResTotalPriveLbl", resourceCulture);
             }
         }
         

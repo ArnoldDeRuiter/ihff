@@ -244,4 +244,55 @@ We hope you will enjoy it.&lt;/p&gt;</value>
   <data name="FoodFilmTxt2" xml:space="preserve">
     <value>page.</value>
   </data>
+  <data name="AddToFFLbl" xml:space="preserve">
+    <value>Add to Food &amp; Film Ticket</value>
+  </data>
+  <data name="ConfirmedTxt" xml:space="preserve">
+    <value>Your order has been confirmed.</value>
+  </data>
+  <data name="EmailCodeTxt" xml:space="preserve">
+    <value>You can choose to send your reservation per email</value>
+  </data>
+  <data name="PaymentTitle" xml:space="preserve">
+    <value>Payment Succeeded</value>
+  </data>
+  <data name="ResAmountLbl" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ResBtn" xml:space="preserve">
+    <value>Make Reservation</value>
+  </data>
+  <data name="ResCodeTxt1" xml:space="preserve">
+    <value>Take note of this code</value>
+  </data>
+  <data name="ResCodeTxt2" xml:space="preserve">
+    <value>as this will be the way to retrieve your tickets.</value>
+  </data>
+  <data name="ResCodeTxt3" xml:space="preserve">
+    <value>Or print it directly from our page.</value>
+  </data>
+  <data name="ResCustomerNameLbl" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="ResCustomerPhoneLbl" xml:space="preserve">
+    <value>Phonenumber:</value>
+  </data>
+  <data name="ResDateTimeLbl" xml:space="preserve">
+    <value>Date - Time</value>
+  </data>
+  <data name="ReservationsTitle" xml:space="preserve">
+    <value>Reservations</value>
+  </data>
+  <data name="ResLocationLbl" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="ResNameLbl" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ResPaymentOptionsLbl" xml:space="preserve">
+    <value>Choose a method of payment</value>
+  </data>
+  <data name="ResTotalPriveLbl" xml:space="preserve">
+    <value>Total Price</value>
+  </data>
 </root>

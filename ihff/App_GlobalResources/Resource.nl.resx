@@ -244,4 +244,55 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   <data name="FoodFilmTxt2" xml:space="preserve">
     <value>Pagina.</value>
   </data>
+  <data name="AddToFFLbl" xml:space="preserve">
+    <value>Voeg toe aan Food &amp; Film kaartje</value>
+  </data>
+  <data name="ConfirmedTxt" xml:space="preserve">
+    <value>Wij hebben uw order ontvangen.</value>
+  </data>
+  <data name="EmailCodeTxt" xml:space="preserve">
+    <value>U kunt er voor kiezen om uw reservatie per email te ontvangen.</value>
+  </data>
+  <data name="PaymentTitle" xml:space="preserve">
+    <value>Betaling Gelukt</value>
+  </data>
+  <data name="ResAmountLbl" xml:space="preserve">
+    <value>Hoeveelheid</value>
+  </data>
+  <data name="ResBtn" xml:space="preserve">
+    <value>Maak uw reservatie</value>
+  </data>
+  <data name="ResCodeTxt1" xml:space="preserve">
+    <value>Bewaar deze code </value>
+  </data>
+  <data name="ResCodeTxt2" xml:space="preserve">
+    <value>het is de manier waarmee u uw kaarten kunt ophalen.</value>
+  </data>
+  <data name="ResCodeTxt3" xml:space="preserve">
+    <value>Of u kunt het direct vanaf deze pagina printen.</value>
+  </data>
+  <data name="ResCustomerNameLbl" xml:space="preserve">
+    <value>Naam:</value>
+  </data>
+  <data name="ResCustomerPhoneLbl" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="ResDateTimeLbl" xml:space="preserve">
+    <value>Datum - Tijd</value>
+  </data>
+  <data name="ReservationsTitle" xml:space="preserve">
+    <value>Reservaties</value>
+  </data>
+  <data name="ResLocationLbl" xml:space="preserve">
+    <value>Locatie</value>
+  </data>
+  <data name="ResNameLbl" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="ResPaymentOptionsLbl" xml:space="preserve">
+    <value>Kies uw betaal methode</value>
+  </data>
+  <data name="ResTotalPriveLbl" xml:space="preserve">
+    <value>Totale Prijs</value>
+  </data>
 </root>
