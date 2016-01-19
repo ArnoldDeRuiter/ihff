@@ -96,7 +96,7 @@ namespace ihff.Controllers
                     db.Orderlines.Add(o);
                     db.SaveChanges();
                 }
-                return Redirect(Request.UrlReferrer.ToString());
+                return RedirectToAction("Movies", "Home");
             }
             return View();
         }
