@@ -304,8 +304,8 @@ We hope you will enjoy it.&lt;/p&gt;</value>
   <data name="ResProvidePhone" xml:space="preserve">
     <value>Provide a Phonenumber please</value>
   </data>
-  <data name="ActivitiesLink" xml:space="preserve">
-    <value>Activities</value>
+  <data name="SpecialsLink" xml:space="preserve">
+    <value>Specials</value>
   </data>
   <data name="FoodLink" xml:space="preserve">
     <value>Food</value>

@@ -61,15 +61,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Activities.
-        /// </summary>
-        internal static string ActivitiesLink {
-            get {
-                return ResourceManager.GetString("ActivitiesLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Address:.
         /// </summary>
         internal static string AddressLbl {
@@ -566,6 +557,15 @@ namespace Resources {
         internal static string SpecialsLbl {
             get {
                 return ResourceManager.GetString("SpecialsLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specials.
+        /// </summary>
+        internal static string SpecialsLink {
+            get {
+                return ResourceManager.GetString("SpecialsLink", resourceCulture);
             }
         }
         

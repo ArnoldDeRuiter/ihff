@@ -33,7 +33,7 @@ namespace ihff.Controllers
             return View(allFilms.OrderBy(i => i.DateBegin));
         }
 
-        public ActionResult Activities()
+        public ActionResult Specials()
         {
             IEnumerable<Item> allFilms = itemRepository.GetAllSpecials();
 

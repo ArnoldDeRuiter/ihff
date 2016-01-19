@@ -304,8 +304,8 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   <data name="ResProvidePhone" xml:space="preserve">
     <value>Voor een telefoonnummer in a.u.b.</value>
   </data>
-  <data name="ActivitiesLink" xml:space="preserve">
-    <value>Lectures</value>
+  <data name="SpecialsLink" xml:space="preserve">
+    <value>Specials</value>
   </data>
   <data name="FoodLink" xml:space="preserve">
     <value>Restaurants</value>

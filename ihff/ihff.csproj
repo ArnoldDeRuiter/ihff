@@ -222,7 +222,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\filmObject.css" />
-    <Content Include="Content\Activities.css" />
+    <Content Include="Content\Specials.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\img\1\2001 A Space Odyssey.jpg" />
     <Content Include="Content\img\1\2001 A Space Odyssey_Item.png" />
@@ -381,7 +381,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Movies.cshtml" />
     <Content Include="Views\Home\Food.cshtml" />
-    <Content Include="Views\Home\Activities.cshtml" />
+    <Content Include="Views\Home\Specials.cshtml" />
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Item\Detail.cshtml" />
     <Content Include="Views\Item\DinerDetailParital.cshtml" />
@@ -412,12 +412,14 @@
     <Content Include="App_GlobalResources\Resource.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Resource.nl.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resource.nl.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <PropertyGroup>

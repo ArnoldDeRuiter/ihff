@@ -77,7 +77,7 @@
     else
     {
         <!--Normale, lege wishlist laten zien indien er geen Sessie loopt-->
-        <p class="p-title">@Resource.WishlistTxt1 @Html.ActionLink(Resource.MoviesLbl, "Movies", "Home"), @Html.ActionLink(Resource.SpecialsLbl, "Activities", "Home") @Resource.WishlistTxt2 @Html.ActionLink(@Resource.FoodLbl, "Food", "Home") @Resource.WishlistTxt3</p>
+        <p class="p-title">@Resource.WishlistTxt1 @Html.ActionLink(Resource.MoviesLbl, "Movies", "Home"), @Html.ActionLink(Resource.SpecialsLbl, "Specials", "Home") @Resource.WishlistTxt2 @Html.ActionLink(@Resource.FoodLbl, "Food", "Home") @Resource.WishlistTxt3</p>
         <p class="p-title">@Resource.WishlistCode</p>
 
         using (Html.BeginForm("wishReturningCode", "Wishlist", FormMethod.Post, new { Id = string.Format("formCReturningode") }))
