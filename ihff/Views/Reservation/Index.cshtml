@@ -8,13 +8,14 @@
 <link href="@Url.Content("~/Content/Reservation.css")" rel="stylesheet" type="text/css" />
 
 <script>
-    function dialogJaNee() {
+    function dialogJaNee(id1, id2) {
+        var inputNumberId = id1 + "en" + id2;
     if (confirm('Wilt u deze order bewaren in uw wishlist?')) {
-        $("#hiddenDeleteKnopBoolVal").val(true);
+        $("#hiddenDeleteKnopBoolVal"+inputNumberId).val(true);
         //$("#hiddenDeleteKnopResForm").submit(); //deleteOrder 
     }
     else{
-            $("#hiddenDeleteKnopBoolVal").val(false);
+        $("#hiddenDeleteKnopBoolVal"+inputNumberId).val(false);
             //$("#hiddenDeleteKnopResForm").submit(); //deleteOrder 
         }
     }
@@ -42,6 +43,8 @@
 
         @foreach (ihff.Models.OrderItemCombined i in Model)
         {
+            int? item2 = (i.ItemId2 != null) ? i.ItemId2 : 0;
+            string inputNumberId = i.ItemId + "en" + item2;
             <tr>
                 <td><img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image)' class="Res_IMG" /></td>
                 <td colspan="6" class="res_Naam">@i.Name</td>
@@ -79,9 +82,15 @@
             <td>
                 @using (Html.BeginForm("DeleteOrder", "Reservation", i, FormMethod.Post))
                 {
+                    string idtje = "hiddenDeleteKnopBoolVal" + inputNumberId;
 
-                    <input type="submit" value="x" onclick="dialogJaNee();">
-                    <input type="hidden" name="hiddenDeleteKnopBoolVal" id="hiddenDeleteKnopBoolVal" />
+                    <br/>
+
+
+
+
+                    <input type="submit" value="x" onclick="dialogJaNee(@i.ItemId, @item2)">
+                    <input type="hidden" name="hiddenDeleteKnopBoolVal" id="@idtje" />
                 }
             </td>
         </tr>
