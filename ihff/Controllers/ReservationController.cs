@@ -20,26 +20,37 @@ namespace ihff.Controllers
         // GET: Reservation
         public ActionResult Index()
         {
+            // nieuwe lijst Orders aanmaken
             List<Order> allOrders = new List<Order>();
 
+            // string code aanmaken
             string code = "";
 
+            // als iemand al z'n order heeft gepslitst
             if (Session["code2"] != null)
             {
-                // wishlistcode ophalen
+                // nieuwe wishlistcode ophalen 
                 code = Session["code2"].ToString();
-
-                // orders ophalen
+                
+                // orders ophalen met nieuwe wishlistcode
                 allOrders = orderItem.GetOrders(code);
+
+                if (allOrders.Count == 0)
+                {
+                    allOrders = orderItem.GetOrders(Session["code"].ToString());
+                }
+
             }
+            // nog niet de order gesplitst
             else
             {
-                // wishlistcode ophalen
+                // wishlistcode ophalen zoals het origineel
                 code = Session["code"].ToString();
 
                 // orders ophalen
                 allOrders = orderItem.GetOrders(code);
             }
+
             // items ophalen
             List<Item> allItems = new List<Item>();
             
@@ -232,11 +243,7 @@ namespace ihff.Controllers
             // haal de juiste order op dmv wishlistcode en itemId
             Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
 
-            // TODO TODO TODO TODO TODO
-            // if de bool van js van arnold is true !Keep in wishlist!
-            // dan wil ik de bestaande List<order> ophalen en daarvan voor elke order de wishlistcode veranderen
-            // wishlist session code blijft dan de code voor het te verwijderen item en nieuwe session list code2 word voor de nieuwe reservation List<order> wishcode
-            // Zoniet dan onderstaande code uitvoeren
+            // Wil de gebruiker de order bewaren?
             if (hiddenDeleteKnopBoolVal == true)
             {
                 // lijst vullen met orders die de orginele wishlistcode hebben
@@ -311,7 +318,7 @@ namespace ihff.Controllers
         public ActionResult PaymentSucces (Reservation res)
         {
             // nog even kijken wanneer ik die code2 remove
-            //Session.Remove("code2");
+            Session.Remove("code2");
             // return view PaymentSucces met parameter res
             return View(res);
         }
