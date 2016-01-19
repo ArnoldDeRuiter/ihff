@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ihff.Models.OrderItemCombined>
+﻿@using Resources
+@model IEnumerable<ihff.Models.OrderItemCombined>
 @{
     ViewBag.Title = "Wishlist";
     //bool amountWarn = ViewBag.WarningAmount;
@@ -57,9 +58,9 @@
         }
 
           <hr id="wishHR" />
-        @:<p class="pImportantLine"><b>Total Price: </b>€ @string.Format("{0}", ((double?)totPrijs)) ,-</p>
+        @:<p class="pImportantLine"><b>@Resource.TotalPriceLbl </b>€ @string.Format("{0}", ((double?)totPrijs)) ,-</p>
                         
-        @:<p class="pImportantLine"><b>Code: </b>@string.Format("{0}", Code)</p>
+        @:<p class="pImportantLine"><b>@Resource.CodeLbl </b>@string.Format("{0}", Code)</p>
         
         using (Html.BeginForm("wishOrder", "Wishlist", new { code = Code }, FormMethod.Post, new { Id = string.Format("form{0}", Code) }))
         {
@@ -75,13 +76,13 @@
             }
                 @Html.HiddenFor(a => iteratie, new { id = "Iteratie" + iteratie, Name = "Iteratie" });
             @Html.AntiForgeryToken()
-            <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", Code)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Place Order</span></div>
+            <div class="order-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", Code)).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">@Resource.PlaceOrderLbl</span></div>
         }
     }
     else
     {
-        <p class="p-title">This is your wishlist, it is empty at the moment. You can add @Html.ActionLink("movies", "Movies", "Home"), @Html.ActionLink("lectures", "Activities", "Home") and @Html.ActionLink("restaurants", "Food", "Home") to your wishlist by clicking the add to wishlist button.</p>
-        <p class="p-title">If you've got an whislist code, you can enter it below.</p>
+        <p class="p-title">@Resource.WishlistTxt1 @Html.ActionLink("movies", "Movies", "Home"), @Html.ActionLink("lectures", "Activities", "Home") @Resource.WishlistTxt2 @Html.ActionLink("restaurants", "Food", "Home") @Resource.WishlistTxt3</p>
+        <p class="p-title">@Resource.WishlistCode</p>
 
         using (Html.BeginForm("wishReturningCode", "Wishlist", FormMethod.Post, new { Id = string.Format("formCReturningode") }))
         {
@@ -89,7 +90,7 @@
                 <p class="p-title">
                     @Html.TextBox("Code", "Code", new { maxlength = "5" })
                 </p>
-                <div class="order-wishlist" onClick="document.getElementById(@string.Format("'formCReturningode'")).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">Get Wishlist</span></div>
+                <div class="order-wishlist" onClick="document.getElementById(@string.Format("'formCReturningode'")).submit();"><span class="order-wishlist-plus">+</span><span class="order-wishlist-txt nowrap">@Resource.GetWishlistLbl</span></div>
         }
     }
 </div>

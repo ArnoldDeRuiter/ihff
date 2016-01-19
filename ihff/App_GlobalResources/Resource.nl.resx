@@ -204,4 +204,28 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   <data name="ZipCodeLbl" xml:space="preserve">
     <value>Postcode:</value>
   </data>
+  <data name="CodeLbl" xml:space="preserve">
+    <value>Code:</value>
+  </data>
+  <data name="GetWishlistLbl" xml:space="preserve">
+    <value>Haal Wishlist op</value>
+  </data>
+  <data name="PlaceOrderLbl" xml:space="preserve">
+    <value>Plaats Order</value>
+  </data>
+  <data name="TotalPriceLbl" xml:space="preserve">
+    <value>Totale Prijs:</value>
+  </data>
+  <data name="WishlistCode" xml:space="preserve">
+    <value>Als u een wishlist code heeft, kunt u hem hieronder invullen.</value>
+  </data>
+  <data name="WishlistTxt1" xml:space="preserve">
+    <value>Dit is uw wishlist, op dit moment is hij leeg. U kunt </value>
+  </data>
+  <data name="WishlistTxt2" xml:space="preserve">
+    <value>en</value>
+  </data>
+  <data name="WishlistTxt3" xml:space="preserve">
+    <value>toevoegen aan uw wishlist, door te klikken op de voeg toe aan wishlist knop.</value>
+  </data>
 </root>

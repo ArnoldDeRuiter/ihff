@@ -106,6 +106,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Code:.
+        /// </summary>
+        internal static string CodeLbl {
+            get {
+                return ResourceManager.GetString("CodeLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description:.
         /// </summary>
         internal static string DescriptionLbl {
@@ -129,6 +138,15 @@ namespace Resources {
         internal static string Friday {
             get {
                 return ResourceManager.GetString("Friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Wishlist.
+        /// </summary>
+        internal static string GetWishlistLbl {
+            get {
+                return ResourceManager.GetString("GetWishlistLbl", resourceCulture);
             }
         }
         
@@ -218,6 +236,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Place Order.
+        /// </summary>
+        internal static string PlaceOrderLbl {
+            get {
+                return ResourceManager.GetString("PlaceOrderLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price:.
         /// </summary>
         internal static string PriceLbl {
@@ -281,11 +308,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Price:.
+        /// </summary>
+        internal static string TotalPriceLbl {
+            get {
+                return ResourceManager.GetString("TotalPriceLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wednesday.
         /// </summary>
         internal static string Wednesday {
             get {
                 return ResourceManager.GetString("Wednesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you&apos;ve got an whislist code, you can enter it below..
+        /// </summary>
+        internal static string WishlistCode {
+            get {
+                return ResourceManager.GetString("WishlistCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is your wishlist, it is empty at the moment. You can add.
+        /// </summary>
+        internal static string WishlistTxt1 {
+            get {
+                return ResourceManager.GetString("WishlistTxt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to and.
+        /// </summary>
+        internal static string WishlistTxt2 {
+            get {
+                return ResourceManager.GetString("WishlistTxt2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to to your wishlist by clicking the add to wishlist button..
+        /// </summary>
+        internal static string WishlistTxt3 {
+            get {
+                return ResourceManager.GetString("WishlistTxt3", resourceCulture);
             }
         }
         

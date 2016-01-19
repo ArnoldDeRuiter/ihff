@@ -204,4 +204,28 @@ We hope you will enjoy it.&lt;/p&gt;</value>
   <data name="ZipCodeLbl" xml:space="preserve">
     <value>ZipCode:</value>
   </data>
+  <data name="CodeLbl" xml:space="preserve">
+    <value>Code:</value>
+  </data>
+  <data name="GetWishlistLbl" xml:space="preserve">
+    <value>Get Wishlist</value>
+  </data>
+  <data name="PlaceOrderLbl" xml:space="preserve">
+    <value>Place Order</value>
+  </data>
+  <data name="TotalPriceLbl" xml:space="preserve">
+    <value>Total Price:</value>
+  </data>
+  <data name="WishlistCode" xml:space="preserve">
+    <value>If you've got an whislist code, you can enter it below.</value>
+  </data>
+  <data name="WishlistTxt1" xml:space="preserve">
+    <value>This is your wishlist, it is empty at the moment. You can add</value>
+  </data>
+  <data name="WishlistTxt2" xml:space="preserve">
+    <value>and</value>
+  </data>
+  <data name="WishlistTxt3" xml:space="preserve">
+    <value>to your wishlist by clicking the add to wishlist button.</value>
+  </data>
 </root>
