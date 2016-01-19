@@ -17,7 +17,7 @@ namespace ihff.Models
         public string WishlistCode { get; set; }
 
         [RegularExpression("^[a-zA-Z\\ ]+$")]
-        [StringLength(20)]
+        [StringLength(50)]
         public string ReservationName { get; set; }
 
         [Required(ErrorMessage = "Your must provide a PhoneNumber")]

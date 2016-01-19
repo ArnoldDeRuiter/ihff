@@ -123,9 +123,18 @@ namespace ihff.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(string name, string tel, string paymentMethod)
         {
-            // wishlistcode ophalen
-            string code = Session["code"].ToString();
+            string code = "";
 
+            if (Session["code2"] != null)
+            {
+                // wishlistcode ophalen
+                code = Session["code2"].ToString();
+            }
+            else
+            {
+                // wishlistcode ophalen
+                code = Session["code"].ToString();
+            }
             // orders ophalen
             List<Order> allOrders = orderItem.GetOrders(code);
 
