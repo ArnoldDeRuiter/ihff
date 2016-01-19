@@ -5,9 +5,14 @@
     ViewBag.Title = "PaymentSucces";
 }
 
+<link href="@Url.Content("~/Content/Reservation.css")" rel="stylesheet" type="text/css" />
+
 <h2>@Resource.PaymentTitle</h2>
 
 <p>@Resource.ConfirmedTxt</p>
-<p>@Resource.ResCodeTxt1 "@Model.ReservationCode" @Resource.ResCodeTxt2</p>
+
+    <p>@Resource.ResCodeTxt1 "@Model.ReservationCode" @Resource.ResCodeTxt2</p>
+    <button onclick="window.print()">@Resource.PrintBtn</button>
+
 <p>@Resource.EmailCodeTxt @Html.TextBox("email")</p>
 <p>@Resource.ResCodeTxt3</p>

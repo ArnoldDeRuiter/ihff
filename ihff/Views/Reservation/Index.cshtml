@@ -104,6 +104,10 @@
                 alert("@Resource.ResProvidePhone");
                 return false;
             }
+            if (!$("#paymentMethod").val().match(/^[a-zA-Z\ {0.12} ]+$/)) {
+                alert("@Resource.ResProvidePaymentMethod");
+                return false;
+            }
             return true;
         }
     </script>
