@@ -292,10 +292,16 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   <data name="ResPaymentOptionsLbl" xml:space="preserve">
     <value>Kies uw betaal methode</value>
   </data>
-  <data name="ResTotalPriveLbl" xml:space="preserve">
+  <data name="ResTotalPriceLbl" xml:space="preserve">
     <value>Totale Prijs</value>
   </data>
   <data name="SaveOrderWishlistLbl" xml:space="preserve">
     <value>Wilt u deze order bewaren in uw wishlist?</value>
+  </data>
+  <data name="ResProvideName" xml:space="preserve">
+    <value>Voer een naam in a.u.b.</value>
+  </data>
+  <data name="ResProvidePhone" xml:space="preserve">
+    <value>Voor een telefoonnummer in a.u.b.</value>
   </data>
 </root>

@@ -292,10 +292,16 @@ We hope you will enjoy it.&lt;/p&gt;</value>
   <data name="ResPaymentOptionsLbl" xml:space="preserve">
     <value>Choose a method of payment</value>
   </data>
-  <data name="ResTotalPriveLbl" xml:space="preserve">
+  <data name="ResTotalPriceLbl" xml:space="preserve">
     <value>Total Price</value>
   </data>
   <data name="SaveOrderWishlistLbl" xml:space="preserve">
     <value>Do you want to save this item in your wishlist?</value>
+  </data>
+  <data name="ResProvideName" xml:space="preserve">
+    <value>Provide a name please</value>
+  </data>
+  <data name="ResProvidePhone" xml:space="preserve">
+    <value>Provide a Phonenumber please</value>
   </data>
 </root>

@@ -444,11 +444,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provide a name please.
+        /// </summary>
+        internal static string ResProvideName {
+            get {
+                return ResourceManager.GetString("ResProvideName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provide a Phonenumber please.
+        /// </summary>
+        internal static string ResProvidePhone {
+            get {
+                return ResourceManager.GetString("ResProvidePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Price.
         /// </summary>
-        internal static string ResTotalPriveLbl {
+        internal static string ResTotalPriceLbl {
             get {
-                return ResourceManager.GetString("ResTotalPriveLbl", resourceCulture);
+                return ResourceManager.GetString("ResTotalPriceLbl", resourceCulture);
             }
         }
         
