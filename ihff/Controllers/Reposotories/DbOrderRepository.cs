@@ -16,18 +16,6 @@ namespace ihff.Controllers.Reposotories
         public IEnumerable<Order> GetOrders(string code)
         {
             return ctx.Orderlines.Where(o => o.WishlistCode == code);
-
-            //weggehaald en bovenstaande voor gebruikt.
- /*           List<Order> ordersPerCode = new List<Order>();
-
-            foreach (Order o in ctx.Orderlines)
-            {
-                if (o.WishlistCode == code)
-                {
-                    ordersPerCode.Add(o);
-                }
-            }
-            return ordersPerCode; */
         }
 
         //Een order toevoegen aan de database.

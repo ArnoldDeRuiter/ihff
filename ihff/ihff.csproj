@@ -387,6 +387,7 @@
     <Content Include="Views\Item\DinerDetailParital.cshtml" />
     <Content Include="Views\FF\index.cshtml" />
     <Content Include="Views\Home\FoodFilm.cshtml" />
+    <Content Include="Views\Home\Haarlem.cshtml" />
     <None Include="Views\Item\MovieDetailParital.cshtml" />
     <Content Include="Views\Item\SpecialDetailParital.cshtml" />
     <Content Include="Views\Reservation\Create.cshtml" />

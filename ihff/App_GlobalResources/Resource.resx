@@ -304,4 +304,22 @@ We hope you will enjoy it.&lt;/p&gt;</value>
   <data name="ResProvidePhone" xml:space="preserve">
     <value>Provide a Phonenumber please</value>
   </data>
+  <data name="ActivitiesLink" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="FoodLink" xml:space="preserve">
+    <value>Food</value>
+  </data>
+  <data name="HaarlemLink" xml:space="preserve">
+    <value>About Haarlem</value>
+  </data>
+  <data name="HaarlemTxt" xml:space="preserve">
+    <value>Haarlem is the sixth monument city of the Netherlands. The city has 1149 listed buildings. In the city also stand most of the monuments, such as the Grote Kerk, City Hall and the meat market. However, the city also has a number of leading modern buildings like the Toneelschuur, Patronaat and the construction of Stadsschouwburg. The two best known churches in Haarlem, the 'Grote Kerk', built between 1370 and 1520 and the 'Cathedral of St Bavo', built in 1930. Since both churches bear the sacred name 'Bavo', they are also called Old and New Baaf. In the St. Bavo Church sounded every evening between nine and half past the 'damiaatjes' in memory of the conquest of the Egyptian city of Damietta. Haarlem has a total of 22 museums and exhibition spaces, there is enough to visit.</value>
+  </data>
+  <data name="LanguageLbl" xml:space="preserve">
+    <value>Eng</value>
+  </data>
+  <data name="MovieLink" xml:space="preserve">
+    <value>Movies</value>
+  </data>
 </root>

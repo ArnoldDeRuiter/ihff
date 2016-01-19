@@ -13,26 +13,7 @@ namespace ihff.Controllers
         #region OnActionExecuting
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            //ActionExecutingContext abc = filterContext;
-            //SessionManager _sm = new SessionManager();
-            //if (_sm.IsNull == true || _sm.User_Id == 0)
-            //{
-            //    filterContext.Result = new RedirectToRouteResult(
-            //        new RouteValueDictionary { { "controller", "Account" }, { "action", "Login" }, { "returnUrl", HttpContext.Request.RawUrl }, { "area", "" } });
-            //    return;
-            //}
-
-            //string controllerName = filterContext.Controller.GetType().Name.Replace("Controller", "");
-            //string actionMethodName = filterContext.ActionDescriptor.ActionName;
-
-            //if (_sm.System_Id != 1)
-            //{
-            //    filterContext.Result = new RedirectToRouteResult(
-            //     new RouteValueDictionary { { "controller", "Home" }, { "action", "Index" }, { "area", "" } });
-            //    return;
-            //}
-        }
+        {       }
 
         #endregion
 

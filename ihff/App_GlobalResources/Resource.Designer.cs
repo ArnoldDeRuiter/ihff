@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activities.
+        /// </summary>
+        internal static string ActivitiesLink {
+            get {
+                return ResourceManager.GetString("ActivitiesLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address:.
         /// </summary>
         internal static string AddressLbl {
@@ -170,7 +179,7 @@ namespace Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;Haarlem has an exquisite culinary culture, that is why we selected the best restaurants too take part in this years festival. To promote these restaurants we bring you the Food &amp; Film Ticket. Dining as the appetiser and a beautiful movie as a dessert.&lt;/p&gt;
-        ///&lt;p&gt;A Food &amp; Film ticket will save you some money and introduces you to the finest restaurants in the area. To order a Food &amp; Film Ticket, navagate to the movie you would like to see and open its details page. From this page you will have the option to o [rest of string was truncated]&quot;;.
+        ///&lt;p&gt;A Food &amp; Film ticket will save you some money and introduces you to the finest restaurants in the area. To order a Food &amp; Film Ticket, navagate to the movie you would like to see and open its details page. From this page you will have the option to  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string FoodFilmContent {
             get {
@@ -206,6 +215,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Food.
+        /// </summary>
+        internal static string FoodLink {
+            get {
+                return ResourceManager.GetString("FoodLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Friday.
         /// </summary>
         internal static string Friday {
@@ -224,11 +242,28 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About Haarlem.
+        /// </summary>
+        internal static string HaarlemLink {
+            get {
+                return ResourceManager.GetString("HaarlemLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Haarlem is the sixth monument city of the Netherlands. The city has 1149 listed buildings. In the city also stand most of the monuments, such as the Grote Kerk, City Hall and the meat market. However, the city also has a number of leading modern buildings like the Toneelschuur, Patronaat and the construction of Stadsschouwburg. The two best known churches in Haarlem, the &apos;Grote Kerk&apos;, built between 1370 and 1520 and the &apos;Cathedral of St Bavo&apos;, built in 1930. Since both churches bear the sacred name &apos;Bavo&apos;,  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string HaarlemTxt {
+            get {
+                return ResourceManager.GetString("HaarlemTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;p&gt;Welcome to Haarlem and welcome to the international Haarlem film festival. This year’s theme is The Science of Fiction / Celluloid Realism. &lt;/p&gt;
         ///&lt;p&gt;
         ///Ever since Georges Méliès, film is pre- eminently the medium where experiments and vision go hand in hand. Countless directors envisioned with their films a future in which mechanisation and technology are omnipresent. And always the questions are the same: “In what way do man and machine influence each other and how does that affect our society”. &lt;/p&gt;
-        ///&lt;p&gt;
-        ///O [rest of string was truncated]&quot;;.
+        ///&lt;p [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string HomeContent {
             get {
@@ -264,6 +299,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eng.
+        /// </summary>
+        internal static string LanguageLbl {
+            get {
+                return ResourceManager.GetString("LanguageLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location:.
         /// </summary>
         internal static string LocationLbl {
@@ -278,6 +322,15 @@ namespace Resources {
         internal static string LocationTimeLbl {
             get {
                 return ResourceManager.GetString("LocationTimeLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Movies.
+        /// </summary>
+        internal static string MovieLink {
+            get {
+                return ResourceManager.GetString("MovieLink", resourceCulture);
             }
         }
         

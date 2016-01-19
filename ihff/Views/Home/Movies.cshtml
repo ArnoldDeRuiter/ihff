@@ -9,15 +9,12 @@
 
 }
 
-
 <link href="@Url.Content("~/Content/Movies.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/filmObject.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/objectFilter.css")" rel="stylesheet" type="text/css" />
 <link href="~/Content/isotope.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/isotope.pkgd.min.js"></script>
-
-
 
         <nav class="filmFilter ">
             <ul id="filters" class="option-set" data-option-key="filter">
@@ -32,7 +29,6 @@
 
         <div id="isotope-container" style="position: relative; height: 530.4px;">
 
-
             <ul class="ul-film">
                 
                 @foreach (var film in Model)
@@ -40,7 +36,6 @@
 
                         <li>
                             <div class="film-object item @film.DateBegin.DayOfWeek">
-                                <!--~/Content/img/films/Intestellar1.png-->
                                 <a href='@Url.Action("Detail", "Item", new {ItemId = film.ItemId}, null)'>
                                     <img src='@string.Format("../Content/img/{0}/{1}", @film.EventType, @film.Image)' class="film-picto"/>
                                 </a>
@@ -59,15 +54,9 @@
                                     <div class="film-wishlist" onClick="document.getElementById(@string.Format("'form{0}'", @film.ItemId)).submit();"><span class="film-wishlist-plus">+</span><span class="film-wishlist-txt nowrap">@Resource.AddWishlistBtn</span></div>
                                 }
                             </div>
-                        </li>
-                    
+                        </li>                   
                 }
-
-
             </ul>
-
-
-
         </div>
 
 <script src="@Url.Content("~/Scripts/navbar-highlight.js")"></script>
