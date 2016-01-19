@@ -127,6 +127,7 @@ color: #BEC3C7;
     
     position:relative;
     top:2px;
+    z-index:100;
 
     text-decoration: none !important;
 }

@@ -50,7 +50,7 @@
                     <img src='@string.Format("../../Content/img/{0}/{1}", i.EventType, i.Image)' class="item-icon" />
                 <div class="item-span-container">
 
-                    <p><span class="item-block-title nowrap">@Html.ActionLink((string)i.Name, "Detail", "Item", new { ItemId = i.ItemId }, null)</span><span class="item-block-amount nowrap">€@(i.TotalPrice) ,- <input class="item-block-number" id="@inputNumberId" onchange="updateAmount(@i.ItemId,@item2);" type="number" max="50" value="@i.Amount" /></span></p>
+                    <p><span class="item-block-title nowrap">@i.Name</span><span class="item-block-amount nowrap">€@(i.TotalPrice) ,- <input class="item-block-number" id="@inputNumberId" onchange="updateAmount(@i.ItemId,@item2);" type="number" max="50" value="@i.Amount" /></span></p>
                     <p class="aangepasteP"><span class="item-block-day nowrap">@string.Format("{0}", i.DateBegin.DayOfWeek + " ")</span><span class="item-block-time nowrap">@string.Format("{0}", i.DateBegin.ToString("HH:mm") + " - " + i.DateEnd.ToString("HH:mm"))</span><span class="item-block-delete nowrap"><a onclick="deleteId(@i.ItemId)">×</a></span></p> <!--Jeroen? ItemId2-->
 
                 </div>
