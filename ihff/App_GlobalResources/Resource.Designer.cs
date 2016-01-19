@@ -399,6 +399,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Print this page.
+        /// </summary>
+        internal static string PrintBtn {
+            get {
+                return ResourceManager.GetString("PrintBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string ResAmountLbl {
@@ -512,6 +521,15 @@ namespace Resources {
         internal static string ResProvideName {
             get {
                 return ResourceManager.GetString("ResProvideName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide a method of payment.
+        /// </summary>
+        internal static string ResProvidePaymentMethod {
+            get {
+                return ResourceManager.GetString("ResProvidePaymentMethod", resourceCulture);
             }
         }
         

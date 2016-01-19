@@ -331,4 +331,10 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   <data name="SpecialsLbl" xml:space="preserve">
     <value>Specials</value>
   </data>
+  <data name="PrintBtn" xml:space="preserve">
+    <value>Print deze pagina</value>
+  </data>
+  <data name="ResProvidePaymentMethod" xml:space="preserve">
+    <value>Geef a.u.b. een betaalmanier op</value>
+  </data>
 </root>

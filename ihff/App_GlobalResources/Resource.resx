@@ -331,4 +331,10 @@ We hope you will enjoy it.&lt;/p&gt;</value>
   <data name="SpecialsLbl" xml:space="preserve">
     <value>Specials</value>
   </data>
+  <data name="PrintBtn" xml:space="preserve">
+    <value>Print this page</value>
+  </data>
+  <data name="ResProvidePaymentMethod" xml:space="preserve">
+    <value>Please provide a method of payment</value>
+  </data>
 </root>
