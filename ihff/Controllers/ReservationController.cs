@@ -11,7 +11,7 @@ using ihff.Controllers.Reposotories;
 
 namespace ihff.Controllers
 {
-    public class ReservationController : Controller
+    public class ReservationController : BaseController
     {
         private IHFFdatabasecontext db = new IHFFdatabasecontext();
         private IOrderItemRepository orderItem = new DbOrderItemRepository();
@@ -162,7 +162,7 @@ namespace ihff.Controllers
 
         // GET: Reservation/Delete/5
         [HttpPost]
-        public ActionResult DeleteOrder(OrderItemCombined i, bool hiddenDeleteKnopBoolVal)
+        public ActionResult DeleteOrder(OrderItemCombined i, bool? hiddenDeleteKnopBoolVal)
         {
             // kijken of het object niet null is
             if (i == null)
@@ -174,7 +174,7 @@ namespace ihff.Controllers
             // haal de juiste order op dmv wishlistcode en itemId
             Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
 
-            // TODO TODO TODO TODO
+            // TODO TODO TODO TODO TODO
             // if de bool van js van arnold is true !Keep in wishlist!
             // dan wil ik de bestaande List<order> ophalen en daarvan voor elke order de wishlistcode veranderen
             // wishlist session code blijft dan de code voor het te verwijderen item en nieuwe session list code2 word voor de nieuwe reservation List<order> wishcode
@@ -182,34 +182,34 @@ namespace ihff.Controllers
             if (hiddenDeleteKnopBoolVal == true)
             {
                List<Order> orders = orderItem.GetOrders(i.WishlistCode);
-                
-                if (Session["code2"] == null)
-                {
-                    string code2 = wishlistRepository.getTempCode();
 
-                    Session["code2"] = code2;
+                if (orders.Count >= 1)
+                {
+                    if (Session["code2"] == null)
+                    {
+                        string code2 = wishlistRepository.getTempCode();
+
+                        Session["code2"] = code2;
+                        
+                    }
+
+                    else
+                    {
+                        string code2 = Session["code2"].ToString();
+                        
+                    }
 
                     foreach (Order o in orders)
                     {
                         db.Orderlines.Attach(o);
-                        o.WishlistCode = code2;
+                        o.WishlistCode = Session["code2"].ToString();
                         db.SaveChanges();
                     }
+
                 }
 
-                else
-                {
-                   string code = Session["code"].ToString();
-
-                    foreach (Order o in orders)
-                    {
-                        db.Orderlines.Attach(o);
-                        o.WishlistCode = code;
-                        db.SaveChanges();
-                    }
                 }
-
-            }
+            
 
             // !Throw away completely! 
             else
@@ -229,6 +229,8 @@ namespace ihff.Controllers
 
         public ActionResult PaymentSucces (Reservation res)
         {
+            // nog even kijken wanneer ik die code2 remove
+            //Session.Remove("code2");
             // return view PaymentSucces met parameter res
             return View(res);
         }

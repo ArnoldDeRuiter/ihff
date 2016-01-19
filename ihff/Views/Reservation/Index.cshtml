@@ -9,12 +9,11 @@
 
 <script>
     function dialogJaNee() {
-        if (confirm('Hallo?')) {
-            alert('Je klikte op OK'); //kan weg
-            $("#hiddenDeleteKnopBoolVal").val(true);
-            //$("#hiddenDeleteKnopResForm").submit(); //deleteOrder 
-        } else {
-            alert('Je klikte op annuleren.'); //kan weg
+    if (confirm('Wilt u deze order bewaren in uw wishlist?')) {
+        $("#hiddenDeleteKnopBoolVal").val(true);
+        //$("#hiddenDeleteKnopResForm").submit(); //deleteOrder 
+    }
+    else{
             $("#hiddenDeleteKnopBoolVal").val(false);
             //$("#hiddenDeleteKnopResForm").submit(); //deleteOrder 
         }
@@ -40,77 +39,93 @@
             <th> Totalprice</th>
         </tr>
     </thead>
-    @{
-        foreach (ihff.Models.OrderItemCombined i in Model)
+
+        @foreach (ihff.Models.OrderItemCombined i in Model)
         {
             <tr>
                 <td><img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image)' class="Res_IMG" /></td>
                 <td colspan="6" class="res_Naam">@i.Name</td>
                 <td class="res_Locatie">@i.Location</td>
                 <td colspan="3" class="res_Aanvang"> @i.DateBegin.ToString("dd/MM") - @i.DateBegin.ToString("HH:mm")</td>
-                <td class="res_Prijs">@using (Html.BeginForm("AlterOrder", "Reservation", i, FormMethod.Post))
+                <td class="res_Prijs">
+                    @using (Html.BeginForm("AlterOrder", "Reservation", i, FormMethod.Post))
                 {
-                    @Html.TextBox("inputAmount", @i.Amount, new { type = "number", min = "1", max = "10" });
-                    <input type="submit" value="+-"/>
-                } </td>
-                <td class="res_Prijs">&euro; @i.TotalPrice</td>
-                
-                <!-- HIER WIL IK DIE INFO VAN ITEMID2-->
-                 @*@if (i.ItemId2 != null)
-                    {
-                       </tr>
-                        <tr>
-                            <td><img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image)' class="Res_IMG" /></td>
-                            <td colspan="6" class="res_Naam">@i.Name</td>
-                            <td class="res_Locatie">@i.Location</td>
-                            <td colspan="3" class="res_Aanvang"> @i.DateBegin.ToString("dd/MM") - @i.DateBegin.ToString("HH:mm")</td>
-                            <td class="res_Prijs">
-                                @using (Html.BeginForm("AlterOrder", "Reservation", i, FormMethod.Post))
-                            {
-                                @Html.TextBox("inputAmount", @i.Amount, new { type = "number", min = "1", max = "10" });
-                                <input type="submit" value="+-" />
-                            }
-                        </td>
-                        <td class="res_Prijs">&euro; @i.TotalPrice</td>
-                    }*@
-                   
+                    @Html.TextBox("inputAmount", @i.Amount, new { type = "number", min = "1", max = "10" })
+                    <input type="submit" value="+-" />
                 }
-                <td>
-                    @using (Html.BeginForm("DeleteOrder", "Reservation", i, FormMethod.Post))
-                    {
+            </td>
+            <td class="res_Prijs">&euro; @i.TotalPrice</td>
 
-                        <input type="submit" value="x" onclick="dialogJaNee();">
-                        <input type="hidden" name="hiddenDeleteKnopBoolVal" id="hiddenDeleteKnopBoolVal" />
-                    }
-                </td>
-            </tr>
+            <!-- HIER WIL IK DIE INFO VAN ITEMID2-->
+            @*@if (i.ItemId2 != null)
+                {
+                   </tr>
+                    <tr>
+                        <td><img src='@string.Format("../Content/img/{0}/{1}", i.EventType, i.Image)' class="Res_IMG" /></td>
+                        <td colspan="6" class="res_Naam">@i.Name</td>
+                        <td class="res_Locatie">@i.Location</td>
+                        <td colspan="3" class="res_Aanvang"> @i.DateBegin.ToString("dd/MM") - @i.DateBegin.ToString("HH:mm")</td>
+                        <td class="res_Prijs">
+                            @using (Html.BeginForm("AlterOrder", "Reservation", i, FormMethod.Post))
+                        {
+                            @Html.TextBox("inputAmount", @i.Amount, new { type = "number", min = "1", max = "10" });
+                            <input type="submit" value="+-" />
+                        }
+                    </td>
+                    <td class="res_Prijs">&euro; @i.TotalPrice</td>
+                }*@
+
+           
+            <td>
+                @using (Html.BeginForm("DeleteOrder", "Reservation", i, FormMethod.Post))
+                {
+
+                    <input type="submit" value="x" onclick="dialogJaNee();">
+                    <input type="hidden" name="hiddenDeleteKnopBoolVal" id="hiddenDeleteKnopBoolVal" />
+                }
+            </td>
+        </tr>
+        }
+    
+    </table>
+
+    <script>
+        function validateReservation() {
+            if (!$("#name").val().match(/^[a-zA-Z\ {0.45} ]+$/)) {
+                alert("Vul een naam in.");
+                return false;
             }
+            if (!$("#tel").val().match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)) {
+                alert("Telefoonnummer");
+                return false;
+            }
+            return true;
         }
-</table>
-<script>
-    function validateReservation() {
-        if (!$("#name").val().match(/^[a-zA-Z\ {0.45} ]+$/)) {
-            alert("Vul een naam in.");
-            return false;
-        }
-        if (!$("#tel").val().match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)) {
-            alert("Telefoonnummer");
-            return false;
-        }
-       return true;
+    </script>
+<table class="res_Table">
+
+    @using (Html.BeginForm("Create", "Reservation", Model, FormMethod.Post, new { onsubmit = "return validateReservation();" }))
+    {
+        <tr>
+            @Html.AntiForgeryToken()
+            <td>
+                Name : @Html.TextBox("name")
+            </td>
+            <td>
+                Telephone : @Html.TextBox("tel")
+            </td>
+            <td>
+                <select id="paymentMethod" name="paymentMethod">
+                    <option>Choose a method of payment</option>
+                    <option value="iDeal">iDeal</option>
+                    <option value="Creditcard">Creditcard</option>
+                    <option value="Cash">Cash at booth</option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Make Reservation" />
+            </td>
+        </tr>
     }
-</script>
 
-@using (Html.BeginForm("Create", "Reservation", Model, FormMethod.Post, new { onsubmit="return validateReservation();" }))
-{
-    @Html.AntiForgeryToken();
-    <p> naam </p>@Html.TextBox("name");
-    <p> Telefoonnummer </p>@Html.TextBox("tel");
-    <select id="paymentMethod" name="paymentMethod">
-        <option value="iDeal">iDeal</option>
-        <option value="Creditcard">Creditcard</option>
-        <option value="Cash">Cash at booth</option>
-     </select>
-
-        <input type="submit" value="Make Reservation" />
-}
+</table>
