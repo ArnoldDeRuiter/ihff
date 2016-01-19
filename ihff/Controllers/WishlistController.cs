@@ -186,11 +186,11 @@ namespace ihff.Controllers
             Models.Item selItem = itemRepository.GetItem(id1);
 
             o.ItemId = id1;
-            o.Amount = (o.Amount + 1);
+            o.Amount = amount; //(o.Amount + 1);
             if (id2 != 0)
             {
                 o.ItemId2 = id2;
-                o.TotalPrice = (o.Amount * o.TotalPrice);
+                o.TotalPrice = (o.Amount * 67.99);
             } else { 
                 o.TotalPrice = (o.Amount * selItem.Price);
             }

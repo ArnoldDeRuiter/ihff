@@ -46,16 +46,29 @@ namespace ihff.Controllers
                 combined.Amount = o.Amount;
                 combined.TotalPrice = o.TotalPrice;
                 combined.WishlistCode = o.WishlistCode;
+                combined.ItemId2 = o.ItemId2;
+                string Name = q.Name;
+                DateTime realEnding = q.DateEnd;
+                double? realPricing = q.Price;
+                if (combined.ItemId2 != null)
+                {
+                    int item2 = (int.TryParse(o.ItemId2.ToString(), out item2)) ? Convert.ToInt32(o.ItemId2) : 0;
+                    Item it2 = orderItem.GetItem(item2);
 
+                    //Item
+                    Name = q.Name + " & " + it2.Name;
+                    realEnding = it2.DateEnd;
+                    realPricing = o.TotalPrice;
+                }
                 // combined met de iteminfo vullen
                 combined.DateBegin = q.DateBegin;
-                combined.DateEnd = q.DateEnd;
+                combined.DateEnd = realEnding;
                 combined.EventType = q.EventType;
                 combined.Image = q.Image;
                 combined.Location = q.Location;
                 combined.MaxAvailabillity = q.MaxAvailabillity;
-                combined.Name = q.Name;
-                combined.Price = q.Price;
+                combined.Name = Name;
+                combined.Price = realPricing;
                 
                 // vul de lijst van het gecombineerde model met de instantie van het gecombineerde model
                 allCombined.Add(combined);
@@ -134,24 +147,55 @@ namespace ihff.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            // pak de order met de juiste wishlistcode en het juiste itemID
-            Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
+            
 
             // haal Item op via ItemID
             Item item = orderItem.GetItem(i.ItemId);
+            int id2 = (int.TryParse(i.ItemId2.ToString(), out id2)) ? id2 : 0;
+            
+
+            // pak de order met de juiste wishlistcode en het juiste itemID
+            //Order order = orderItem.GetOrder(i.WishlistCode, i.ItemId);
+            List<Order> allOrders = orderItem.GetOrders(i.WishlistCode);
+            int index = 0;
+            if (id2 == 0)
+            {
+                index = allOrders.FindIndex(it => it.ItemId == i.ItemId);
+            }
+            else
+            {
+                Item item2 = orderItem.GetItem(id2);
+                index = allOrders.FindIndex(it => it.ItemId == i.ItemId && it.ItemId2 == id2);
+            }
+
+            Order order = allOrders[index];
+
+
+
+            order.Amount = inputAmount;
+            if (id2 != 0)
+            {
+                //order.ItemId2 = id2;
+                order.TotalPrice = (order.Amount * 67.99);
+            }
+            else
+            {
+                order.TotalPrice = (order.Amount * item.Price);
+            }
+
             // vul variabele prijspp met prijs van het Item
-            double? prijspp = item.Price;
+            //double? prijspp = item.Price;
 
             // attach order aan de db
             db.Orderlines.Attach(order);
             
             // geef aan dat de status van de entry is aangepast.
             db.Entry(order).State = EntityState.Modified;
-            
-            // vul order.Amount met de amountinput
-            order.Amount = inputAmount;
+
+
+
             // vul order.Totalprice met het aantal kaartjes * de prijs van het item
-            order.TotalPrice = (inputAmount * prijspp);
+            //order.TotalPrice = (inputAmount * prijspp);
             // sla veranderingen in de db op
             db.SaveChanges();
 
