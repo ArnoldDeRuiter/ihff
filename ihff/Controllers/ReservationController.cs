@@ -20,12 +20,26 @@ namespace ihff.Controllers
         // GET: Reservation
         public ActionResult Index()
         {
-            // wishlistcode ophalen
-            string code = Session["code"].ToString();
-            
-            // orders ophalen
-            List<Order> allOrders = orderItem.GetOrders(code);
+            List<Order> allOrders = new List<Order>();
 
+            string code = "";
+
+            if (Session["code2"] != null)
+            {
+                // wishlistcode ophalen
+                code = Session["code2"].ToString();
+
+                // orders ophalen
+                allOrders = orderItem.GetOrders(code);
+            }
+            else
+            {
+                // wishlistcode ophalen
+                code = Session["code"].ToString();
+
+                // orders ophalen
+                allOrders = orderItem.GetOrders(code);
+            }
             // items ophalen
             List<Item> allItems = new List<Item>();
             
@@ -85,11 +99,11 @@ namespace ihff.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(string name, string tel, string paymentMethod)
         {
-            // haal wishlistcode uit sessie
+            // wishlistcode ophalen
             string code = Session["code"].ToString();
 
-            // lijst met orders om weg te gooien na het maken van de reservering
-            List<Order> allOrders = orderItem.GetOrders(code);
+            // orders ophalen
+            List<Order>allOrders = orderItem.GetOrders(code);
 
             //  maak reservation instantie aan
             Reservation res = new Reservation();
@@ -225,35 +239,58 @@ namespace ihff.Controllers
             // Zoniet dan onderstaande code uitvoeren
             if (hiddenDeleteKnopBoolVal == true)
             {
-               List<Order> orders = orderItem.GetOrders(i.WishlistCode);
+                // lijst vullen met orders die de orginele wishlistcode hebben
+                List<Order> orders = orderItem.GetOrders(Session["code"].ToString());
 
-                if (orders.Count >= 1)
-                {
-                    if (Session["code2"] == null)
+                string code2 = "";
+
+                // als deze session leeg is
+                if (Session["code2"] == null)
                     {
-                        string code2 = wishlistRepository.getTempCode();
-
+                        // haal dan een nieuwe code op
+                        code2 = wishlistRepository.getTempCode();
+                        // sla dat in de session op 
                         Session["code2"] = code2;
-                        
+
                     }
 
                     else
                     {
-                        string code2 = Session["code2"].ToString();
+                        code2 = Session["code"].ToString();
                         
                     }
 
-                    foreach (Order o in orders)
+                //Wishlist Code
+                bool CodeAlready = false;
+
+                if (db.Wishlists.Any(wo => wo.WishlistCode == code2))
+                    CodeAlready = true;
+
+                if (!CodeAlready)
+                {
+                    Wishlist w = new Wishlist();
+                    w.WishlistCode = code2;
+                    db.Wishlists.Add(w);
+                    db.SaveChanges();
+                }
+
+                foreach (Order o in orders)
                     {
                         db.Orderlines.Attach(o);
+                        db.Entry(o).State = EntityState.Modified;
                         o.WishlistCode = Session["code2"].ToString();
                         db.SaveChanges();
                     }
 
-                }
+                Order oldOrder = orderItem.GetOrder(Session["code2"].ToString(), i.ItemId);
+                
+                db.Orderlines.Attach(oldOrder);
+                db.Entry(oldOrder).State = EntityState.Modified;
+                oldOrder.WishlistCode = Session["code"].ToString();
+
+                db.SaveChanges();
 
                 }
-            
 
             // !Throw away completely! 
             else
