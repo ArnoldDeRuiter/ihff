@@ -228,4 +228,20 @@ Wij hopen dat U er van zult genieten.&lt;/p&gt;</value>
   <data name="WishlistTxt3" xml:space="preserve">
     <value>toevoegen aan uw wishlist, door te klikken op de voeg toe aan wishlist knop.</value>
   </data>
+  <data name="ContactLbl" xml:space="preserve">
+    <value>Neem contact op</value>
+  </data>
+  <data name="FoodFilmContent" xml:space="preserve">
+    <value>&lt;p&gt;Haarlem heeft een uitmuntende culinaire cultuur, daarom hebben we ook dit jaar weer de beste restaurants geselecteerd. Om deze restaurants nog meer te promoten presenteren wij u het Food &amp; Film kaatje. Eten als het voorgerecht en een uitstekende film als dessert.&lt;/p&gt;
+&lt;p&gt;Een Food &amp; Film kaartje bespaard u geld en introduceert u met de beste restaurants uit de omgeving. Om een Food &amp; Film kaartje te bestellen, navigeert u naar de film du u graag zou willen zien en opent u de film detail pagina. Vanaf deze pagina heeft u een optie om een Food &amp; Film Ticket te bestellen.&lt;/p&gt;</value>
+  </data>
+  <data name="FoodFilmTitle" xml:space="preserve">
+    <value>Food &amp; Film Kaartje</value>
+  </data>
+  <data name="FoodFilmTxt1" xml:space="preserve">
+    <value>Om uw film te kiezen gaat u naar de</value>
+  </data>
+  <data name="FoodFilmTxt2" xml:space="preserve">
+    <value>Pagina.</value>
+  </data>
 </root>

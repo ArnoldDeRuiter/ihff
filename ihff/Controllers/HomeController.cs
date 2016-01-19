@@ -47,12 +47,6 @@ namespace ihff.Controllers
             return View(allFilms.OrderBy(i => i.DateBegin));
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
 
         public ActionResult FoodFilm()
         {
@@ -71,18 +65,15 @@ namespace ihff.Controllers
 
         public ActionResult ChangeCurrentCulture(int id)
         {
-            //
-            // Change the current culture for this user.
-            //
+            // Zet de cultue (taal) van de huidige gebruiker
             CultureSessionManager.CurrentCulture = id;
-            //
-            // Cache the new current culture into the user HTTP session. 
-            //
+
+            // Zet de culture in een session
             Session["CurrentCulture"] = id;
-            //
-            // Redirect to the same page from where the request was made! 
-            //
-            return RedirectToAction("Index");
+
+            // Redirect naar vorige pagina
+            // Zo lijkt de gebruiker op de pagina te blijven terwijl de taal gewijzigd wordt
+            return Redirect(ControllerContext.HttpContext.Request.UrlReferrer.ToString());
         }
     }
 }

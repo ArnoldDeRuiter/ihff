@@ -12,8 +12,11 @@ namespace ihff.Controllers.Api
     {
         public string GetImdbId(Item item)
         {
+            // Zoek film op in IMDB databse aan de hand van Item naam en Year
+            // Return is een JSON
             var json = new WebClient().DownloadString("http://www.omdbapi.com/?t=" + item.Name + "&y=" + item.Year + "&plot=short&r=json");
 
+            // Parse JSON en pak de ImdbId waarde
             JObject o = JObject.Parse(json);
             string imdbID = (string)o.GetValue("imdbID");
 
@@ -22,8 +25,11 @@ namespace ihff.Controllers.Api
 
         public string GetImdbPoster(Item item)
         {
+            // Zoek film op in IMDB databse aan de hand van Item naam en Year
+            // Return is een JSON
             var json = new WebClient().DownloadString("http://www.omdbapi.com/?t=" + item.Name + "&y=" + item.Year + "&plot=short&r=json");
 
+            // Parse JSON en pak de Poster waarde
             JObject o = JObject.Parse(json);
             string imdbPoster = (string)o.GetValue("Poster");
 

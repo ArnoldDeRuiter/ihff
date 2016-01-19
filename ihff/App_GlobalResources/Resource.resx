@@ -228,4 +228,20 @@ We hope you will enjoy it.&lt;/p&gt;</value>
   <data name="WishlistTxt3" xml:space="preserve">
     <value>to your wishlist by clicking the add to wishlist button.</value>
   </data>
+  <data name="ContactLbl" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="FoodFilmContent" xml:space="preserve">
+    <value>&lt;p&gt;Haarlem has an exquisite culinary culture, that is why we selected the best restaurants too take part in this years festival. To promote these restaurants we bring you the Food &amp; Film Ticket. Dining as the appetiser and a beautiful movie as a dessert.&lt;/p&gt;
+&lt;p&gt;A Food &amp; Film ticket will save you some money and introduces you to the finest restaurants in the area. To order a Food &amp; Film Ticket, navagate to the movie you would like to see and open its details page. From this page you will have the option to order a Food &amp; Film Ticket.&lt;/p&gt;</value>
+  </data>
+  <data name="FoodFilmTitle" xml:space="preserve">
+    <value>Food &amp; Film Ticket</value>
+  </data>
+  <data name="FoodFilmTxt1" xml:space="preserve">
+    <value>To choice your movie go to the</value>
+  </data>
+  <data name="FoodFilmTxt2" xml:space="preserve">
+    <value>page.</value>
+  </data>
 </root>

@@ -9,6 +9,8 @@
 @using Resources
 @model ihff.Models.Item
 @{
+    // Haal IMDB intformatie op
+    // ID en Poster
     ImdbParser imdbParser = new ImdbParser();
     string imdbId = imdbParser.GetImdbId(Model);
     string poster = imdbParser.GetImdbPoster(Model);

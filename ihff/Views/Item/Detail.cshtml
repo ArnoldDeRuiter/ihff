@@ -9,21 +9,24 @@
         <div>
             <h3>@Model.Name</h3>
 
-            @if (Model.EventType == 1)
-            {
-                // Toon Film Detail Partial
-                @Html.Partial("MovieDetailParital", Model)
+            @{ // check welk Event type het is en haal juiste partial op
+                if (Model.EventType == 1)
+                {
+                    // Toon Film Detail Partial
+                    @Html.Partial("MovieDetailParital", Model)
+                }
+                else if (Model.EventType == 2)
+                {
+                    // Toon Special Detail Partial
+                    @Html.Partial("SpecialDetailParital", Model)
+                }
+                else if (Model.EventType == 3)
+                {
+                    // Toon Diner Detail Partial
+                    @Html.Partial("DinerDetailParital", Model)
+                }
             }
-            else if (Model.EventType == 2)
-            {
-                // Toon Special Detail Partial
-                @Html.Partial("SpecialDetailParital", Model)
-            }
-            else if (Model.EventType == 3)
-            {
-                // Toon Diner Detail Partial
-                @Html.Partial("DinerDetailParital", Model)
-            }
+
 
         </div>
 

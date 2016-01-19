@@ -1,5 +1,14 @@
-﻿@{
+﻿@using System.Resources
+@using Resources
+@{
     ViewBag.Title = "Contact";
 }
 <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/filmObject.css")" rel="stylesheet" type="text/css" />
+
+<h3>@Resource.ContactLbl</h3>
+<address>
+Celluloid & Silver <br/>
+Zijlweg 7 <br />
+1234AA  Haarlem <br />
+</address>

@@ -115,6 +115,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact Us.
+        /// </summary>
+        internal static string ContactLbl {
+            get {
+                return ResourceManager.GetString("ContactLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description:.
         /// </summary>
         internal static string DescriptionLbl {
@@ -129,6 +138,43 @@ namespace Resources {
         internal static string DirectorLbl {
             get {
                 return ResourceManager.GetString("DirectorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Haarlem has an exquisite culinary culture, that is why we selected the best restaurants too take part in this years festival. To promote these restaurants we bring you the Food &amp; Film Ticket. Dining as the appetiser and a beautiful movie as a dessert.&lt;/p&gt;
+        ///&lt;p&gt;A Food &amp; Film ticket will save you some money and introduces you to the finest restaurants in the area. To order a Food &amp; Film Ticket, navagate to the movie you would like to see and open its details page. From this page you will have the option to o [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FoodFilmContent {
+            get {
+                return ResourceManager.GetString("FoodFilmContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Food &amp; Film Ticket.
+        /// </summary>
+        internal static string FoodFilmTitle {
+            get {
+                return ResourceManager.GetString("FoodFilmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To choice your movie go to the.
+        /// </summary>
+        internal static string FoodFilmTxt1 {
+            get {
+                return ResourceManager.GetString("FoodFilmTxt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to page..
+        /// </summary>
+        internal static string FoodFilmTxt2 {
+            get {
+                return ResourceManager.GetString("FoodFilmTxt2", resourceCulture);
             }
         }
         

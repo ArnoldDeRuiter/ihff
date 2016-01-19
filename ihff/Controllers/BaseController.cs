@@ -41,6 +41,9 @@ namespace ihff.Controllers
         /// </summary>
         protected override void ExecuteCore()
         {
+
+            // Controleer op ingestelde taal
+            // Als de session Null is zet de culture op 0 (engels)
             int culture = 0;
             if (this.Session["CurrentCulture"] == null)
             {
@@ -51,11 +54,11 @@ namespace ihff.Controllers
             {
                 culture = (int)this.Session["CurrentCulture"];
             }
-            //
+
+            // zet juiste culture (taal)
             CultureSessionManager.CurrentCulture = culture;
-            //
-            // Invokes the action in the current controller context.
-            //
+
+            // voor controller actie uit
             base.ExecuteCore();
         }
 
